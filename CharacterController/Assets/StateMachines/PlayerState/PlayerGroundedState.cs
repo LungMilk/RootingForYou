@@ -1,16 +1,30 @@
 using UnityEngine;
 
-public class PlayerGroundedState : MonoBehaviour
+public class PlayerGroundedState : PlayerBaseState
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    //handle gravity does not really exist
+    public PlayerGroundedState(PlayerStateMachine currentContext, playerStateFactory playerStateFactory) : base(currentContext, playerStateFactory) 
     {
-        
+        IsRootState = true;
+        InitializeSubState();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public override void EnterState() {
+        //_currentMovement.y = groundedGravity;
+        //_appliedMovement.y = _groundedGravity;
     }
+    public override void UpdateState() { CheckSwitchStates(); }
+    public override void ExitState() { }
+    public override void CheckSwitchStates() { }
+    public override void InitializeSubState() {
+        if (!Ctx.IsMovementPressed && !Ctx.IsRunPressed) {
+            SetSubState(Factory.Idle());
+        }else if (Ctx.IsMovementPressed && !Ctx.IsRunPressed){
+            SetSubState(Factory.Walk());
+        }
+        else
+        {
+            SetSubState(Factory.Run());
+        }
+        
+        }
 }

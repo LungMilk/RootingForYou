@@ -18,10 +18,14 @@ public class MovementController : MonoBehaviour
     bool _isRunPressed;
     //bool hasSprint;
 
+    PlayerBaseState _currentState;
+    playerStateFactory _states;
+
     private void Awake()
     {
         _playerInput = new PlayerInputs();
         _chrController = GetComponent<CharacterController>();
+
 
         _playerInput.CharacterControls.Move.started += OnMovementInput;
         _playerInput.CharacterControls.Move.canceled += OnMovementInput;
