@@ -23,7 +23,7 @@ public class MovementController : MonoBehaviour
 
     private void Awake()
     {
-        _playerInput = new PlayerInputs();
+         _playerInput = new PlayerInputs();
         _chrController = GetComponent<CharacterController>();
 
 
@@ -84,7 +84,7 @@ public class MovementController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(_currentMovement);
+        //Debug.Log(_currentMovement);
         HandleRotation();
         //chrController.Move(currentMovement);
         //look into simple move
