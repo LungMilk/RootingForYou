@@ -6,7 +6,7 @@ public class MovementController : MonoBehaviour
 {
     PlayerInputs _playerInput;
     CharacterController _chrController;
-    Vector2 _currentmovementInput;
+    Vector2 _currentMovementInput;
     Vector3 _currentMovement;
     Vector3 _currentRunMovement;
     bool _isMovementPressed;
@@ -23,7 +23,7 @@ public class MovementController : MonoBehaviour
 
     private void Awake()
     {
-         _playerInput = new PlayerInputs();
+        _playerInput = GetComponent<PlayerInputHandler>().playerInputHandler;
         _chrController = GetComponent<CharacterController>();
 
 
@@ -74,12 +74,12 @@ public class MovementController : MonoBehaviour
     void OnMovementInput(InputAction.CallbackContext context)
     {
         //Debug.Log(context.ReadValue<Vector2>());
-        _currentmovementInput = context.ReadValue<Vector2>();
-        _currentMovement.x = _currentmovementInput.x;
-        _currentMovement.z = _currentmovementInput.y;
-        _currentRunMovement.x = _currentmovementInput.x * _sprintSpeed;
-        _currentRunMovement.z = _currentmovementInput.y * _sprintSpeed;
-        _isMovementPressed = _currentmovementInput.x != 0 || _currentmovementInput.y != 0;
+        _currentMovementInput = context.ReadValue<Vector2>();
+        _currentMovement.x = _currentMovementInput.x;
+        _currentMovement.z = _currentMovementInput.y;
+        _currentRunMovement.x = _currentMovementInput.x * _sprintSpeed;
+        _currentRunMovement.z = _currentMovementInput.y * _sprintSpeed;
+        _isMovementPressed = _currentMovementInput.x != 0 || _currentMovementInput.y != 0;
     }
 
     void Update()

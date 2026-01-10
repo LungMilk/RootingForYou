@@ -14,7 +14,9 @@ public class PlayerInteractions : MonoBehaviour
     private void Awake()
     {
         //we will fix in the player state machine when we get to It I need a prototype
-        _interactAction = InputSystem.actions.FindAction("Interact");
+        _playerInput = GetComponentInParent<PlayerInputHandler>().playerInputHandler;
+        //cool shorthand instead of long things seen earlier
+        _interactAction = _playerInput.CharacterControls.Interact;
 
         _interactAction.started += OnInteract;
         _interactAction.canceled += OnInteract;
