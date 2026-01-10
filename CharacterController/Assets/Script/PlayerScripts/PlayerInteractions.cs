@@ -1,4 +1,7 @@
+using System;
+using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerInteractions : MonoBehaviour
@@ -11,6 +14,10 @@ public class PlayerInteractions : MonoBehaviour
     public bool _isInteractPressed;
     private InputAction _interactAction;
     IInteractable _currentInteractable;
+
+    public CameraEvent OnCameraOptionFound;
+    private CinemachineCamera foundCamera;
+
     private void Awake()
     {
         //we will fix in the player state machine when we get to It I need a prototype
@@ -30,6 +37,7 @@ public class PlayerInteractions : MonoBehaviour
         {
             print("trying to interact");
             _currentInteractable.Interact();
+            OnCameraOptionFound.Invoke(foundCamera);
         }
 
     }
@@ -44,6 +52,10 @@ public class PlayerInteractions : MonoBehaviour
         {
             _currentInteractable = interactable;
         }
+        if (other.TryGetComponent(out ICameraOption cameraOption))
+        {
+            foundCamera = cameraOption.CameraOption;
+        }
 
     }
     private void OnTriggerExit(Collider other)
@@ -53,6 +65,10 @@ public class PlayerInteractions : MonoBehaviour
             if (_currentInteractable == interactable)
             {
                 _currentInteractable = null;
+            }
+            if (foundCamera != null)
+            {
+                foundCamera = null;
             }
         }
     }
