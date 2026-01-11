@@ -1,7 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 public class PlayerStateMachine : MonoBehaviour
 {
+    //retains all the variables as this has the greater context of everything.
     PlayerInputs _playerInput;
     CharacterController _chrController;
     Vector2 _currentMovementInput;
