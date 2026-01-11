@@ -9,10 +9,7 @@ public class PlayerIdleState : PlayerBaseState
     public override void ExitState() { }
     public override void CheckSwitchStates() 
     { 
-        if (Ctx.IsMovementPressed && Ctx.IsRunPressed)
-        {
-            SwitchState(Factory.Run());
-        } else if (Ctx.IsMovementPressed)
+        if (Ctx.IsMovementPressed)
         {
             SwitchState(Factory.Walk());
         }

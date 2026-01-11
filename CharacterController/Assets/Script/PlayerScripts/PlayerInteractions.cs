@@ -10,6 +10,7 @@ public class PlayerInteractions : MonoBehaviour
 
     //we may need an interactable priority system but right now it gets the nearest in the collision
     //we save the interactable as doing a call for getting any on the button press sounds pretty taxing.
+    public GameObject inputObject;
     PlayerInputs _playerInput;
     public bool _isInteractPressed;
     private InputAction _interactAction;
@@ -18,10 +19,10 @@ public class PlayerInteractions : MonoBehaviour
     public CameraEvent OnCameraOptionFound;
     private CinemachineCamera foundCamera;
 
-    private void Awake()
+    private void OnEnable()
     {
         //we will fix in the player state machine when we get to It I need a prototype
-        _playerInput = GetComponentInParent<PlayerInputHandler>().playerInputHandler;
+        _playerInput = inputObject.GetComponent<PlayerInputHandler>().playerInputHandler;
         //cool shorthand instead of long things seen earlier
         _interactAction = _playerInput.CharacterControls.Interact;
 
