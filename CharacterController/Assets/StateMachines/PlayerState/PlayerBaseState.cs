@@ -1,4 +1,6 @@
 
+using Unity.VisualScripting.FullSerializer;
+
 public abstract class PlayerBaseState
 {
     private bool _isRootState = false;
@@ -24,7 +26,7 @@ public abstract class PlayerBaseState
     public abstract void CheckSwitchStates();
     public abstract void InitializeSubState();
 
-    void UpdateStates()
+    public void UpdateStates()
     {
         UpdateState();
         if(_currentSubState != null)
@@ -46,7 +48,8 @@ public abstract class PlayerBaseState
         }
     }
     protected void SetSuperState(PlayerBaseState newSuperState) { _currentSuperState = newSuperState; }
-    protected void SetSubState(PlayerBaseState newSubState) { _currentSubState = newSubState;
+    protected void SetSubState(PlayerBaseState newSubState) {
+        _currentSubState = newSubState;
         newSubState.SetSuperState(this);
     }
 }

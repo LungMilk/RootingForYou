@@ -57,7 +57,6 @@ public class PlayerInteractions : MonoBehaviour
         {
             foundCamera = cameraOption.CameraOption;
         }
-
     }
     private void OnTriggerExit(Collider other)
     {

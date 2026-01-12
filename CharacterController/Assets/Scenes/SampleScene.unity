@@ -1917,7 +1917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _chrController: {fileID: 5568851323708862324}
-  _movementSpeed: 1
+  _movementSpeed: 5
   _rotationFactorPerFrame: 10
 --- !u!136 &9117584566399129983
 CapsuleCollider:
