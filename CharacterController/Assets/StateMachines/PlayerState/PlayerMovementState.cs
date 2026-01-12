@@ -13,6 +13,8 @@ public class PlayerMovementState : PlayerBaseState
         //_appliedMovement.y = _groundedGravity;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        Ctx.OnCameraOptionFound.Invoke(null);
         InitializeSubState();
     }
     public override void UpdateState() { HandleGravity(); CheckSwitchStates(); }

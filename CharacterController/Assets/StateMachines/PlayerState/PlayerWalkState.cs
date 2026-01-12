@@ -26,7 +26,7 @@ public class PlayerWalkState : PlayerBaseState
         {
             SwitchState(Factory.Idle());
         }
-        if (Ctx.IsInteracting)
+        if (Ctx.CanSwitchSupers)
         {
             SwitchState(Factory.Interact());
         }

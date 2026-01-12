@@ -1,3 +1,4 @@
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class PlayerDialogueState : PlayerBaseState
@@ -10,19 +11,23 @@ public class PlayerDialogueState : PlayerBaseState
         if (Ctx.IsInteractPressed)
         {
             //progress dialogue??
-            Debug.Log("talking");
+            //Debug.Log("talking");
         }
+        timer += Time.deltaTime;
         CheckSwitchStates(); }
-    public override void ExitState() { }
+    public override void ExitState()
+    {
+        Debug.Log("exiting Dialogue");
+        //Ctx.OnCameraOptionFound.Invoke(Ctx._foundCamera);
+    }
     public override void CheckSwitchStates()
     {
         //dialogue can only finish if dialogue is over
-        timer += Time.deltaTime;
         //if (Ctx.IsInteractPressed)
         //{
         //    SetSuperState(Factory.Movement());
         //}else 
-        if(timer > 10f)
+        if(timer > 5f)
         {
             Ctx.ForceSuperState(Factory.Movement());
         }

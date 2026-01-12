@@ -1,4 +1,6 @@
+using NUnit.Framework.Interfaces;
 using System.Collections.Generic;
+using System.Threading;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -20,7 +22,7 @@ public class PlayerStateMachine : MonoBehaviour
     Vector2 _currentMovementInput;
     Vector3 _currentMovement;
     bool _isMovementPressed;
-    bool _isInteracting;
+    //bool _isInteracting;
 
     public float _movementSpeed = 1f;
     public float _rotationFactorPerFrame = 10f;
@@ -30,19 +32,24 @@ public class PlayerStateMachine : MonoBehaviour
     playerStateFactory _states;
 
     //interact variables
-    public GameObject inputObject;
+    public GameObject _inputObject;
     public bool _isInteractPressed;
     private InputAction _interactAction;
     IInteractable _currentInteractable;
     InteractState _foundInteractType;
 
     public CameraEvent OnCameraOptionFound;
-    private CinemachineCamera foundCamera;
+    public CinemachineCamera _foundCamera;
+
+    float _superStateSwitchCooldown = 1f;
+    float _superStateSwitchCooldownTimer = 0f;
+    bool _canSwitchSupers = false;
     //getters and setters
     public PlayerBaseState CurrentState { get { return _currentState; } set { _currentState = value; } }
     public bool IsMovementPressed {get {return _isMovementPressed;} }
     public bool IsInteractPressed { get { return _isInteractPressed; } }
-    public bool IsInteracting { get { return _isInteracting; } }
+    //public bool IsInteracting { get { return _isInteracting; } }
+    public bool CanSwitchSupers { get { return _canSwitchSupers; } set { _canSwitchSupers = value; } }
     public Vector2 CurrentMovementInput { get { return _currentMovementInput; } }
     public Vector3 CurrentMovement { get { return _currentMovement; } set { _currentMovement = value; } }
 
@@ -68,24 +75,9 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Update()
     {
-            //print("current state:" + _currentState.ToString());
-            _currentState.UpdateStates();
-
-        //_isInteractPressed = context.ReadValueAsButton();
-        //print("Hi");
-        if (_currentInteractable != null && _isInteractPressed)
-        {
-            _previousState = _currentState;
-            _isInteracting = true;
-            print("trying to interact");
-            _currentInteractable.Interact();
-            _foundInteractType = _currentInteractable.InteractableType;
-            OnCameraOptionFound.Invoke(foundCamera);
-        }
-        else
-        {
-            _isInteracting = false;
-        }
+        if (_isInteractPressed) { HandleInteractions(); }
+        //print("current state:" + _currentState.ToString());
+        _currentState.UpdateStates();
     }
     void OnMovementInput(InputAction.CallbackContext context)
     {
@@ -130,6 +122,34 @@ public class PlayerStateMachine : MonoBehaviour
     {
         _isInteractPressed = context.ReadValueAsButton();
     }
+    private void HandleInteractions()
+    {
+        if (!_canSwitchSupers)
+        {
+            _superStateSwitchCooldownTimer += Time.deltaTime;
+            if (_superStateSwitchCooldownTimer >= _superStateSwitchCooldown)
+            {
+                _canSwitchSupers = true;
+                _superStateSwitchCooldownTimer = 0f;
+            }
+        }
+        if (_currentInteractable == null) return;
+
+        _currentInteractable.Interact();
+        OnCameraOptionFound?.Invoke(_foundCamera);
+        _foundInteractType = InteractState.NonState;
+
+
+        if (_currentInteractable.InteractableType == InteractState.NonState) return;
+        _foundInteractType = _currentInteractable.InteractableType;
+        _previousState = _currentState;
+        if (_foundInteractType != InteractState.NonState)
+        {
+            _previousState = _currentState;
+            ForceSuperState(_states.Interact());
+            _canSwitchSupers = false; 
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out IInteractable interactable))
@@ -138,7 +158,7 @@ public class PlayerStateMachine : MonoBehaviour
         }
         if (other.TryGetComponent(out ICameraOption cameraOption))
         {
-            foundCamera = cameraOption.CameraOption;
+            _foundCamera = cameraOption.CameraOption;
         }
     }
     private void OnTriggerExit(Collider other)
@@ -149,9 +169,9 @@ public class PlayerStateMachine : MonoBehaviour
             {
                 _currentInteractable = null;
             }
-            if (foundCamera != null)
+            if (_foundCamera != null)
             {
-                foundCamera = null;
+                _foundCamera = null;
             }
         }
     }

@@ -19,7 +19,7 @@ public class PlayerPlantingState : PlayerBaseState
     }
     public override void CheckSwitchStates()
     {
-        if (Ctx.IsInteractPressed)
+        if (Ctx.CanSwitchSupers)
         {
             Ctx.ForceSuperState(Factory.Movement());
         }

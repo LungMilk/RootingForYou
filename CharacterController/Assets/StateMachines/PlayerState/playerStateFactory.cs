@@ -18,7 +18,6 @@ public class playerStateFactory : MonoBehaviour
             {typeof(PlayerWalkState), () => Movement() },
         };
     }
-
     public PlayerBaseState GetSuperstateForSubState(PlayerBaseState substate)
     {
         var type = substate.GetType();

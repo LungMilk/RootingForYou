@@ -12,6 +12,6 @@ public class DebugButton : MonoBehaviour ,IInteractable
     public void Interact()
     {
         isPressed = !isPressed;
-        print("I was interacted with!");
+        //print("I was interacted with!");
     }
 }

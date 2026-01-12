@@ -16,7 +16,10 @@ public class PlayerInteractState : PlayerBaseState
         Cursor.lockState = CursorLockMode.Confined;
     }
     public override void UpdateState() { CheckSwitchStates(); }
-    public override void ExitState() { }
+    public override void ExitState() { 
+    //start interact lock out
+
+    }
     public override void CheckSwitchStates() { }
     public override void InitializeSubState()
     {

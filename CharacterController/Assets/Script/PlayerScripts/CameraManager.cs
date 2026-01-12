@@ -33,7 +33,7 @@ public class CameraManager : MonoBehaviour
         //let priority take over??
         if (brain.IsBlending) { return; }
 
-        if (activeCamera == cam)
+        if (activeCamera == cam || cam == null)
         {
             RevertToPlayerCamera();
             return;
@@ -48,7 +48,7 @@ public class CameraManager : MonoBehaviour
         activeCamera = cam;
     }
 
-    private void RevertToPlayerCamera()
+    public void RevertToPlayerCamera()
     {
         if (activeCamera != null)
         {

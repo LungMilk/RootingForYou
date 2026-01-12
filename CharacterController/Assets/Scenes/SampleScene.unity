@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e993216d7ebad74d9bc3d99543f8164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactType: 1
+  _interactType: 2
   isPressed: 0
 --- !u!54 &299433747
 Rigidbody:
@@ -1839,7 +1839,7 @@ MonoBehaviour:
   _chrController: {fileID: 5568851323708862324}
   _movementSpeed: 5
   _rotationFactorPerFrame: 10
-  inputObject: {fileID: 0}
+  _inputObject: {fileID: 0}
   _isInteractPressed: 0
   OnCameraOptionFound:
     m_PersistentCalls:
@@ -1856,6 +1856,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _foundCamera: {fileID: 0}
 --- !u!65 &9110156164847897506
 BoxCollider:
   m_ObjectHideFlags: 0

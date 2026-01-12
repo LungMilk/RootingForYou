@@ -19,6 +19,6 @@ public class DebugCameraBox : MonoBehaviour,IInteractable, ICameraOption
 
     public void Interact()
     {
-        print("Switch to my camera!!");
+        //print("Switch to my camera!!");
     }
 }
