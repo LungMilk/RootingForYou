@@ -10,7 +10,7 @@ public class PlayerWalkState : PlayerBaseState
     { //Debug.Log(_currentMovement);
         //Debug.Log(Ctx.IsMovementPressed);
         Vector2 input = Ctx.CurrentMovementInput;
-        Debug.Log(input);
+        //Debug.Log(input);
         Ctx.CurrentMovement = new Vector3(input.x, Ctx.CurrentMovement.y, input.y);
 
         //chrController.Move(currentMovement);
@@ -22,9 +22,13 @@ public class PlayerWalkState : PlayerBaseState
     }
     public override void ExitState() { }
     public override void CheckSwitchStates() { 
-    if (!Ctx.IsMovementPressed)
+        if (!Ctx.IsMovementPressed)
         {
             SwitchState(Factory.Idle());
+        }
+        if (Ctx.IsInteracting)
+        {
+            SwitchState(Factory.Interact());
         }
     }
     public override void InitializeSubState() { }

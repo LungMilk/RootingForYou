@@ -3,6 +3,13 @@ using UnityEngine;
 
 public class DebugCameraBox : MonoBehaviour,IInteractable, ICameraOption
 {
+    public InteractState _interactType;
+    public InteractState InteractableType
+    {
+        get => _interactType; 
+        set => _interactType = value;
+    }
+
     [SerializeField] private CinemachineCamera cameraOption;
     public CinemachineCamera CameraOption
     {

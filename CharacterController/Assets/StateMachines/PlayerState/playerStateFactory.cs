@@ -14,8 +14,8 @@ public class playerStateFactory : MonoBehaviour
         _substateToSuperState = new Dictionary<Type, Func<PlayerBaseState>>
         {
             //{typeof(PlayerDialogueState), => Interact() },
-            {typeof(PlayerIdleState), () => Grounded() },
-            {typeof(PlayerWalkState), () => Grounded() },
+            {typeof(PlayerIdleState), () => Movement() },
+            {typeof(PlayerWalkState), () => Movement() },
         };
     }
 
@@ -31,10 +31,16 @@ public class playerStateFactory : MonoBehaviour
     }
 
     //super states
-    public PlayerBaseState Grounded()
+    public PlayerBaseState Movement()
     {
-        print("Grounded");
-        return new PlayerGroundedState(_context, this);
+        print("Movement");
+        return new PlayerMovementState(_context, this);
+    }
+
+    public PlayerBaseState Interact()
+    {
+        print("Interact");
+        return new PlayerInteractState(_context, this);
     }
 
     //substates
@@ -48,5 +54,16 @@ public class playerStateFactory : MonoBehaviour
         print("Walk");
         return new PlayerWalkState(_context,this);
     }
-    
+
+    public PlayerBaseState Dialogue()
+    {
+        print("Dialogue");
+        return new PlayerDialogueState(_context, this);
+    }
+    public PlayerBaseState Planting()
+    {
+        print("Planting");
+        return new PlayerPlantingState(_context, this);
+    }
+
 }

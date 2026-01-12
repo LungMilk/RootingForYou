@@ -1,6 +1,14 @@
+using System.Collections.Generic;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Collections.Generic;
+
+public enum InteractState
+{
+    Dialogue,
+    Planting,
+    NonState,
+}
 public class PlayerStateMachine : MonoBehaviour
 {
     //maybe find a way to not make all of these public.
@@ -12,6 +20,7 @@ public class PlayerStateMachine : MonoBehaviour
     Vector2 _currentMovementInput;
     Vector3 _currentMovement;
     bool _isMovementPressed;
+    bool _isInteracting;
 
     public float _movementSpeed = 1f;
     public float _rotationFactorPerFrame = 10f;
@@ -20,30 +29,63 @@ public class PlayerStateMachine : MonoBehaviour
     PlayerBaseState _previousState;
     playerStateFactory _states;
 
+    //interact variables
+    public GameObject inputObject;
+    public bool _isInteractPressed;
+    private InputAction _interactAction;
+    IInteractable _currentInteractable;
+    InteractState _foundInteractType;
+
+    public CameraEvent OnCameraOptionFound;
+    private CinemachineCamera foundCamera;
     //getters and setters
     public PlayerBaseState CurrentState { get { return _currentState; } set { _currentState = value; } }
     public bool IsMovementPressed {get {return _isMovementPressed;} }
-
+    public bool IsInteractPressed { get { return _isInteractPressed; } }
+    public bool IsInteracting { get { return _isInteracting; } }
     public Vector2 CurrentMovementInput { get { return _currentMovementInput; } }
     public Vector3 CurrentMovement { get { return _currentMovement; } set { _currentMovement = value; } }
+
+    public InteractState FoundInteractType { get { return _foundInteractType; } }
     private void Awake()
     {
         _playerInput = new PlayerInputs();
         _chrController = GetComponent<CharacterController>();
 
         _states = new playerStateFactory(this);
-        _currentState = _states.Grounded();
+        _currentState = _states.Movement();
         _currentState.EnterState();
 
         _playerInput.CharacterControls.Move.started += OnMovementInput;
         _playerInput.CharacterControls.Move.canceled += OnMovementInput;
         _playerInput.CharacterControls.Move.performed += OnMovementInput;
+
+        _interactAction = _playerInput.CharacterControls.Interact;
+
+        _interactAction.started+= OnInteract;
+        _interactAction.canceled += OnInteract;
     }
 
     private void Update()
     {
-        //print("current state:" + _currentState.ToString());
-        _currentState.UpdateStates();
+            //print("current state:" + _currentState.ToString());
+            _currentState.UpdateStates();
+
+        //_isInteractPressed = context.ReadValueAsButton();
+        //print("Hi");
+        if (_currentInteractable != null && _isInteractPressed)
+        {
+            _previousState = _currentState;
+            _isInteracting = true;
+            print("trying to interact");
+            _currentInteractable.Interact();
+            _foundInteractType = _currentInteractable.InteractableType;
+            OnCameraOptionFound.Invoke(foundCamera);
+        }
+        else
+        {
+            _isInteracting = false;
+        }
     }
     void OnMovementInput(InputAction.CallbackContext context)
     {
@@ -51,22 +93,9 @@ public class PlayerStateMachine : MonoBehaviour
         //_currentMovement.x = _currentMovementInput.x;
         //_currentMovement.z = _currentMovementInput.y;
         _isMovementPressed = _currentMovementInput.x != 0 || _currentMovementInput.y != 0;
-        print(_currentMovementInput);
+        //print(_currentMovementInput);
     }
-
-    public void RequestStateChange(PlayerBaseState requestedState)
-    {
-        var superstate = _states.GetSuperstateForSubState(requestedState);
-        if (superstate != null)
-        {
-            superstate.InitializeSubState();
-        }
-        else
-        {
-
-        }
-    }
-
+    //:3
     public void ForceSuperState(PlayerBaseState newSuper)
     {
         _previousState = _currentState;
@@ -74,7 +103,12 @@ public class PlayerStateMachine : MonoBehaviour
         _currentState.ExitState();
         _currentState = newSuper;
         _currentState.EnterState();
-
+    }
+    public void ReturnToPreviousState()
+    {
+        _currentState.ExitState();
+        _currentState = _previousState;
+        _currentState.EnterState();
     }
     private void OnEnable()
     {
@@ -84,5 +118,41 @@ public class PlayerStateMachine : MonoBehaviour
     private void OnDisable()
     {
         _playerInput.CharacterControls.Disable();
+    }
+
+    //stuff copied from the interaction script to homogonize functionality
+    //3d interactions based off of the interfaces and the like, just run with it for now
+
+    //we may need an interactable priority system but right now it gets the nearest in the collision
+    //we save the interactable as doing a call for getting any on the button press sounds pretty taxing.
+    //probs not important
+    void OnInteract(InputAction.CallbackContext context)
+    {
+        _isInteractPressed = context.ReadValueAsButton();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out IInteractable interactable))
+        {
+            _currentInteractable = interactable;
+        }
+        if (other.TryGetComponent(out ICameraOption cameraOption))
+        {
+            foundCamera = cameraOption.CameraOption;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent(out IInteractable interactable))
+        {
+            if (_currentInteractable == interactable)
+            {
+                _currentInteractable = null;
+            }
+            if (foundCamera != null)
+            {
+                foundCamera = null;
+            }
+        }
     }
 }

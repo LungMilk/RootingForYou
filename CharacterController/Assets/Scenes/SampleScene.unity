@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 299433746}
   - component: {fileID: 299433747}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: MiscExample
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -316,6 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e993216d7ebad74d9bc3d99543f8164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interactType: 1
   isPressed: 0
 --- !u!54 &299433747
 Rigidbody:
@@ -807,7 +808,7 @@ GameObject:
   - component: {fileID: 1056120578}
   - component: {fileID: 1056120577}
   m_Layer: 0
-  m_Name: cameraCube
+  m_Name: plantingExample
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -825,6 +826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1a17d13b093ab4e825fa898132b3fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interactType: 1
   cameraOption: {fileID: 1392030905}
 --- !u!54 &1056120578
 Rigidbody:
@@ -1108,7 +1110,7 @@ GameObject:
   - component: {fileID: 1572885166}
   - component: {fileID: 1572885165}
   m_Layer: 0
-  m_Name: cameraCube (1)
+  m_Name: DialogueExample
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1126,6 +1128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1a17d13b093ab4e825fa898132b3fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interactType: 0
   cameraOption: {fileID: 1090417856}
 --- !u!54 &1572885166
 Rigidbody:
@@ -1372,6 +1375,7 @@ GameObject:
   - component: {fileID: 1385124012853755369}
   - component: {fileID: 9110156164847897505}
   - component: {fileID: 9110156164847897504}
+  - component: {fileID: 9110156164847897506}
   m_Layer: 0
   m_Name: HierarchalStatePlayer
   m_TagString: Untagged
@@ -1393,32 +1397,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7717696542305651172}
-  - {fileID: 4973398677711191448}
   - {fileID: 8122973339630906929}
   - {fileID: 3927741536127827973}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2311389508824917733
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2677733136060326857}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.26, y: 1.89, z: 1.48}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2580388583199229819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1462,24 +1444,6 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
---- !u!1 &2677733136060326857
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4973398677711191448}
-  - component: {fileID: 2311389508824917733}
-  - component: {fileID: 8452891285441129372}
-  m_Layer: 0
-  m_Name: PlayerInteractions
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!4 &3927741536127827973
 Transform:
   m_ObjectHideFlags: 0
@@ -1490,21 +1454,6 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.44, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2308128024600996116}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4973398677711191448
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2677733136060326857}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.058, z: 0.799}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1793,35 +1742,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8452891285441129372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2677733136060326857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23564835f8a76034f8306290f82259d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputObject: {fileID: 2269278032075147431}
-  _isInteractPressed: 0
-  OnCameraOptionFound:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1385124012853755369}
-        m_TargetAssemblyTypeName: CameraManager, Assembly-CSharp
-        m_MethodName: SwitchCamera
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &8790975087070004563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1919,6 +1839,44 @@ MonoBehaviour:
   _chrController: {fileID: 5568851323708862324}
   _movementSpeed: 5
   _rotationFactorPerFrame: 10
+  inputObject: {fileID: 0}
+  _isInteractPressed: 0
+  OnCameraOptionFound:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1385124012853755369}
+        m_TargetAssemblyTypeName: CameraManager, Assembly-CSharp
+        m_MethodName: SwitchCamera
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!65 &9110156164847897506
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2269278032075147431}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.57, y: 2.29, z: 1.21}
+  m_Center: {x: 0, y: 0, z: 0.59}
 --- !u!136 &9117584566399129983
 CapsuleCollider:
   m_ObjectHideFlags: 0
