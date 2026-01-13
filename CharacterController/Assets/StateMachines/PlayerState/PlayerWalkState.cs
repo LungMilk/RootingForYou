@@ -11,20 +11,17 @@ public class PlayerWalkState : PlayerBaseState
     public override void UpdateState()
     {
         HandleRotation();
-        //Debug.Log(_currentMovement);
-        //Debug.Log(Ctx.IsMovementPressed);
         Vector2 input = Ctx.CurrentMovementInput;
-        //Debug.Log(input);
-        //we need to convert input somehow to local rotation
-        Ctx.CurrentMovement = new Vector3(input.x, Ctx.CurrentMovement.y, input.y).normalized;
-        Vector3 moveDirection = Ctx.CurrentMovement;
+        Vector3 forward = Ctx.transform.forward;
+        Vector3 right = Ctx.transform.right;
 
-        //Vector3 adjustedDirection = Quaternion.AngleAxis(Ctx._foundCamera.eulerangles.y, Vector3.right.up) * Ctx.CurrentMovement;
+        forward.y = 0f;
+        right.y = 0f;
+        forward.Normalize();
+        right.Normalize();
 
-        Debug.DrawRay(Ctx.transform.position, Ctx.transform.forward,Color.red);
-
-        //chrController.Move(currentMovement);
-        //look into simple move
+        Vector3 moveDirection = (forward * input.y + right * input.x).normalized;
+        Ctx.CurrentMovement = moveDirection;
         Ctx._chrController.Move(moveDirection * Ctx._movementSpeed * Time.deltaTime);
         CheckSwitchStates(); 
     }
@@ -42,17 +39,25 @@ public class PlayerWalkState : PlayerBaseState
     public override void InitializeSubState() { }
     void HandleRotation()
     {
-        Vector3 positionTolookAt;
-        positionTolookAt.x = Ctx.CurrentMovement.x;
-        positionTolookAt.y = 0.0f;
-        positionTolookAt.z = Ctx.CurrentMovement.z;
+        //Vector3 positionToLookAt;
+        //positionToLookAt.x = Ctx.CurrentMovementInput.x;
+        //positionToLookAt.y = 0f;
+        //positionToLookAt.z = Ctx.CurrentMovement.z;
 
-        //Quaternion currentRotation = Ctx.transform.rotation;
-        //Quaternion targetRotation = Quaternion.LookRotation(positionTolookAt);
-
-        if (Ctx.IsMovementPressed)
+        //if (Ctx.IsMovementPressed)
+        //{
+        //    Quaternion targetRotaion = Quaternion.LookRotation(positionToLookAt);
+        //    Ctx.transform.rotation = Quaternion.Slerp(Ctx.transform.rotation, targetRotaion, Ctx._rotationFactorPerFrame * Time.deltaTime);
+        //}
+        Vector3 moveDir = new Vector3(Ctx.CurrentMovement.x, 0f, Ctx.CurrentMovement.z);
+        Debug.DrawRay(
+        Ctx.transform.position,
+        moveDir,
+        Color.red
+        );
+        if (moveDir.sqrMagnitude > 0.01f)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(positionTolookAt);
+            Quaternion targetRotation = Quaternion.LookRotation(moveDir);
             Ctx.transform.rotation = Quaternion.Slerp(Ctx.transform.rotation, targetRotation, Ctx._rotationFactorPerFrame * Time.deltaTime);
         }
     }
