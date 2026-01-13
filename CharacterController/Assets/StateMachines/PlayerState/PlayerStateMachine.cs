@@ -38,6 +38,7 @@ public class PlayerStateMachine : MonoBehaviour
     //public bool _isInteractPressed;
     private InputAction _interactAction;
     IInteractable _currentInteractable;
+    IInteractable _interactedWith;
     InteractState _foundInteractType;
 
     public CameraEvent OnCameraOptionFound;
@@ -110,6 +111,11 @@ public class PlayerStateMachine : MonoBehaviour
         _currentState = _previousState;
         _currentState.EnterState();
     }
+
+    public void ReturnToMovement()
+    {
+        RequestStateChange(_states.Movement());
+    }
     private void OnEnable()
     {
         _playerInput.CharacterControls.Enable();
@@ -137,14 +143,23 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (_currentInteractable == null) return;
 
-        _currentInteractable.Interact();
+        if (_currentInteractable == _interactedWith)
+        {
+            _currentInteractable.Interact();
+            _interactedWith = _currentInteractable;
+        }
         OnCameraOptionFound?.Invoke(_foundCamera);
 
-        if (_currentState is PlayerInteractState)
+        if (_currentState is PlayerMovementState)
         {
-            ReturnToPreviousState();
+            //may have to change this later as the second press in interact always goes to movement
+            //discuss if I want interact to be progressing dialogue as it is simpler.
+            //could also probably put it in the planting state as well.
+            ReturnToMovement();
             return;
         }
+
+        if (_interactedWith != null) { return;}
 
         _foundInteractType = _currentInteractable.InteractableType;
         _previousState = _currentState;
@@ -171,6 +186,7 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (other.TryGetComponent(out IInteractable interactable))
         {
+            _interactedWith = null;
             if (_currentInteractable == interactable)
             {
                 //_canInteract = true;
