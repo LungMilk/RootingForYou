@@ -1,5 +1,7 @@
+using Unity.Cinemachine;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerWalkState : PlayerBaseState
@@ -7,17 +9,23 @@ public class PlayerWalkState : PlayerBaseState
     public PlayerWalkState(PlayerStateMachine currentContext, playerStateFactory playerStateFactory) : base(currentContext, playerStateFactory) { }
     public override void EnterState() { }
     public override void UpdateState()
-    { //Debug.Log(_currentMovement);
+    {
+        HandleRotation();
+        //Debug.Log(_currentMovement);
         //Debug.Log(Ctx.IsMovementPressed);
         Vector2 input = Ctx.CurrentMovementInput;
         //Debug.Log(input);
-        Ctx.CurrentMovement = new Vector3(input.x, Ctx.CurrentMovement.y, input.y);
+        //we need to convert input somehow to local rotation
+        Ctx.CurrentMovement = new Vector3(input.x, Ctx.CurrentMovement.y, input.y).normalized;
+        Vector3 moveDirection = Ctx.CurrentMovement;
+
+        //Vector3 adjustedDirection = Quaternion.AngleAxis(Ctx._foundCamera.eulerangles.y, Vector3.right.up) * Ctx.CurrentMovement;
+
+        Debug.DrawRay(Ctx.transform.position, Ctx.transform.forward,Color.red);
 
         //chrController.Move(currentMovement);
         //look into simple move
-        Ctx._chrController.Move(Ctx.CurrentMovement * Ctx._movementSpeed * Time.deltaTime);
-
-        HandleRotation();
+        Ctx._chrController.Move(moveDirection * Ctx._movementSpeed * Time.deltaTime);
         CheckSwitchStates(); 
     }
     public override void ExitState() { }
