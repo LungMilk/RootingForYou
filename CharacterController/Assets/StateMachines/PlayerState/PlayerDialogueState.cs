@@ -8,7 +8,7 @@ public class PlayerDialogueState : PlayerBaseState
 
     public override void EnterState() { timer = 0f; }
     public override void UpdateState() {
-        if (Ctx.IsInteractPressed)
+        if (Ctx.InteractPressedThisFrame)
         {
             //progress dialogue??
             //Debug.Log("talking");
@@ -29,7 +29,7 @@ public class PlayerDialogueState : PlayerBaseState
         //}else 
         if(timer > 5f)
         {
-            Ctx.ForceSuperState(Factory.Movement());
+            Ctx.RequestStateChange(Factory.Movement());
         }
         
     }

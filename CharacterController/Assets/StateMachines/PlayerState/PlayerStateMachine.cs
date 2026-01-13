@@ -1,4 +1,5 @@
 using NUnit.Framework.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using Unity.Cinemachine;
@@ -23,6 +24,7 @@ public class PlayerStateMachine : MonoBehaviour
     Vector3 _currentMovement;
     bool _isMovementPressed;
     //bool _isInteracting;
+    bool _interactionLocked;
 
     public float _movementSpeed = 1f;
     public float _rotationFactorPerFrame = 10f;
@@ -33,7 +35,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     //interact variables
     public GameObject _inputObject;
-    public bool _isInteractPressed;
+    //public bool _isInteractPressed;
     private InputAction _interactAction;
     IInteractable _currentInteractable;
     InteractState _foundInteractType;
@@ -41,15 +43,17 @@ public class PlayerStateMachine : MonoBehaviour
     public CameraEvent OnCameraOptionFound;
     public CinemachineCamera _foundCamera;
 
-    float _superStateSwitchCooldown = 1f;
-    float _superStateSwitchCooldownTimer = 0f;
-    bool _canSwitchSupers = false;
+    float _interactTimer = 0f;
+    float _interactTime = 1f;
+    bool _canInteract = true;
+
+    public bool InteractPressedThisFrame { get; private set; }
     //getters and setters
     public PlayerBaseState CurrentState { get { return _currentState; } set { _currentState = value; } }
     public bool IsMovementPressed {get {return _isMovementPressed;} }
-    public bool IsInteractPressed { get { return _isInteractPressed; } }
+    //public bool IsInteractPressed { get { return _isInteractPressed; } }
     //public bool IsInteracting { get { return _isInteracting; } }
-    public bool CanSwitchSupers { get { return _canSwitchSupers; } set { _canSwitchSupers = value; } }
+    public bool CanInteract { get { return _canInteract; } set { _canInteract = value; } }
     public Vector2 CurrentMovementInput { get { return _currentMovementInput; } }
     public Vector3 CurrentMovement { get { return _currentMovement; } set { _currentMovement = value; } }
 
@@ -75,9 +79,12 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Update()
     {
-        if (_isInteractPressed) { HandleInteractions(); }
         //print("current state:" + _currentState.ToString());
         _currentState.UpdateStates();
+    }
+    private void LateUpdate()
+    {
+        InteractPressedThisFrame = false;
     }
     void OnMovementInput(InputAction.CallbackContext context)
     {
@@ -88,12 +95,13 @@ public class PlayerStateMachine : MonoBehaviour
         //print(_currentMovementInput);
     }
     //:3
-    public void ForceSuperState(PlayerBaseState newSuper)
+    public void RequestStateChange(PlayerBaseState newState)
     {
+        if (_currentState == newState) return;
         _previousState = _currentState;
 
         _currentState.ExitState();
-        _currentState = newSuper;
+        _currentState = newState;
         _currentState.EnterState();
     }
     public void ReturnToPreviousState()
@@ -120,40 +128,38 @@ public class PlayerStateMachine : MonoBehaviour
     //probs not important
     void OnInteract(InputAction.CallbackContext context)
     {
-        _isInteractPressed = context.ReadValueAsButton();
+        if (context.started)
+        {
+            HandleInteractions();
+        }
     }
     private void HandleInteractions()
     {
-        if (!_canSwitchSupers)
-        {
-            _superStateSwitchCooldownTimer += Time.deltaTime;
-            if (_superStateSwitchCooldownTimer >= _superStateSwitchCooldown)
-            {
-                _canSwitchSupers = true;
-                _superStateSwitchCooldownTimer = 0f;
-            }
-        }
         if (_currentInteractable == null) return;
 
         _currentInteractable.Interact();
         OnCameraOptionFound?.Invoke(_foundCamera);
-        _foundInteractType = InteractState.NonState;
 
+        if (_currentState is PlayerInteractState)
+        {
+            ReturnToPreviousState();
+            return;
+        }
 
-        if (_currentInteractable.InteractableType == InteractState.NonState) return;
         _foundInteractType = _currentInteractable.InteractableType;
         _previousState = _currentState;
+
         if (_foundInteractType != InteractState.NonState)
         {
             _previousState = _currentState;
-            ForceSuperState(_states.Interact());
-            _canSwitchSupers = false; 
+            RequestStateChange(_states.Interact());
         }
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out IInteractable interactable))
         {
+            //_canInteract = false;
             _currentInteractable = interactable;
         }
         if (other.TryGetComponent(out ICameraOption cameraOption))
@@ -167,6 +173,7 @@ public class PlayerStateMachine : MonoBehaviour
         {
             if (_currentInteractable == interactable)
             {
+                //_canInteract = true;
                 _currentInteractable = null;
             }
             if (_foundCamera != null)

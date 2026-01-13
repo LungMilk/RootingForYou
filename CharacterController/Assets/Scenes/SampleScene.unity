@@ -1840,7 +1840,6 @@ MonoBehaviour:
   _movementSpeed: 5
   _rotationFactorPerFrame: 10
   _inputObject: {fileID: 0}
-  _isInteractPressed: 0
   OnCameraOptionFound:
     m_PersistentCalls:
       m_Calls:

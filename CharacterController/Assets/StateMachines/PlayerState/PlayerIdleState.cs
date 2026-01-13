@@ -17,7 +17,7 @@ public class PlayerIdleState : PlayerBaseState
         {
             SwitchState(Factory.Walk());
         }
-        if (Ctx.CanSwitchSupers)
+        if (Ctx.InteractPressedThisFrame)
         {
             SwitchState(Factory.Interact());
         }

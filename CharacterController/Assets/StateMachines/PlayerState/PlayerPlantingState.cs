@@ -19,10 +19,7 @@ public class PlayerPlantingState : PlayerBaseState
     }
     public override void CheckSwitchStates()
     {
-        if (Ctx.CanSwitchSupers)
-        {
-            Ctx.ForceSuperState(Factory.Movement());
-        }
+
     }
     public override void InitializeSubState() { }
 }
