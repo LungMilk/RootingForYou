@@ -1838,7 +1838,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _chrController: {fileID: 5568851323708862324}
   _movementSpeed: 5
-  _rotationFactorPerFrame: 10
+  _rotationFactorPerFrame: 2
   _inputObject: {fileID: 0}
   OnCameraOptionFound:
     m_PersistentCalls:

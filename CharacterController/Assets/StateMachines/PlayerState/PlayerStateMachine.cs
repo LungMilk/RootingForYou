@@ -143,14 +143,10 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (_currentInteractable == null) return;
 
-        if (_currentInteractable == _interactedWith)
-        {
-            _currentInteractable.Interact();
-            _interactedWith = _currentInteractable;
-        }
+        _currentInteractable.Interact();
         OnCameraOptionFound?.Invoke(_foundCamera);
 
-        if (_currentState is PlayerMovementState)
+        if (_currentState is PlayerInteractState)
         {
             //may have to change this later as the second press in interact always goes to movement
             //discuss if I want interact to be progressing dialogue as it is simpler.
@@ -163,6 +159,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         _foundInteractType = _currentInteractable.InteractableType;
         _previousState = _currentState;
+        _interactedWith = _currentInteractable;
 
         if (_foundInteractType != InteractState.NonState)
         {
@@ -174,6 +171,7 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (other.TryGetComponent(out IInteractable interactable))
         {
+            //print("Found interactable");
             //_canInteract = false;
             _currentInteractable = interactable;
         }
@@ -186,6 +184,7 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (other.TryGetComponent(out IInteractable interactable))
         {
+            //print("Exit interactable");
             _interactedWith = null;
             if (_currentInteractable == interactable)
             {
