@@ -159,6 +159,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         _foundInteractType = _currentInteractable.InteractableType;
         _previousState = _currentState;
+
         _interactedWith = _currentInteractable;
 
         if (_foundInteractType != InteractState.NonState)
