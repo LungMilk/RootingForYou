@@ -5,7 +5,8 @@ public class TestingGrid : MonoBehaviour
     Grid grid;
     private void Start()
     {
-        //Grid<bool> grid = new Grid<bool> (4,2,1f,new Vector3(20,0), () => new bool());
+        //(junk in the constructor) => new Type(stuff in the type)
+        GridXZ<bool> grid = new GridXZ<bool> (4,2,1f,new Vector3(20,0), (GridXZ<bool> g,int x, int y) => new bool());
     }
     private void Update()
     {
