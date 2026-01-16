@@ -27,8 +27,8 @@ public class GridXZ<TGridObject>
         this._cellSize = cellSize;
         this._originPosition = originPosition;
 
-        _gridArray = new TGridObject[_width,_height];
-        _debugTextArray = new TextMesh[width, height];
+        _gridArray = new TGridObject[(int)_width, (int)_height];
+        _debugTextArray = new TextMesh[(int)width, (int)height];
 
         for (int x = 0; x < _gridArray.GetLength(0);x++) {
             for (int z = 0; z < _gridArray.GetLength(1); z++)
@@ -51,6 +51,11 @@ public class GridXZ<TGridObject>
         Debug.DrawLine(GetWorldPosition(width, 0), GetWorldPosition(width, height), Color.white, 100f);
 
         //SetValue(2, 1, 56);
+    }
+
+    public float GetCellSize()
+    {
+        return _cellSize;
     }
 
     public Vector3 GetWorldPosition(int x,int z)
