@@ -5,6 +5,8 @@ public class BuildingGhost : MonoBehaviour
     //DOES NOT WORK, ADDED FOR LATER HOPEFULLY
     //I am aware this does not work atm as it reguires a global instance as well as some render modifications
     //tutorial: https://www.youtube.com/watch?v=dulosHPl82A&list=PLzDRvYVwl53uhO8yhqxcyjDImRjO9W722&index=5
+
+
     //private Transform _visual;
     //private PlacedObjectTypeSO placedObjectTypeSO;
 
