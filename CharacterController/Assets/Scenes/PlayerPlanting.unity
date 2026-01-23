@@ -757,6 +757,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: 2x2GardenBox
       objectReference: {fileID: 0}
+    - target: {fileID: 4218699637855549480, guid: d2bb956090d946843bd44cd5a04e1570, type: 3}
+      propertyPath: m_Mass
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4218699637855549480, guid: d2bb956090d946843bd44cd5a04e1570, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4218699637855549480, guid: d2bb956090d946843bd44cd5a04e1570, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 4800703112414869624, guid: d2bb956090d946843bd44cd5a04e1570, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.01
@@ -1687,11 +1699,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _foundCamera: {fileID: 0}
-  _placeableObjects:
-  - {fileID: 11400000, guid: dfdc329cf8c4f41468c7c7d3ba41b8e5, type: 2}
-  - {fileID: 11400000, guid: 038ba089d3fcdd6459634d846fdcac9d, type: 2}
-  - {fileID: 11400000, guid: c00577a4888da99429082f9e6e878f31, type: 2}
-  _selectedPlaceableObject: {fileID: 11400000, guid: dfdc329cf8c4f41468c7c7d3ba41b8e5, type: 2}
+  _plantCollection: {fileID: 11400000, guid: 56a79127fe943d542a4915b8404eb873, type: 2}
+  _selectedPlantObject: {fileID: 0}
   _dir: 0
 --- !u!65 &9110156164847897506
 BoxCollider:

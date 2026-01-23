@@ -5,7 +5,7 @@ public class PlacedObject : MonoBehaviour
 {
     public static PlacedObject Create(Vector3 worldPosition, Vector2Int origin, PlacedObjectTypeSO.Dir dir, PlacedObjectTypeSO placedObjectTypeSO,float scale)
     {
-        Transform placedObjectTransform = Instantiate(placedObjectTypeSO._prefab, worldPosition, Quaternion.Euler(0, placedObjectTypeSO.GetRotationAngle(dir), 0));
+        Transform placedObjectTransform = Instantiate(placedObjectTypeSO._prefab.transform, worldPosition, Quaternion.Euler(0, placedObjectTypeSO.GetRotationAngle(dir), 0));
         placedObjectTransform.localScale *= scale;
         PlacedObject placedObject = placedObjectTransform.transform.GetComponent<PlacedObject>();
 
@@ -15,7 +15,6 @@ public class PlacedObject : MonoBehaviour
         placedObject._scale = scale;
         return placedObject;
     }
-
     private PlacedObjectTypeSO _placedObjectTypeSO;
     private Vector2Int _origin;
     private PlacedObjectTypeSO.Dir _dir;

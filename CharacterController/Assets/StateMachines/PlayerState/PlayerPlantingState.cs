@@ -15,7 +15,7 @@ public class PlayerPlantingState : PlayerBaseState
         _gridBuilder = Ctx.InputObject.GetComponentInChildren<GridBuilder>();
         _grid = _gridBuilder._grid;
 
-        Ctx._selectedPlaceableObject = Ctx._placeableObjects[0];
+        Ctx._selectedPlantObject = Ctx._plantCollection.plants[0];
     }
     public override void UpdateState() { 
 
@@ -23,7 +23,7 @@ public class PlayerPlantingState : PlayerBaseState
         {
             _grid.GetXZ(Utilities.GetMouseWorldPositionXZ(), out int x, out int z);
             Debug.Log($"{x},{z}");
-            List<Vector2Int> gridPositionList = Ctx._selectedPlaceableObject.GetGridPositionList(new Vector2Int(x, z), Ctx._dir);
+            List<Vector2Int> gridPositionList = Ctx._selectedPlantObject.GetGridPositionList(new Vector2Int(x, z), Ctx._dir);
 
             bool canBuild = true;
             foreach (Vector2Int gridPosition in gridPositionList)
@@ -37,10 +37,10 @@ public class PlayerPlantingState : PlayerBaseState
             if (canBuild)
             {
                 //offsetting the origin of the object by whatever our rotation was
-                Vector2Int rotationOffset = Ctx._selectedPlaceableObject.GetRotationOffset(Ctx._dir);
+                Vector2Int rotationOffset = Ctx._selectedPlantObject.GetRotationOffset(Ctx._dir);
                 Vector3 placedObjectWorldPosition = _grid.GetWorldPosition(x, z) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * _grid.GetCellSize();
 
-                PlacedObject placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(x, z), Ctx._dir, Ctx._selectedPlaceableObject,_grid.GetCellSize());
+                PlacedObject placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(x, z), Ctx._dir, Ctx._selectedPlantObject,_grid.GetCellSize());
 
                 foreach (Vector2Int gridPosition in gridPositionList)
                 {
@@ -61,7 +61,9 @@ public class PlayerPlantingState : PlayerBaseState
 
         if (Input.GetMouseButtonDown(1))
         {
-            GridObject gridObject = _grid.GetGridObject(Utilities.GetMouseWorldPositionWithZ());
+            _grid.GetXZ(Utilities.GetMouseWorldPositionXZ(), out int x, out int z);
+            GridObject gridObject = _grid.GetGridObject(x,z);
+
             PlacedObject placedObject = gridObject.GetPlacedObject();
             if (placedObject != null)
             {
@@ -83,23 +85,23 @@ public class PlayerPlantingState : PlayerBaseState
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            Ctx._selectedPlaceableObject = Ctx._placeableObjects[0];
+            Ctx._selectedPlantObject = Ctx._plantCollection.plants[0];
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            Ctx._selectedPlaceableObject = Ctx._placeableObjects[1];
+            Ctx._selectedPlantObject = Ctx._plantCollection.plants[1];
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            Ctx._selectedPlaceableObject = Ctx._placeableObjects[2];
+            Ctx._selectedPlantObject = Ctx._plantCollection.plants[2];
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            Ctx._selectedPlaceableObject = Ctx._placeableObjects[3];
+            Ctx._selectedPlantObject = Ctx._plantCollection.plants[3];
         }
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            Ctx._selectedPlaceableObject = Ctx._placeableObjects[4];
+            Ctx._selectedPlantObject = Ctx._plantCollection.plants[4];
         }
 
         CheckSwitchStates(); }

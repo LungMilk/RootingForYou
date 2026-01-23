@@ -23,9 +23,10 @@ public class PlacedObjectTypeSO : ScriptableObject
         Down, Up, Left, Right
     }
 
+    [Header("Grid Data")]
     public string _nameString;
-    public Transform _prefab;
-    public Transform _visual;
+    public GameObject _prefab;
+    //public GameObject _visual;
     public int _width;
     public int _height;
     //rotation is not implemented

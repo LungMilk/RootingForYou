@@ -47,8 +47,8 @@ public class PlayerStateMachine : MonoBehaviour
 
     bool _canInteract = true;
 
-    public List<PlacedObjectTypeSO> _placeableObjects;
-    public PlacedObjectTypeSO _selectedPlaceableObject;
+    public PlantCollectionSO _plantCollection;
+    public PlantObjectSO _selectedPlantObject;
     //in case we want rotation
     public PlacedObjectTypeSO.Dir _dir = PlacedObjectTypeSO.Dir.Down;
 
