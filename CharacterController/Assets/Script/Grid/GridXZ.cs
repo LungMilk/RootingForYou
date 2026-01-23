@@ -29,7 +29,7 @@ public class GridXZ<TGridObject>
         this._cellSize = cellSize;
         this._originPosition = originPosition;
         this._originRotation = originRotation;
-        Debug.Log(originRotation.eulerAngles);
+        //Debug.Log(originRotation.eulerAngles);
         _gridArray = new TGridObject[(int)_width, (int)_height];
         _debugTextArray = new TextMesh[(int)width, (int)height];
 
@@ -43,7 +43,7 @@ public class GridXZ<TGridObject>
 
         for (int x = 0; x < _gridArray.GetLength(0); x++)
         {
-            for (int z=0; z < _gridArray.GetLength(1); z++)
+            for (int z = 0; z < _gridArray.GetLength(1); z++)
             {
                 _debugTextArray[x,z] = Utilities.CreateWorldTextObject(_gridArray[x,z]?.ToString(),null, GetWorldPosition(x,z) +new Vector3(_cellSize,_cellSize) * 0.5f,10,TextAnchor.MiddleCenter);
                 Debug.DrawLine(GetWorldPosition(x, z), GetWorldPosition(x, z+1), Color.white, 100f);
@@ -63,14 +63,8 @@ public class GridXZ<TGridObject>
 
     public Vector3 GetWorldPosition(int x,int z)
     {
-        //I think rotation issue is fixed here by having the position modified by the rotaiton once it is converted into a direction
-        Vector3 rotatedOffset = _originRotation * _originPosition;
-        Debug.Log(rotatedOffset);
-        //_originPosition += rotatedOffset;
-        Vector3 newPosition = new Vector3(x, 0, z) * _cellSize + _originPosition;
-        Vector3 finalPosition = _originRotation * (newPosition-_originPosition) + _originPosition;
-        return finalPosition;
-        //return new Vector3(x, 0, z) * _cellSize + _originPosition + rotatedOffset;
+        Vector3 localPos = new Vector3(x, 0, z) * _cellSize;
+        return _originRotation * localPos + _originPosition;
     }
     public Vector3 GetRotationDirection()
     {
@@ -81,14 +75,22 @@ public class GridXZ<TGridObject>
     }
     public void DrawDirection()
     {
-        Debug.Log("rotating");
+        //Debug.Log("rotating");
         Debug.DrawRay(_originPosition,GetRotationDirection(),Color.red,1000f);
     }
 
     public void GetXZ(Vector3 worldPosition, out int x, out int z)
     {
-        x = Mathf.FloorToInt((worldPosition-_originPosition).x / _cellSize);
-        z = Mathf.FloorToInt((worldPosition-_originPosition).z / _cellSize);
+
+        Vector3 localPos = Quaternion.Inverse(_originRotation) * (worldPosition - _originPosition);
+
+        x = Mathf.FloorToInt(localPos.x / _cellSize);
+        z = Mathf.FloorToInt(localPos.z / _cellSize);
+        //x = Mathf.FloorToInt((worldPosition-_originPosition).x / _cellSize);
+        //z = Mathf.FloorToInt((worldPosition-_originPosition).z / _cellSize);
+
+        x = Mathf.Clamp(x, 0, _width - 1);
+        x = Mathf.Clamp(z,0, _height - 1);
     }
 
     public void SetGridObject(int x, int z, TGridObject value)

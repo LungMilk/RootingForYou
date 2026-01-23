@@ -19,7 +19,7 @@ public class GridBuildingSystem : MonoBehaviour
         float cellSize = _gridCellSize;
         _grid = new GridXZ<GridObject>(gridWidth, gridHeight, cellSize, Vector3.zero, Quaternion.identity, (GridXZ<GridObject> gameObject, int x, int z) => new GridObject(_grid,x,z));
 
-        placedObjectTypeSO = placedObjectTypeSOList[0];
+        //placedObjectTypeSO = placedObjectTypeSOList[0];
     }
 
     private void Update()
@@ -44,7 +44,7 @@ public class GridBuildingSystem : MonoBehaviour
                 Vector2Int rotationOffset = placedObjectTypeSO.GetRotationOffset(dir);
                 Vector3 placedObjectWorldPosition = _grid.GetWorldPosition(x, z) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * _grid.GetCellSize();
 
-                PlacedObject placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(x, z), dir, placedObjectTypeSO);
+                PlacedObject placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(x, z), dir, placedObjectTypeSO,1);
 
                 foreach (Vector2Int gridPosition in gridPositionList)
                 {
