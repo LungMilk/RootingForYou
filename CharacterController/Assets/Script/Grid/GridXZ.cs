@@ -5,6 +5,7 @@ using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 using CustomNamespace.Utilities;
 using System;
+using Unity.VisualScripting.FullSerializer;
 public class GridXZ<TGridObject>
 {
     public event EventHandler<OnGridObjectChangedEventArgs> OnGridObjectChanged;
@@ -17,16 +18,18 @@ public class GridXZ<TGridObject>
     float _cellSize;
     TGridObject[,] _gridArray;
     Vector3 _originPosition;
+    Quaternion _originRotation;
     TextMesh[,] _debugTextArray;
 
-    public GridXZ(int width, int height,float cellSize,Vector3 originPosition, Func<GridXZ<TGridObject>, int, int, TGridObject> createGridObject)
+    public GridXZ(int width, int height,float cellSize,Vector3 originPosition, Quaternion originRotation, Func<GridXZ<TGridObject>, int, int, TGridObject> createGridObject)
     {
 
         this._width = width;
         this._height = height;
         this._cellSize = cellSize;
         this._originPosition = originPosition;
-
+        this._originRotation = originRotation;
+        Debug.Log(originRotation.eulerAngles);
         _gridArray = new TGridObject[(int)_width, (int)_height];
         _debugTextArray = new TextMesh[(int)width, (int)height];
 
@@ -49,7 +52,7 @@ public class GridXZ<TGridObject>
         }
         Debug.DrawLine(GetWorldPosition(0, height), GetWorldPosition(width, height), Color.white, 100f);
         Debug.DrawLine(GetWorldPosition(width, 0), GetWorldPosition(width, height), Color.white, 100f);
-
+        DrawDirection();
         //SetValue(2, 1, 56);
     }
 
@@ -60,7 +63,26 @@ public class GridXZ<TGridObject>
 
     public Vector3 GetWorldPosition(int x,int z)
     {
-        return new Vector3(x, 0,z) * _cellSize + _originPosition;
+        //I think rotation issue is fixed here by having the position modified by the rotaiton once it is converted into a direction
+        Vector3 rotatedOffset = _originRotation * _originPosition;
+        Debug.Log(rotatedOffset);
+        //_originPosition += rotatedOffset;
+        Vector3 newPosition = new Vector3(x, 0, z) * _cellSize + _originPosition;
+        Vector3 finalPosition = _originRotation * (newPosition-_originPosition) + _originPosition;
+        return finalPosition;
+        //return new Vector3(x, 0, z) * _cellSize + _originPosition + rotatedOffset;
+    }
+    public Vector3 GetRotationDirection()
+    {
+        Quaternion currentRotation = _originRotation;
+        Vector3 forwardDirection = currentRotation * Vector3.forward;
+
+        return forwardDirection;
+    }
+    public void DrawDirection()
+    {
+        Debug.Log("rotating");
+        Debug.DrawRay(_originPosition,GetRotationDirection(),Color.red,1000f);
     }
 
     public void GetXZ(Vector3 worldPosition, out int x, out int z)
