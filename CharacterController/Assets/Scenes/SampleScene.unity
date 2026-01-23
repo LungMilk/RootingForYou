@@ -837,11 +837,11 @@ MonoBehaviour:
   soundEffectGroups:
   - name: Footsteps
     audioClips:
-    - {fileID: 8300000, guid: 7953038df06ac39438d3b738da0d9b91, type: 3}
-    - {fileID: 8300000, guid: 1ed5ab4a7db287e438ab78b27b75b025, type: 3}
-    - {fileID: 8300000, guid: 04c181c1973eb3a45bcef24867601bfd, type: 3}
-    - {fileID: 8300000, guid: f184c9586fdf37646bbd0dcd99d415dc, type: 3}
-    - {fileID: 8300000, guid: b1d85522650d549478417a48488de44b, type: 3}
+    - {fileID: 8300000, guid: fafe023198d65074b939c71b67f9d1da, type: 3}
+    - {fileID: 8300000, guid: 3a3e03ebef96691428cd50751904a2ab, type: 3}
+    - {fileID: 8300000, guid: 8cd17c4031b9e0646980ee61473493f4, type: 3}
+    - {fileID: 8300000, guid: a7202f0753c26494f802466df602de9e, type: 3}
+    - {fileID: 8300000, guid: ca1ef2cfe53b0834b8d85fa95d2f8e75, type: 3}
 --- !u!82 &805160341
 AudioSource:
   m_ObjectHideFlags: 0

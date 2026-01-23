@@ -1,4 +1,6 @@
+using System.Threading.Tasks;
 using Unity.Cinemachine;
+using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -6,6 +8,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerWalkState : PlayerBaseState
 {
+    //sound effects
+    float footstepSpeedSeconds = 0.5f;
+    float currentTime = 0f;
+
+
     public PlayerWalkState(PlayerStateMachine currentContext, playerStateFactory playerStateFactory) : base(currentContext, playerStateFactory) { }
     public override void EnterState() { }
     public override void UpdateState()
@@ -23,7 +30,17 @@ public class PlayerWalkState : PlayerBaseState
         Vector3 moveDirection = (forward * input.y + right * input.x).normalized;
         Ctx.CurrentMovement = moveDirection;
         Ctx._chrController.Move(moveDirection * Ctx._movementSpeed * Time.deltaTime);
-        CheckSwitchStates(); 
+        CheckSwitchStates();
+
+        currentTime += Time.deltaTime;
+
+        if (currentTime >= footstepSpeedSeconds)
+        {
+            SoundEffectManager.Play("Footsteps");
+            currentTime = 0f;
+        }
+
+
     }
     public override void ExitState() { }
     public override void CheckSwitchStates() { 
