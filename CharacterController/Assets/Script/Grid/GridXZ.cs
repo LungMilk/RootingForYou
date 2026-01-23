@@ -90,7 +90,7 @@ public class GridXZ<TGridObject>
         //z = Mathf.FloorToInt((worldPosition-_originPosition).z / _cellSize);
 
         x = Mathf.Clamp(x, 0, _width - 1);
-        x = Mathf.Clamp(z,0, _height - 1);
+        z = Mathf.Clamp(z,0, _height - 1);
     }
 
     public void SetGridObject(int x, int z, TGridObject value)
