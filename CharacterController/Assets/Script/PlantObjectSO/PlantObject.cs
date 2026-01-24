@@ -1,4 +1,13 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
+
+public enum PlantAttribute
+{
+    Beauty,
+    Passion,
+    Calmness,
+}
 
 public class PlantObject : PlacedObject
 {
@@ -16,5 +25,15 @@ public class PlantObject : PlacedObject
         _calmness = _plantObjectSO.calmness;
 
         print(GetGridPositionList()[0]);
+    }
+
+    public Dictionary<PlantAttribute,int> GetAttributes()
+    {
+        return new Dictionary<PlantAttribute, int>
+        {
+            {PlantAttribute.Beauty, _beauty },
+            {PlantAttribute.Passion, _passion },
+            {PlantAttribute.Calmness, _calmness },
+        };
     }
 }

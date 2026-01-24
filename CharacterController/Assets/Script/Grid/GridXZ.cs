@@ -56,6 +56,11 @@ public class GridXZ<TGridObject>
         //SetValue(2, 1, 56);
     }
 
+    public TGridObject[,] GetTGridObjectList()
+    {
+        return _gridArray;
+    }
+
     public float GetCellSize()
     {
         return _cellSize;
