@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f18ad65c8ee62b74591e933e30a50b33, type: 3}
   m_Name: TestObject
   m_EditorClassIdentifier: 
-  _nameString: 
+  _nameString: Blue Sphere
   _prefab: {fileID: 7591643382802818710, guid: 01107aa4cbbd19044b4387b81615954a, type: 3}
   _width: 1
   _height: 1
   displayImage: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  beauty: 0
-  passion: 0
-  calmness: 0
+  beauty: 2
+  passion: 3
+  calmness: 4

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1852125336011288340}
   - component: {fileID: 2529735060473301691}
   - component: {fileID: 6791570199157999951}
-  - component: {fileID: 7577069748992908834}
+  - component: {fileID: 2496444441748744532}
   m_Layer: 0
   m_Name: YellowCylinder
   m_TagString: Untagged
@@ -111,7 +111,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &7577069748992908834
+--- !u!114 &2496444441748744532
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,6 +120,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2342656503063663463}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd76252322a55fe4bb8a821abd8c3a79, type: 3}
+  m_Script: {fileID: 11500000, guid: adebfb610c2e36641b7d09f5c92590d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

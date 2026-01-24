@@ -40,7 +40,7 @@ public class PlayerPlantingState : PlayerBaseState
                 Vector2Int rotationOffset = Ctx._selectedPlantObject.GetRotationOffset(Ctx._dir);
                 Vector3 placedObjectWorldPosition = _grid.GetWorldPosition(x, z) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * _grid.GetCellSize();
 
-                PlacedObject placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(x, z), Ctx._dir, Ctx._selectedPlantObject,_grid.GetCellSize());
+                PlacedObject placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(x, z), Ctx._dir, Ctx._plantCollection.plants[0], _grid.GetCellSize());
 
                 foreach (Vector2Int gridPosition in gridPositionList)
                 {

@@ -15,10 +15,10 @@ public class PlacedObject : MonoBehaviour
         placedObject._scale = scale;
         return placedObject;
     }
-    private PlacedObjectTypeSO _placedObjectTypeSO;
-    private Vector2Int _origin;
-    private PlacedObjectTypeSO.Dir _dir;
-    private float _scale;
+    protected PlacedObjectTypeSO _placedObjectTypeSO;
+    protected Vector2Int _origin;
+    protected PlacedObjectTypeSO.Dir _dir;
+    protected float _scale;
 
     public List<Vector2Int> GetGridPositionList()
     {
