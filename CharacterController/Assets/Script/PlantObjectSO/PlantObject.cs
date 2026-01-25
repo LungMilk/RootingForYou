@@ -24,7 +24,7 @@ public class PlantObject : PlacedObject
         _passion = _plantObjectSO.passion;
         _calmness = _plantObjectSO.calmness;
 
-        print(GetGridPositionList()[0]);
+        //print(GetGridPositionList()[0]);
     }
 
     public Dictionary<PlantAttribute,int> GetAttributes()

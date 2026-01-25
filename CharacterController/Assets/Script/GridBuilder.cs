@@ -15,6 +15,6 @@ public class GridBuilder : MonoBehaviour
         int gridWidth = _gridW;
         int gridHeight = _gridH;
         float cellSize = _gridCellSize;
-        _grid = new GridXZ<GridObject>(gridWidth, gridHeight, cellSize, transform.position, transform.rotation, (GridXZ<GridObject> gameObject, int x, int z) => new GridObject(_grid, x, z));
+        _grid = new GridXZ<GridObject>(gridWidth, gridHeight, cellSize, transform.position, transform.rotation, (grid, x, z) => new GridObject(grid, x, z));
     }
 }

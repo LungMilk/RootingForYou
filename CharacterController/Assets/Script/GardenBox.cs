@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GardenBox : MonoBehaviour, IInteractable,ICameraOption
 {
+    bool isPressed = false;
     //private GridObject[,] _previousGridObjects;
     //public GameObject _gridObject;
     public GridBuilder _gridBuilder;
@@ -42,13 +43,20 @@ public class GardenBox : MonoBehaviour, IInteractable,ICameraOption
     {
         CalculateGridValues();
     }
+    private void Update()
+    {
+        if (isPressed)
+        {
+            //CalculateGridValues();
+        }
+    }
 
     [ContextMenu("Calculate Grid Values")]
     public void CalculateGridValues()
     {
-        _beautyContribution += 0;
-        _passionContribution += 0;
-        _calmnessContribution += 0;
+        _beautyContribution = 0;
+        _passionContribution = 0;
+        _calmnessContribution = 0;
 
         HashSet<PlantObject> currentPlants = new HashSet<PlantObject>();
         
@@ -78,6 +86,7 @@ public class GardenBox : MonoBehaviour, IInteractable,ICameraOption
     [ContextMenu("Interact")]
     public void Interact()
     {
+        isPressed = !isPressed;
         CalculateGridValues();
     }
 }

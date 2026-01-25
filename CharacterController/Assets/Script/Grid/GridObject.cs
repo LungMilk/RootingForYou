@@ -16,8 +16,9 @@ public class GridObject
 
     public void SetPlacedObject(PlacedObject placedObject)
     {
-        this._placedObject = placedObject;
-        //_grid.TriggerGridObjectChanged(_x, _z);
+        var oldObject = _placedObject;
+        _placedObject = placedObject;
+        _grid.TriggerGridObjectChanged(_x, _z);
     }
 
     public PlacedObject GetPlacedObject()
@@ -31,7 +32,9 @@ public class GridObject
     }
     public void ClearPlacedObject()
     {
+        var oldObject = _placedObject;
         _placedObject = null;
+        _grid.TriggerGridObjectChanged(_x, _z);
     }
     public override string ToString()
     {
