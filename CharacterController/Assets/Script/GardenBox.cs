@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GardenBox : MonoBehaviour, IInteractable,ICameraOption
 {
-    private GridObject[,] _previousGridObjects;
+    //private GridObject[,] _previousGridObjects;
     //public GameObject _gridObject;
     public GridBuilder _gridBuilder;
     private GridXZ<GridObject> _grid;
@@ -46,44 +46,28 @@ public class GardenBox : MonoBehaviour, IInteractable,ICameraOption
     [ContextMenu("Calculate Grid Values")]
     public void CalculateGridValues()
     {
-        GridObject[,] currentGridObjects = _grid.GetTGridObjectList();
+        _beautyContribution += 0;
+        _passionContribution += 0;
+        _calmnessContribution += 0;
 
-        HashSet<GridObject> currentSet = new HashSet<GridObject>();
-        foreach (GridObject gObject in currentGridObjects)
+        HashSet<PlantObject> currentPlants = new HashSet<PlantObject>();
+        
+        foreach (GridObject gObject in _grid.GetTGridObjectList())
         {
-            currentSet.Add(gObject);
-        }
-
-        if (_previousGridObjects != null)
-        {
-            foreach (GridObject oldObject in _previousGridObjects)
+            if (gObject.GetPlacedObject() is PlantObject plant)
             {
-                if (!currentSet.Contains(oldObject))
-                {
-                    PlantObject oldPlant = oldObject.GetPlacedObject() as PlantObject;
-
-                    Dictionary<PlantAttribute, int> attributes = oldPlant.GetAttributes();
-
-                    _beautyContribution -= attributes[PlantAttribute.Beauty];
-                    _passionContribution -= attributes[PlantAttribute.Passion];
-                    _calmnessContribution -= attributes[PlantAttribute.Calmness];
-
-                    Mathf.Clamp(_beautyContribution, 0.0f, 1.0f);
-                }
+                currentPlants.Add(plant);
             }
         }
 
-        foreach (GridObject gObject in currentGridObjects)
+        foreach (PlantObject plant in currentPlants)
         {
-            PlantObject plantObject = gObject.GetPlacedObject() as PlantObject;
-            Dictionary<PlantAttribute, int> attributes = plantObject.GetAttributes();
+            var attributes = plant.GetAttributes();
 
             _beautyContribution += attributes[PlantAttribute.Beauty];
             _passionContribution += attributes[PlantAttribute.Passion];
             _calmnessContribution += attributes[PlantAttribute.Calmness];
         }
-
-        _previousGridObjects = currentGridObjects;
         ChangeDisplayText();
     }
 
@@ -91,8 +75,9 @@ public class GardenBox : MonoBehaviour, IInteractable,ICameraOption
     {
         _displayTMPro.text = _displayText + $"\n{_beautyContribution}, <color=red>{_passionContribution}</color>, {_calmnessContribution}";
     }
+    [ContextMenu("Interact")]
     public void Interact()
     {
-
+        CalculateGridValues();
     }
 }
