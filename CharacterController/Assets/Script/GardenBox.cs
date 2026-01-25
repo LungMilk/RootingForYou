@@ -2,9 +2,11 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.Cinemachine;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class GardenBox : MonoBehaviour, IInteractable,ICameraOption
 {
+    public UnityEvent GardenBoxChanged;
+
     bool isPressed = false;
     //private GridObject[,] _previousGridObjects;
     //public GameObject _gridObject;
@@ -47,7 +49,7 @@ public class GardenBox : MonoBehaviour, IInteractable,ICameraOption
     {
         if (isPressed)
         {
-            //CalculateGridValues();
+            CalculateGridValues();
         }
     }
 
@@ -77,6 +79,7 @@ public class GardenBox : MonoBehaviour, IInteractable,ICameraOption
             _calmnessContribution += attributes[PlantAttribute.Calmness];
         }
         ChangeDisplayText();
+        GardenBoxChanged.Invoke();
     }
 
     public void ChangeDisplayText()
