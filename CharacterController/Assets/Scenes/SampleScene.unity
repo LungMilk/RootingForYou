@@ -790,7 +790,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fbdacfd2e706a924fac25634cc714eb4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.06
+      value: -0.85
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fbdacfd2e706a924fac25634cc714eb4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -841,6 +841,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fbdacfd2e706a924fac25634cc714eb4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 581580604}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fbdacfd2e706a924fac25634cc714eb4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 581580605}
   m_SourcePrefab: {fileID: 100100000, guid: fbdacfd2e706a924fac25634cc714eb4, type: 3}
 --- !u!4 &581580600 stripped
 Transform:
@@ -867,9 +870,9 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.9019749
   m_Height: 3.3220196
@@ -888,7 +891,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: f02c13c7bc851ca4eb36b6ef7dc2cb6d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -930,6 +933,31 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _foundCamera: {fileID: 0}
+--- !u!143 &581580605
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581580601}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &616255410 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1094543902986763309, guid: c689eda3fa0eeb242b79d3caa55e72ed, type: 3}
@@ -1669,6 +1697,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1655450068769772418, guid: c689eda3fa0eeb242b79d3caa55e72ed, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2117222380464935688, guid: c689eda3fa0eeb242b79d3caa55e72ed, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1716,6 +1748,10 @@ PrefabInstance:
     - target: {fileID: 5763376966455819975, guid: c689eda3fa0eeb242b79d3caa55e72ed, type: 3}
       propertyPath: TrackerSettings.AngularDampingMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7195230464608626366, guid: c689eda3fa0eeb242b79d3caa55e72ed, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
