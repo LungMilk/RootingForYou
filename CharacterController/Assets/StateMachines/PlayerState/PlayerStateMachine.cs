@@ -14,6 +14,8 @@ public enum InteractState
 }
 public class PlayerStateMachine : MonoBehaviour
 {
+    //include player animation when walking
+    public Animator animator;
     //maybe find a way to not make all of these public.
 
     //retains all the variables as this has the greater context of everything.
@@ -76,6 +78,8 @@ public class PlayerStateMachine : MonoBehaviour
 
         _interactAction.started+= OnInteract;
         _interactAction.canceled += OnInteract;
+
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -93,6 +97,8 @@ public class PlayerStateMachine : MonoBehaviour
         //_currentMovement.x = _currentMovementInput.x;
         //_currentMovement.z = _currentMovementInput.y;
         _isMovementPressed = _currentMovementInput.x != 0 || _currentMovementInput.y != 0;
+        //animate
+        animator.SetBool("isWalking", true);
         //print(_currentMovementInput);
     }
     //:3
