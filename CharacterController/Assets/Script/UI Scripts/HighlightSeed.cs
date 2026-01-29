@@ -12,6 +12,12 @@ public class HighlightSeed : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         seedObject = this.transform.GetChild(0).gameObject;
         seedTransform = seedObject.GetComponent<RectTransform>();
     }
+
+    public void SeedSelected()
+    {
+        seedTransform.anchoredPosition = new Vector2(0, 100);
+        seedTransform.localScale = new Vector2(110, 110);
+    }
     public void OnPointerEnter(PointerEventData eventData)
     {
        // Debug.Log("Mouse is over the seed.");
