@@ -18,7 +18,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     //retains all the variables as this has the greater context of everything.
     //PlayerInputHandler inputHandler;
-
+    public Animator _animator;
     PlayerInputs _playerInput;
     public CharacterController _chrController;
     Vector2 _currentMovementInput;
