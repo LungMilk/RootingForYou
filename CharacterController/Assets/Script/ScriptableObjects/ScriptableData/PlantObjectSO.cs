@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "New PlantObjectSO", menuName = "Data/PlantObjectSO")]
+[CreateAssetMenu(fileName = "New PlantObjectSO", menuName = "ScriptableObjects/PlantObjectSO")]
 public class PlantObjectSO : PlacedObjectTypeSO
 {
     //public string displayName;
