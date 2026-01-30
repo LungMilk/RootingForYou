@@ -1,4 +1,5 @@
 using NUnit.Framework.Interfaces;
+using ScriptableObjects;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -51,6 +52,8 @@ public class PlayerStateMachine : MonoBehaviour
     public PlantObjectSO _selectedPlantObject;
     //in case we want rotation
     public PlacedObjectTypeSO.Dir _dir = PlacedObjectTypeSO.Dir.Down;
+
+    public List<SoundEffectSO> _soundEffects;
 
     public bool InteractPressedThisFrame { get; private set; }
     //getters and setters
