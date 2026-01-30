@@ -12,9 +12,12 @@ public class PlayerWalkState : PlayerBaseState
     float footstepSpeedSeconds = 0.5f;
     float currentTime = 0f;
 
-
+    
     public PlayerWalkState(PlayerStateMachine currentContext, playerStateFactory playerStateFactory) : base(currentContext, playerStateFactory) { }
-    public override void EnterState() { }
+    public override void EnterState() {
+        Ctx._animator.SetBool("isWalking", true);
+       
+    }
     public override void UpdateState()
     {
         HandleRotation();
@@ -39,10 +42,13 @@ public class PlayerWalkState : PlayerBaseState
             SoundEffectManager.Play("Footsteps");
             currentTime = 0f;
         }
-
-
+        
     }
-    public override void ExitState() { }
+    public override void ExitState() 
+    {
+        //stop animation
+        Ctx._animator.SetBool("isWalking", false);
+    }
     public override void CheckSwitchStates() { 
         if (!Ctx.IsMovementPressed)
         {
@@ -52,6 +58,7 @@ public class PlayerWalkState : PlayerBaseState
         {
             SwitchState(Factory.Interact());
         }
+       
     }
     public override void InitializeSubState() { }
     void HandleRotation()

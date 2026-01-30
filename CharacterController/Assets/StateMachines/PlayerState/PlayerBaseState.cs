@@ -49,7 +49,9 @@ public abstract class PlayerBaseState
     }
     protected void SetSuperState(PlayerBaseState newSuperState) { _currentSuperState = newSuperState; }
     protected void SetSubState(PlayerBaseState newSubState) {
+        //_currentSubState?.ExitState();
         _currentSubState = newSubState;
         newSubState.SetSuperState(this);
+        newSubState.EnterState();
     }
 }

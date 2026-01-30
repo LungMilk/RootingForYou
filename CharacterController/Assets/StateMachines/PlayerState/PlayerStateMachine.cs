@@ -18,6 +18,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     //retains all the variables as this has the greater context of everything.
     //PlayerInputHandler inputHandler;
+    public Animator _animator;
     PlayerInputs _playerInput;
     public CharacterController _chrController;
     Vector2 _currentMovementInput;
@@ -44,9 +45,12 @@ public class PlayerStateMachine : MonoBehaviour
     public CameraEvent OnCameraOptionFound;
     public CinemachineCamera _foundCamera;
 
-    float _interactTimer = 0f;
-    float _interactTime = 1f;
     bool _canInteract = true;
+
+    public PlantCollectionSO _plantCollection;
+    public PlantObjectSO _selectedPlantObject;
+    //in case we want rotation
+    public PlacedObjectTypeSO.Dir _dir = PlacedObjectTypeSO.Dir.Down;
 
     public bool InteractPressedThisFrame { get; private set; }
     //getters and setters
@@ -59,6 +63,7 @@ public class PlayerStateMachine : MonoBehaviour
     public Vector3 CurrentMovement { get { return _currentMovement; } set { _currentMovement = value; } }
 
     public InteractState FoundInteractType { get { return _foundInteractType; } }
+    public GameObject InputObject { get { return _inputObject; } }
     private void Awake()
     {
         _playerInput = new PlayerInputs();
@@ -104,6 +109,7 @@ public class PlayerStateMachine : MonoBehaviour
         _currentState.ExitState();
         _currentState = newState;
         _currentState.EnterState();
+        print(_currentState);
     }
     public void ReturnToPreviousState()
     {
@@ -159,6 +165,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         _foundInteractType = _currentInteractable.InteractableType;
         _previousState = _currentState;
+
         _interactedWith = _currentInteractable;
 
         if (_foundInteractType != InteractState.NonState)
@@ -174,6 +181,8 @@ public class PlayerStateMachine : MonoBehaviour
             //print("Found interactable");
             //_canInteract = false;
             _currentInteractable = interactable;
+            _inputObject = other.transform.parent.gameObject;
+            print(_inputObject.name);
         }
         if (other.TryGetComponent(out ICameraOption cameraOption))
         {
