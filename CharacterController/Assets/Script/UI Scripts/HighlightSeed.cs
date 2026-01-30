@@ -15,8 +15,8 @@ public class HighlightSeed : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void SeedSelected()
     {
-        seedTransform.anchoredPosition = new Vector2(0, 100);
-        seedTransform.localScale = new Vector2(110, 110);
+        seedTransform.anchoredPosition = new Vector2(0, 150);
+        seedTransform.localScale = new Vector2(1.5f, 1.5f);
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
