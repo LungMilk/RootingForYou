@@ -5,8 +5,9 @@ using UnityEngine;
 public class SeedManager : MonoBehaviour
 {
     public List<PlantObjectSO> plantObjects;
+    public GameObject seedPrefab;
 
-    public int seedsInInventory = 0;
+    public int seedsInInventory;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
