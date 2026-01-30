@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AnxiteyGate : MonoBehaviour,IActionCall
+public class AnxiteyGate : MonoBehaviour, IActionCall
 {
     public int lockCount = 3;
     public void CallAction()

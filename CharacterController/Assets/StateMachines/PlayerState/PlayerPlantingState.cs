@@ -53,7 +53,7 @@ public class PlayerPlantingState : PlayerBaseState
                 GameObject emptyGO = new GameObject("errorPopupWorldtext");
                 Transform transform = emptyGO.transform;
                 transform.position = Utilities.GetMouseWorldPositionWithZ();
-                Utilities.CreateWorldTextObject("Cannot build", transform);
+                //Utilities.CreateWorldTextObject("Cannot build", transform);
                 new WaitForSeconds(2);
                 GameObject.Destroy(emptyGO);
             }
