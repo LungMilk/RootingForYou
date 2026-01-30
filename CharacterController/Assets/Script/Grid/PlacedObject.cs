@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 public class PlacedObject : MonoBehaviour
 {
+    //we are creating a placedObject and feeding it the data of the scriptable object
     public static PlacedObject Create(Vector3 worldPosition, Vector2Int origin, PlacedObjectTypeSO.Dir dir, PlacedObjectTypeSO placedObjectTypeSO,float scale)
     {
         Transform placedObjectTransform = Instantiate(placedObjectTypeSO._prefab.transform, worldPosition, Quaternion.Euler(0, placedObjectTypeSO.GetRotationAngle(dir), 0));

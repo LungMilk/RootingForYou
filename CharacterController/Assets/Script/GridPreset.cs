@@ -94,6 +94,7 @@ public class GridPresetEditor : Editor
         serializedObject.Update();
 
         EditorGUI.BeginChangeCheck();
+        EditorGUILayout.HelpBox("Bottom left of the grid is the origin (0,0). \n Collection is a collection of ScriptableObjects that can go in our grid system, Ideally this can include both plants AND things the player could not normally place", MessageType.Info);
         //EditorGUILayout.PropertyField(_width);
         //EditorGUILayout.PropertyField(_height);
         //EditorGUILayout.PropertyField(_collection);
@@ -102,7 +103,7 @@ public class GridPresetEditor : Editor
 
         script._width = EditorGUILayout.IntField("Width", script._width);
         script._height = EditorGUILayout.IntField("Height", script._height);
-        PlacedObjectCollection newCollection = (PlacedObjectCollection)EditorGUILayout.ObjectField("Collection", script._collection, typeof(PlacedObjectCollection), false);
+        PlacedObjectCollection newCollection = (PlacedObjectCollection)EditorGUILayout.ObjectField(new GUIContent("Collection","A PlacedObjectCollection of things that can be placed in our gridSystem"), script._collection, typeof(PlacedObjectCollection), false);
 
         if (newCollection != script._collection)
         {
@@ -116,11 +117,11 @@ public class GridPresetEditor : Editor
 
         DrawGrid();
 
-        if (GUILayout.Button("Reset values"))
+        if (GUILayout.Button(new GUIContent("Reset Values", "Sets grid values to nothing")))
         {
             script.ResetGrid();
         }
-        if (GUILayout.Button("Resize"))
+        if (GUILayout.Button(new GUIContent("Resize", "Use for changing width or height")))
         {
             script.ResizeGrid();
         }
@@ -136,7 +137,7 @@ public class GridPresetEditor : Editor
 
         int rowCount = _grid.arraySize;
 
-        for (int i = 0; i < rowCount; i++)
+        for (int i = rowCount -1; i >= 0; i--)
         {
             GUILayout.BeginHorizontal();
             var row = _grid.GetArrayElementAtIndex(i).FindPropertyRelative("_values");

@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Yellow
   m_EditorClassIdentifier: 
   _nameString: 
-  _prefab: {fileID: 3877968887673616859, guid: 2f8ccd101728bb1408648332940abfea, type: 3}
-  _visual: {fileID: 3877968887673616859, guid: 2f8ccd101728bb1408648332940abfea, type: 3}
+  _prefab: {fileID: 2342656503063663463, guid: 2f8ccd101728bb1408648332940abfea, type: 3}
   _width: 1
   _height: 1

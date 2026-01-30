@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Blue
   m_EditorClassIdentifier: 
   _nameString: 
-  _prefab: {fileID: 5233675279033478915, guid: 01107aa4cbbd19044b4387b81615954a, type: 3}
-  _visual: {fileID: 5233675279033478915, guid: 01107aa4cbbd19044b4387b81615954a, type: 3}
+  _prefab: {fileID: 7591643382802818710, guid: 01107aa4cbbd19044b4387b81615954a, type: 3}
   _width: 1
   _height: 1

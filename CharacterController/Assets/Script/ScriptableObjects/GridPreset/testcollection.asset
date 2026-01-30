@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: testcollection
   m_EditorClassIdentifier: 
   placedObjects:
-  - {fileID: 11400000, guid: dfdc329cf8c4f41468c7c7d3ba41b8e5, type: 2}
+  - {fileID: 11400000, guid: 038ba089d3fcdd6459634d846fdcac9d, type: 2}
+  - {fileID: 11400000, guid: c00577a4888da99429082f9e6e878f31, type: 2}

@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Red
   m_EditorClassIdentifier: 
   _nameString: 
-  _prefab: {fileID: 600761945342254499, guid: c7af6d2973b522d4291422c1aed69234, type: 3}
-  _visual: {fileID: 600761945342254499, guid: c7af6d2973b522d4291422c1aed69234, type: 3}
+  _prefab: {fileID: 4678453907846719273, guid: c7af6d2973b522d4291422c1aed69234, type: 3}
   _width: 1
   _height: 1
