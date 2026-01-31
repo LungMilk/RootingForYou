@@ -1,10 +1,15 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Events;
+//Thought this would do something in the inspector
+[HelpURL("https://miro.com/app/board/uXjVGPLT8VU=/")]
 public class GardenBoxManager : MonoBehaviour
 {
+    public UnityEvent OnDetectedChange;
     [SerializeField] private List<GardenBox> gardenBoxes;
     public Collider detectionBox;
 
+    [Header("Attribute Totals")]
     [SerializeField] private int _beautyTotal, _passionTotal, _calmnessTotal;
 
     #region Editor Stuff
@@ -51,6 +56,7 @@ public class GardenBoxManager : MonoBehaviour
             _passionTotal += box._passionContribution;
             _calmnessTotal +=box._calmnessContribution;
         }
+        OnDetectedChange.Invoke();
     }
 
     public Dictionary<PlantAttribute,int> GetAttributeTotals()

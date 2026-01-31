@@ -36,7 +36,7 @@ public class DebugButton : MonoBehaviour ,IInteractable, IActionCall
             }
             else
             {
-                print(target.name + "Does not have IActionCallInterface");
+                print(target.name + " does not have IActionCallInterface");
             }
         }
     }

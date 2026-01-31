@@ -22,6 +22,7 @@ public class CameraManager : MonoBehaviour
 
     private void Awake()
     {
+        brain = FindAnyObjectByType<CinemachineBrain>();
         defaultPriority = playerCamera.Priority;
         brain.DefaultBlend.Time = blendDuration;
     }

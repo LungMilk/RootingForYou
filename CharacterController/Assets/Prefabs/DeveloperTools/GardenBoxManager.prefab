@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1421222667205896571}
   - component: {fileID: 8860832561311180668}
+  - component: {fileID: 6635606094717432642}
   m_Layer: 0
   m_Name: GardenBoxManager
   m_TagString: Untagged
@@ -45,11 +46,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0db890758d97fd6488edbf45867890ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDetectedChange:
+    m_PersistentCalls:
+      m_Calls: []
   gardenBoxes: []
   detectionBox: {fileID: 3995780615077287}
   _beautyTotal: 0
   _passionTotal: 0
   _calmnessTotal: 0
+--- !u!114 &6635606094717432642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6019373172432474024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73a34150dc826614c94aad2521680d68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gardenBoxManagers: []
+  _tasks: []
+  _targets: []
 --- !u!1 &6150243874400461910
 GameObject:
   m_ObjectHideFlags: 0

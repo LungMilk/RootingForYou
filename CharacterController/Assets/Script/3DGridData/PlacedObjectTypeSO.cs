@@ -2,7 +2,7 @@ using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "NewPlacedObject.asset", menuName = "ScriptableObject/PlacedObjectSO")]
+[CreateAssetMenu(fileName = "NewPlacedObject.asset", menuName = "ScriptableObjects/PlacedObjectSO")]
 [System.Serializable]
 public class PlacedObjectTypeSO : ScriptableObject
 {
