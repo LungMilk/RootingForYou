@@ -29,10 +29,10 @@ public class StatDisplay : MonoBehaviour
 
     private void Update()
     {
-        UpdateBarUI();
+        //UpdateBarUI();
     }
 
-    void UpdateBarUI()
+    public void UpdateBarUI()
     {
         for(int i = 0; i < maxStat; i++)
         {

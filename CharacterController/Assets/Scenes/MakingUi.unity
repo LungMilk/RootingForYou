@@ -933,6 +933,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1807388300}
   - component: {fileID: 1807388301}
+  - component: {fileID: 1807388302}
   m_Layer: 5
   m_Name: Statbars
   m_TagString: Untagged
@@ -986,6 +987,23 @@ MonoBehaviour:
   m_Spacing: {x: 25, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &1807388302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807388299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b78f2d113c9e97840a88e4b76fd7634b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gardenBoxManager: {fileID: 0}
+  bars:
+  - {fileID: 1523998489}
+  - {fileID: 324307891}
+  - {fileID: 194811946}
 --- !u!1 &2110144739
 GameObject:
   m_ObjectHideFlags: 0

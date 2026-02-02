@@ -1,9 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 public class GardenBoxManager : MonoBehaviour
 {
     [SerializeField] private List<GardenBox> gardenBoxes;
     public Collider detectionBox;
+    public GameObject statBars;
 
     [SerializeField] private int _beautyTotal, _passionTotal, _calmnessTotal;
 
@@ -51,6 +53,10 @@ public class GardenBoxManager : MonoBehaviour
             _passionTotal += box._passionContribution;
             _calmnessTotal +=box._calmnessContribution;
         }
+
+        statBars.GetComponent<BarManager>().beauty = _beautyTotal;
+        statBars.GetComponent<BarManager>().passion = _passionTotal;
+        statBars.GetComponent<BarManager>().calmness = _calmnessTotal;
     }
 
     public Dictionary<PlantAttribute,int> GetAttributeTotals()
