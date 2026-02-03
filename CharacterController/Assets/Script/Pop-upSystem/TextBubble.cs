@@ -2,7 +2,12 @@ using TMPro;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
-
+/// <summary>
+/// An individual TextBubble object
+/// </summary>
+/// <para>
+/// <see cref="TextBubbleManager"/> will manage the bubbles visibility and text.
+/// </para>
 public class TextBubble : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI text;

@@ -2,7 +2,7 @@ using CustomNamespace.Utilities;
 using System.Collections.Generic;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
-using static PlacedObjectTypeSO;
+//using static PlacedObjectTypeSO;
 
 public class PlayerPlantingState : PlayerBaseState
 {

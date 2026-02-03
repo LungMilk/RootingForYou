@@ -533,7 +533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textAnchor: {fileID: 861522610}
-  text: Hello world
+  text: Hello world <sprite index=0>
 --- !u!135 &861522607
 SphereCollider:
   m_ObjectHideFlags: 0
