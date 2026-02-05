@@ -72,7 +72,7 @@ public class GardenBox : MonoBehaviour, IInteractable,ICameraOption
                 currentPlants.Add(plant);
             }
         }
-
+        //we can expland the getting of placed objects wihtin the space to have the calculation of if the space has a modifier
         foreach (PlantObject plant in currentPlants)
         {
             var attributes = plant.GetAttributes();

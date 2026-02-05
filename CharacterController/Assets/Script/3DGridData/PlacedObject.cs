@@ -16,6 +16,8 @@ public class PlacedObject : MonoBehaviour
         placedObject._scale = scale;
         return placedObject;
     }
+    //if we have placed object simply make a bool to if occupies the gridobject can take said bool and just return its chill
+    //how it modifies plant values, idk.
     protected PlacedObjectTypeSO _placedObjectTypeSO;
     protected Vector2Int _origin;
     protected PlacedObjectTypeSO.Dir _dir;
