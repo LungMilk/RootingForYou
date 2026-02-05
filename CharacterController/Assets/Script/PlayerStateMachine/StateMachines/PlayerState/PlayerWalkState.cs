@@ -1,3 +1,4 @@
+using ScriptableObjects;
 using System.Threading.Tasks;
 using Unity.Cinemachine;
 using Unity.VisualScripting;
@@ -11,12 +12,13 @@ public class PlayerWalkState : PlayerBaseState
     //sound effects
     float footstepSpeedSeconds = 0.5f;
     float currentTime = 0f;
+    SoundEffectSO walkingSound;
 
     
     public PlayerWalkState(PlayerStateMachine currentContext, playerStateFactory playerStateFactory) : base(currentContext, playerStateFactory) { }
     public override void EnterState() {
         Ctx._animator.SetBool("isWalking", true);
-       
+        walkingSound = Ctx._soundEffects[0];
     }
     public override void UpdateState()
     {
@@ -39,7 +41,8 @@ public class PlayerWalkState : PlayerBaseState
 
         if (currentTime >= footstepSpeedSeconds)
         {
-            SoundEffectManager.Play("Footsteps");
+            walkingSound.Play();
+            //SoundEffectManager.Play("Footsteps");
             currentTime = 0f;
         }
         
