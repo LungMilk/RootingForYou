@@ -706,7 +706,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 479c55a3c1d3d8745812842954a17de1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plantObjects: []
+  plantObjects:
+  - {fileID: 0}
   seedPrefab: {fileID: 0}
   seedsInInventory: 0
 --- !u!1 &1166576599
@@ -999,11 +1000,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78f2d113c9e97840a88e4b76fd7634b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gardenBoxManager: {fileID: 0}
   bars:
   - {fileID: 1523998489}
   - {fileID: 324307891}
   - {fileID: 194811946}
+  beauty: 0
+  calmness: 0
+  passion: 0
 --- !u!1 &2110144739
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ public class HighlightSeed : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 {
     public RectTransform seedTransform;
     public GameObject seedObject;
-
+    public PlayerStateMachine playerStateMachine;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -28,5 +28,10 @@ public class HighlightSeed : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         seedTransform.anchoredPosition = new Vector2(0, 0);
        // Debug.Log("Mouse exited the seed.");
+    }
+
+    public void SetPlayerSeed(PlantObjectSO selectedPlant)
+    {
+        playerStateMachine._selectedPlantObject = selectedPlant;
     }
 }
