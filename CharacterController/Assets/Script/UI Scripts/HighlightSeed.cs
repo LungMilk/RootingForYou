@@ -20,18 +20,19 @@ public class HighlightSeed : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-       // Debug.Log("Mouse is over the seed.");
+       ///Debug.Log("Mouse is over the seed.");
         seedTransform.anchoredPosition = new Vector2(0, 100);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         seedTransform.anchoredPosition = new Vector2(0, 0);
-       // Debug.Log("Mouse exited the seed.");
+       //Debug.Log("Mouse exited the seed.");
     }
 
     public void SetPlayerSeed(PlantObjectSO selectedPlant)
     {
+        
         playerStateMachine._selectedPlantObject = selectedPlant;
     }
 }

@@ -135,7 +135,7 @@ public class GridXZ<TGridObject>
 
     public void TriggerGridObjectChanged(int x, int z)
     {
-        Debug.Log($"Grid Changed at ({x},{z})");
+        //Debug.Log($"Grid Changed at ({x},{z})");
         if (OnGridObjectChanged != null) OnGridObjectChanged(this, new OnGridObjectChangedEventArgs { x = x, z = z});
     }
     

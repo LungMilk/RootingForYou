@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlantData_Rose
   m_EditorClassIdentifier: 
   _nameString: Rose
-  _prefab: {fileID: 4678453907846719273, guid: c7af6d2973b522d4291422c1aed69234, type: 3}
+  _prefab: {fileID: 2342656503063663463, guid: 2f8ccd101728bb1408648332940abfea, type: 3}
   _width: 1
   _height: 1
   displayImage: {fileID: 0}
