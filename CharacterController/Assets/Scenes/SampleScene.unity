@@ -1313,6 +1313,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3242268030894703404, guid: f30a469bd9827114192d1d1cf7fd41a0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3242268030894703404, guid: f30a469bd9827114192d1d1cf7fd41a0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetPlayerSeed
+      objectReference: {fileID: 0}
+    - target: {fileID: 3242268030894703404, guid: f30a469bd9827114192d1d1cf7fd41a0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: ad25c24cd560e8744aed57e8ff579e04, type: 2}
+    - target: {fileID: 3242268030894703404, guid: f30a469bd9827114192d1d1cf7fd41a0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: PlantObjectSO, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4173515680893392021, guid: f30a469bd9827114192d1d1cf7fd41a0, type: 3}
+      propertyPath: playerStateMachine
+      value: 
+      objectReference: {fileID: 2128889710}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1548,7 +1568,7 @@ MonoBehaviour:
   - {fileID: 1839173791}
   - {fileID: 664114151}
   - {fileID: 862438762}
-  barManager: {fileID: 0}
+  barManager: {fileID: 1005265756}
   beauty: 0
   calmness: 0
   passion: 0
@@ -2076,6 +2096,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065329650}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2128889710 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3138701472099524226, guid: c689eda3fa0eeb242b79d3caa55e72ed, type: 3}
+  m_PrefabInstance: {fileID: 9165606753949186841}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3d23675dd65f7044ad15ac4cd807bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2965950874472196971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2274,6 +2305,14 @@ PrefabInstance:
       propertyPath: _plantCollection
       value: 
       objectReference: {fileID: 11400000, guid: 56a79127fe943d542a4915b8404eb873, type: 2}
+    - target: {fileID: 3138701472099524226, guid: c689eda3fa0eeb242b79d3caa55e72ed, type: 3}
+      propertyPath: _soundEffects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138701472099524226, guid: c689eda3fa0eeb242b79d3caa55e72ed, type: 3}
+      propertyPath: '_soundEffects.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: fc9b0fa18a61c3441a41186eb0afa341, type: 2}
     - target: {fileID: 4113470636303386484, guid: c689eda3fa0eeb242b79d3caa55e72ed, type: 3}
       propertyPath: m_Name
       value: HierarchalStatePlayer
