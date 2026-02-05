@@ -5,6 +5,7 @@ using UnityEngine;
 public class BarManager : MonoBehaviour
 {
     public List<GameObject> bars;
+    public GardenBoxManager barManager;
     public int beauty;
     public int calmness;
     public int passion;
@@ -22,7 +23,12 @@ public class BarManager : MonoBehaviour
 
     public void UpdateBars()
     {
-        for(int i = 0; i < bars.Count; i++)
+        Dictionary<PlantAttribute,int> currentTotals = barManager.GetAttributeTotals();
+        currentTotals.TryGetValue(PlantAttribute.Beauty, out beauty);
+        currentTotals.TryGetValue(PlantAttribute.Passion, out passion);
+        currentTotals.TryGetValue(PlantAttribute.Calmness, out calmness);
+
+        for (int i = 0; i < bars.Count; i++)
         {
             bars[i].GetComponent<StatDisplay>().UpdateBarUI();
         }
