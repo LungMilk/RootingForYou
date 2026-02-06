@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.Cinemachine;
 using Unity.Multiplayer.Center.Common;
 using UnityEngine;
 using UnityEngine.Events;
+using static UnityEngine.EventSystems.EventTrigger;
 public class GardenBox : Interactable
 {
     [Space(20)]
@@ -50,12 +52,26 @@ public class GardenBox : Interactable
         _calmnessContribution = 0;
 
         HashSet<PlantObject> currentPlants = new HashSet<PlantObject>();
-        
+        float multipler = 1;
         foreach (GridObject gObject in _grid.GetTGridObjectList())
         {
-            if (gObject.GetPlacedObject() is PlantObject plant)
+            if (gObject.GetPlacedObjects().OfType<ModifierObject>().FirstOrDefault() is ModifierObject modifier)
             {
-                currentPlants.Add(plant);
+                multipler = modifier._modifier;
+            }
+            //multiplier = entry.modifier
+            foreach (var entry in gObject.GetPlacedObjects())
+            {
+                if (entry is PlantObject plantObject)
+                {
+                    var plantAttributes = plantObject.GetAttributes();
+
+                    plantAttributes[PlantAttribute.Beauty] = Mathf.CeilToInt(plantAttributes[PlantAttribute.Beauty] * multipler);
+                    plantAttributes[PlantAttribute.Passion] =Mathf.CeilToInt(plantAttributes[PlantAttribute.Passion] * multipler);
+                    plantAttributes[PlantAttribute.Calmness] =Mathf.CeilToInt(plantAttributes[PlantAttribute.Calmness] * multipler);
+
+                    currentPlants.Add(plantObject);
+                }
             }
         }
         //we can expland the getting of placed objects wihtin the space to have the calculation of if the space has a modifier
@@ -106,7 +122,7 @@ public class GardenBox : Interactable
                 Vector2Int rotationOffset = obj.GetRotationOffset(PlacedObjectTypeSO.Dir.Down);
                 Vector3 placedObjectWorldPosition = _grid.GetWorldPosition(gridX, gridZ) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * _grid.GetCellSize();
 
-                PlacedObject placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(gridX, gridZ), PlacedObjectTypeSO.Dir.Down, obj, _grid.GetCellSize());
+                PlacedObject placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(gridX, gridZ), PlacedObjectTypeSO.Dir.Down, obj, _grid.GetCellSize(), obj._doesOccupy, obj._playerRemovable);
 
                 foreach (Vector2Int gridPosition in gridPositionList)
                 {

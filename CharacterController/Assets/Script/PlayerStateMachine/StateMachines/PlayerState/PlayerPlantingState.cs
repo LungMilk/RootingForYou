@@ -41,7 +41,7 @@ public class PlayerPlantingState : PlayerBaseState
                 Vector2Int rotationOffset = Ctx._selectedPlantObject.GetRotationOffset(PlacedObjectTypeSO.Dir.Down);
                 Vector3 placedObjectWorldPosition = _grid.GetWorldPosition(x, z) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * _grid.GetCellSize();
 
-                PlacedObject placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(x, z), PlacedObjectTypeSO.Dir.Down, Ctx._selectedPlantObject, _grid.GetCellSize());
+                PlacedObject placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(x, z), PlacedObjectTypeSO.Dir.Down, Ctx._selectedPlantObject, _grid.GetCellSize(),Ctx._selectedPlantObject._doesOccupy,Ctx._selectedPlantObject._playerRemovable);
 
                 foreach (Vector2Int gridPosition in gridPositionList)
                 {
@@ -65,12 +65,10 @@ public class PlayerPlantingState : PlayerBaseState
             _grid.GetXZ(Utilities.GetMouseWorldPositionXZ(), out int x, out int z);
             GridObject gridObject = _grid.GetGridObject(x,z);
 
-            PlacedObject placedObject = gridObject.GetPlacedObject();
-            if (placedObject != null)
+            foreach(var entry in gridObject.GetRemovablePlacedObjects())
             {
-                placedObject.DestroySelf();
-
-                List<Vector2Int> gridPositionList = placedObject.GetGridPositionList();
+                entry.DestroySelf();
+                List<Vector2Int> gridPositionList = entry.GetGridPositionList();
 
                 foreach (Vector2Int gridPosition in gridPositionList)
                 {
