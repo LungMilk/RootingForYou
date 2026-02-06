@@ -1,4 +1,5 @@
 using CustomNamespace.Utilities;
+using ScriptableObjects;
 using System.Collections.Generic;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
@@ -8,9 +9,13 @@ public class PlayerPlantingState : PlayerBaseState
 {
     GridBuilder _gridBuilder;
     GridXZ<GridObject> _grid;
+    SoundEffectSO digSound;
+    SoundEffectSO plantSound;
     public PlayerPlantingState(PlayerStateMachine currentContext, playerStateFactory playerStateFactory) : base(currentContext, playerStateFactory) { }
 
     public override void EnterState() {
+        digSound = Ctx._soundEffects[1];
+        plantSound = Ctx._soundEffects[2];
         Debug.Log("Entering planting state");
         _gridBuilder = Ctx.InputObject.GetComponentInChildren<GridBuilder>();
         _grid = _gridBuilder._grid;
@@ -43,6 +48,8 @@ public class PlayerPlantingState : PlayerBaseState
 
                 PlacedObject placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(x, z), Ctx._dir, Ctx._selectedPlantObject, _grid.GetCellSize());
 
+                plantSound.Play();
+
                 foreach (Vector2Int gridPosition in gridPositionList)
                 {
                     //yes the x and y might be confusing for world and grid spaces but don't worry about it
@@ -69,6 +76,7 @@ public class PlayerPlantingState : PlayerBaseState
             if (placedObject != null)
             {
                 placedObject.DestroySelf();
+                digSound.Play();
 
                 List<Vector2Int> gridPositionList = placedObject.GetGridPositionList();
 
