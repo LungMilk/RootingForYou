@@ -14,7 +14,7 @@ public class PlayerInteractions : MonoBehaviour
     PlayerInputs _playerInput;
     public bool _isInteractPressed;
     private InputAction _interactAction;
-    IInteractable _currentInteractable;
+    Interactable _currentInteractable;
 
     public CameraEvent OnCameraOptionFound;
     private CinemachineCamera foundCamera;
@@ -49,7 +49,7 @@ public class PlayerInteractions : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out IInteractable interactable))
+        if (other.TryGetComponent(out Interactable interactable))
         {
             _currentInteractable = interactable;
         }
@@ -60,7 +60,7 @@ public class PlayerInteractions : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent(out IInteractable interactable))
+        if (other.TryGetComponent(out Interactable interactable))
         {
             if (_currentInteractable == interactable)
             {
