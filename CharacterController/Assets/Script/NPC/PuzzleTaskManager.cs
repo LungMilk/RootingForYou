@@ -31,7 +31,8 @@ public class PuzzleTaskManager : MonoBehaviour
             Dictionary<PlantAttribute, int> managerAttributeTotal = boxManager.GetAttributeTotals();
             foreach (var entry in managerAttributeTotal)
             {
-                cumulativeTotal.Add(entry.Key, entry.Value);
+                cumulativeTotal.TryGetValue(entry.Key, out int current);
+                cumulativeTotal[entry.Key] = current + entry.Value;
             }
         }
 

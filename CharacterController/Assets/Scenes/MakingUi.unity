@@ -1004,6 +1004,7 @@ MonoBehaviour:
   - {fileID: 1523998489}
   - {fileID: 324307891}
   - {fileID: 194811946}
+  barManager: {fileID: 0}
   beauty: 0
   calmness: 0
   passion: 0

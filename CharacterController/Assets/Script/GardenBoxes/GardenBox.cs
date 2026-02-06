@@ -4,36 +4,29 @@ using Unity.Cinemachine;
 using Unity.Multiplayer.Center.Common;
 using UnityEngine;
 using UnityEngine.Events;
-public class GardenBox : MonoBehaviour, IInteractable,ICameraOption
+public class GardenBox : Interactable
 {
+    [Space(20)]
+    [Header("GardenBox Fields")]
     public UnityEvent GardenBoxChanged;
+    [Space(10)]
+    [Header("GardenBox Setup")]
     public GridPreset _preset;
 
-    bool isPressed = false;
+    //bool isPressed = false;
     //private GridObject[,] _previousGridObjects;
     //public GameObject _gridObject;
     public GridBuilder _gridBuilder;
     private GridXZ<GridObject> _grid;
 
     public TextMeshProUGUI _displayTMPro;
+
+    [Space(10)]
+    [Header("Attributes")]
     [TextArea]
     public string _displayText;
 
-    public InteractState _interactType = InteractState.Planting;
-
-    public int _beautyContribution, _passionContribution, _calmnessContribution;
-    public InteractState InteractableType
-    {
-        get => _interactType;
-        set => _interactType = value;
-    }
-
-    [SerializeField] private CinemachineCamera cameraOption;
-    public CinemachineCamera CameraOption
-    {
-        get => cameraOption;
-        set => cameraOption = value;
-    }
+    private int _beautyContribution, _passionContribution, _calmnessContribution;
     private void Start()
     {
         //_gridBuilder = _gridObject.GetComponent<GridBuilder>();
@@ -47,13 +40,6 @@ public class GardenBox : MonoBehaviour, IInteractable,ICameraOption
     private void OnGridChanged(object sender, GridXZ<GridObject>.OnGridObjectChangedEventArgs e)
     {
         CalculateGridValues();
-    }
-    private void Update()
-    {
-        if (isPressed)
-        {
-            CalculateGridValues();
-        }
     }
 
     [ContextMenu("Calculate Grid Values")]
@@ -85,15 +71,19 @@ public class GardenBox : MonoBehaviour, IInteractable,ICameraOption
         GardenBoxChanged.Invoke();
     }
 
+    public Dictionary<PlantAttribute, int> GetAttributeTotals()
+    {
+        return new Dictionary<PlantAttribute, int>
+        {
+            {PlantAttribute.Beauty, _beautyContribution },
+            {PlantAttribute.Passion, _passionContribution },
+            {PlantAttribute.Calmness, _calmnessContribution },
+        };
+    }
+
     public void ChangeDisplayText()
     {
         _displayTMPro.text = _displayText + $"\n{_beautyContribution}, <color=red>{_passionContribution}</color>, {_calmnessContribution}";
-    }
-    [ContextMenu("Interact")]
-    public void Interact()
-    {
-        isPressed = !isPressed;
-        CalculateGridValues();
     }
 
     public void LoadGridPreset()

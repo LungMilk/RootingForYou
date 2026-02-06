@@ -52,9 +52,10 @@ public class GardenBoxManager : MonoBehaviour
 
         foreach (var box in gardenBoxes)
         {
-            _beautyTotal  += box._beautyContribution;
-            _passionTotal += box._passionContribution;
-            _calmnessTotal +=box._calmnessContribution;
+            Dictionary<PlantAttribute, int> boxContribution = box.GetAttributeTotals();
+            boxContribution[PlantAttribute.Beauty] += _beautyTotal;
+            boxContribution[PlantAttribute.Passion] += _passionTotal;
+            boxContribution[PlantAttribute.Calmness] += _calmnessTotal;
         }
         OnDetectedChange.Invoke();
     }

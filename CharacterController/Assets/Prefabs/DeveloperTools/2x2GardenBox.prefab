@@ -150,17 +150,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a486f3413022734d947232eff87ea2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targets: []
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  _cameraOption: {fileID: 2068222533981991472}
+  _interactableType: 1
+  _alwaysTrigger: 0
   GardenBoxChanged:
     m_PersistentCalls:
       m_Calls: []
+  _preset: {fileID: 0}
   _gridBuilder: {fileID: 606748747292233210}
   _displayTMPro: {fileID: 186843760088457379}
   _displayText: Garden Box 2x2
-  _interactType: 1
-  _beautyContribution: 0
-  _passionContribution: 0
-  _calmnessContribution: 0
-  cameraOption: {fileID: 2068222533981991472}
 --- !u!1 &1857821374624710588
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,6 +525,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
