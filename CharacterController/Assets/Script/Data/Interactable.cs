@@ -14,7 +14,7 @@ public class Interactable : MonoBehaviour
     [SerializeField] private CinemachineCamera _cameraOption;
 
     [Tooltip("Player will read this to determine what state it becomes")]
-    [SerializeField] private InteractState _interactableType;
+    [SerializeField] private InteractState _interactableType = InteractState.NonState;
 
     //private bool isPressed;
     [Tooltip("Whenever pressed it will activate the OnInteract.Event")]
