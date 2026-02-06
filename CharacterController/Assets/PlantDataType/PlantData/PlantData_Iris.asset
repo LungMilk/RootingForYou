@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlantData_Iris
   m_EditorClassIdentifier: 
   _nameString: Iris
-  _prefab: {fileID: 4678453907846719273, guid: c7af6d2973b522d4291422c1aed69234, type: 3}
+  _prefab: {fileID: 2034775281030498601, guid: 60b83ceec02180c4ea81422906fc3519, type: 3}
   _width: 1
   _height: 1
   displayImage: {fileID: 21300000, guid: daa231cd788d8644e80dbee4daa66fde, type: 3}

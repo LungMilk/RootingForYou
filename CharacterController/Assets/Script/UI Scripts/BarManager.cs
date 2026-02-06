@@ -22,6 +22,7 @@ public class BarManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        SetBarMax();
         UpdateBars();
         PreviewBars();
     }
@@ -33,15 +34,15 @@ public class BarManager : MonoBehaviour
         currentTotals.TryGetValue(PlantAttribute.Passion, out passion);
         currentTotals.TryGetValue(PlantAttribute.Calmness, out calmness);
 
-        if (beauty > 0)
+        if (beauty >= 0)
         {
             bars[0].GetComponent<StatDisplay>().currentStat = beauty;
         }
-        if (calmness > 0)
+        if (calmness >= 0)
         {
             bars[1].GetComponent<StatDisplay>().currentStat = calmness;
         }
-        if(passion > 0)
+        if (passion >= 0)
         {
             bars[2].GetComponent<StatDisplay>().currentStat = passion;
         }
@@ -62,5 +63,13 @@ public class BarManager : MonoBehaviour
         {
             bars[i].GetComponent<StatDisplay>().UpdateBarUI();
         }
+    }
+
+    public void SetBarMax()
+    {
+        //set max stat based on the puzzles goal
+        //bars[0].GetComponent<StatDisplay>().maxStat = barManager.GetComponent<PuzzleTaskManager>().;
+        //bars[1].GetComponent<StatDisplay>().maxStat = previewCalmness;
+        //bars[2].GetComponent<StatDisplay>().maxStat = previewPassion;
     }
 }
