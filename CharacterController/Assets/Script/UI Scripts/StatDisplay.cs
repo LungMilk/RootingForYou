@@ -44,7 +44,7 @@ public class StatDisplay : MonoBehaviour
             statSections[i].GetComponent<Image>().color = barColor;
         }
 
-        for(int i = currentStat;i < currentStat + previewStat; i++)
+        for(int i = currentStat; i < currentStat + previewStat; i++)
         {
             statSections[i].GetComponent<Image>().color = barColor + previewColor;
         }

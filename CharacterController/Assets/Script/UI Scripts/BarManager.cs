@@ -9,6 +9,10 @@ public class BarManager : MonoBehaviour
     public int beauty;
     public int calmness;
     public int passion;
+
+    public int previewBeauty;
+    public int previewCalmness;
+    public int previewPassion;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,6 +23,7 @@ public class BarManager : MonoBehaviour
     private void Update()
     {
         UpdateBars();
+        PreviewBars();
     }
 
     public void UpdateBars()
@@ -28,13 +33,34 @@ public class BarManager : MonoBehaviour
         currentTotals.TryGetValue(PlantAttribute.Passion, out passion);
         currentTotals.TryGetValue(PlantAttribute.Calmness, out calmness);
 
+        if (beauty > 0)
+        {
+            bars[0].GetComponent<StatDisplay>().currentStat = beauty;
+        }
+        if (calmness > 0)
+        {
+            bars[1].GetComponent<StatDisplay>().currentStat = calmness;
+        }
+        if(passion > 0)
+        {
+            bars[2].GetComponent<StatDisplay>().currentStat = passion;
+        }
+
         for (int i = 0; i < bars.Count; i++)
         {
             bars[i].GetComponent<StatDisplay>().UpdateBarUI();
         }
+    }
 
-        bars[0].GetComponent<StatDisplay>().currentStat = beauty;
-        bars[1].GetComponent<StatDisplay>().currentStat = calmness;
-        bars[2].GetComponent<StatDisplay>().currentStat = passion;
+    public void PreviewBars()
+    {
+        bars[0].GetComponent<StatDisplay>().previewStat = previewBeauty;
+        bars[1].GetComponent<StatDisplay>().previewStat = previewCalmness;
+        bars[2].GetComponent<StatDisplay>().previewStat = previewPassion;
+
+        for (int i = 0; i < bars.Count; i++)
+        {
+            bars[i].GetComponent<StatDisplay>().UpdateBarUI();
+        }
     }
 }
