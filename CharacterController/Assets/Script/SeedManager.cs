@@ -11,12 +11,18 @@ public class SeedManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //set all seedbuttons inactive
+        foreach (var button in seedButtons)
+        {
+            button.gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //set the active seed buttons to the number of seeds in inventory 
+        for(int i = 0; i < seedsInInventory; i++)
+        {
+            seedButtons[i].SetActive(true);
+        }
     }
 }
