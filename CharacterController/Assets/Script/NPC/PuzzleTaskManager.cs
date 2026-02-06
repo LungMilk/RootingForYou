@@ -38,6 +38,10 @@ public class PuzzleTaskManager : MonoBehaviour
         //Problem!!!! this would call actions multiple times.
         foreach (PuzzleTaskSO task in _tasks)
         {
+            if (task == null) {
+                print("Task is not assigned");
+                return; }
+
             if (!task.IsCompleted(cumulativeTotal)) { return; }
 
             foreach (var target in _targets)
