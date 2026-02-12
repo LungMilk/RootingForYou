@@ -1,4 +1,5 @@
 using CustomNamespace.Utilities;
+using ScriptableObjects;
 using System.Collections.Generic;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
@@ -8,9 +9,13 @@ public class PlayerPlantingState : PlayerBaseState
 {
     GridBuilder _gridBuilder;
     GridXZ<GridObject> _grid;
+    SoundEffectSO digSound;
+    SoundEffectSO plantSound;
     public PlayerPlantingState(PlayerStateMachine currentContext, playerStateFactory playerStateFactory) : base(currentContext, playerStateFactory) { }
 
     public override void EnterState() {
+        digSound = Ctx._soundEffects[1];
+        plantSound = Ctx._soundEffects[2];
         Debug.Log("Entering planting state");
         _gridBuilder = Ctx.InputObject.GetComponentInChildren<GridBuilder>();
         _grid = _gridBuilder._grid;
@@ -24,7 +29,7 @@ public class PlayerPlantingState : PlayerBaseState
             Debug.Log(Ctx._selectedPlantObject.name);
             _grid.GetXZ(Utilities.GetMouseWorldPositionXZ(), out int x, out int z);
             //Debug.Log($"{x},{z}");
-            List<Vector2Int> gridPositionList = Ctx._selectedPlantObject.GetGridPositionList(new Vector2Int(x, z), PlacedObjectTypeSO.Dir.Down);
+            List<Vector2Int> gridPositionList = Ctx._selectedPlantObject.GetGridPositionList(new Vector2Int(x, z), Ctx._dir);
 
             bool canBuild = true;
             foreach (Vector2Int gridPosition in gridPositionList)
@@ -38,10 +43,12 @@ public class PlayerPlantingState : PlayerBaseState
             if (canBuild)
             {
                 //offsetting the origin of the object by whatever our rotation was
-                Vector2Int rotationOffset = Ctx._selectedPlantObject.GetRotationOffset(PlacedObjectTypeSO.Dir.Down);
+                Vector2Int rotationOffset = Ctx._selectedPlantObject.GetRotationOffset(Ctx._dir);
                 Vector3 placedObjectWorldPosition = _grid.GetWorldPosition(x, z) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * _grid.GetCellSize();
 
-                PlacedObject placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(x, z), PlacedObjectTypeSO.Dir.Down, Ctx._selectedPlantObject, _grid.GetCellSize(),Ctx._selectedPlantObject._doesOccupy,Ctx._selectedPlantObject._playerRemovable);
+                PlacedObject placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(x, z), Ctx._dir, Ctx._selectedPlantObject, _grid.GetCellSize());
+
+                plantSound.Play();
 
                 foreach (Vector2Int gridPosition in gridPositionList)
                 {
@@ -65,10 +72,13 @@ public class PlayerPlantingState : PlayerBaseState
             _grid.GetXZ(Utilities.GetMouseWorldPositionXZ(), out int x, out int z);
             GridObject gridObject = _grid.GetGridObject(x,z);
 
-            foreach(var entry in gridObject.GetRemovablePlacedObjects())
+            PlacedObject placedObject = gridObject.GetPlacedObject();
+            if (placedObject != null)
             {
-                entry.DestroySelf();
-                List<Vector2Int> gridPositionList = entry.GetGridPositionList();
+                placedObject.DestroySelf();
+                digSound.Play();
+
+                List<Vector2Int> gridPositionList = placedObject.GetGridPositionList();
 
                 foreach (Vector2Int gridPosition in gridPositionList)
                 {
@@ -79,7 +89,7 @@ public class PlayerPlantingState : PlayerBaseState
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            //Ctx._dir = PlacedObjectTypeSO.GetNextDir(PlacedObjectTypeSO.Dir.Down);
+            Ctx._dir = PlacedObjectTypeSO.GetNextDir(Ctx._dir);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))

@@ -3217,12 +3217,20 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 0e2b592c5f7c2934a894f48b29d65e14, type: 2}
     - target: {fileID: 3138701472099524226, guid: c689eda3fa0eeb242b79d3caa55e72ed, type: 3}
       propertyPath: _soundEffects.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3138701472099524226, guid: c689eda3fa0eeb242b79d3caa55e72ed, type: 3}
       propertyPath: '_soundEffects.Array.data[0]'
       value: 
       objectReference: {fileID: 11400000, guid: fc9b0fa18a61c3441a41186eb0afa341, type: 2}
+    - target: {fileID: 3138701472099524226, guid: c689eda3fa0eeb242b79d3caa55e72ed, type: 3}
+      propertyPath: '_soundEffects.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: f09b8be2f59d7684086dacbfc5574bb8, type: 2}
+    - target: {fileID: 3138701472099524226, guid: c689eda3fa0eeb242b79d3caa55e72ed, type: 3}
+      propertyPath: '_soundEffects.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 579d1694184c4794485673bd1f37d8a1, type: 2}
     - target: {fileID: 4113470636303386484, guid: c689eda3fa0eeb242b79d3caa55e72ed, type: 3}
       propertyPath: m_Name
       value: HierarchalStatePlayer
