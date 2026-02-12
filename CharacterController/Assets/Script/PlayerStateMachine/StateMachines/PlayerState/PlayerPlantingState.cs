@@ -72,10 +72,9 @@ public class PlayerPlantingState : PlayerBaseState
             _grid.GetXZ(Utilities.GetMouseWorldPositionXZ(), out int x, out int z);
             GridObject gridObject = _grid.GetGridObject(x,z);
 
-            List<PlacedObject> placedObjects = gridObject.GetPlacedObjects();
+            List<PlacedObject> placedObjects = gridObject.GetRemovablePlacedObjects();
             if (placedObjects == null) { return; }
-            foreach(PlacedObject obj in placedObjects)
-            {
+            var obj = placedObjects[0];
                 obj.DestroySelf();
                 digSound.Play();
 
@@ -83,9 +82,9 @@ public class PlayerPlantingState : PlayerBaseState
 
                 foreach (Vector2Int gridPosition in gridPositionList)
                 {
+                //I think it is with my handling of clear placed and clearing removables as I am grabbing the space and calling for an all clear when I need to only clear the desired entry list from removables.
                     _grid.GetGridObject(gridPosition.x, gridPosition.y).ClearPlacedObject();
                 }
-            }
         }
 
         //if (Input.GetKeyDown(KeyCode.R))
