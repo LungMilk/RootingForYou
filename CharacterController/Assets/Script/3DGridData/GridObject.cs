@@ -40,10 +40,15 @@ public class GridObject
 
     public bool CanBuild()
     {
-        if (_placedObjects == null)
+        //Debug.Log(_placedObjects.Count);
+        if (_placedObjects.Count == 0)
+        {
             return true;
+        }
         if (_placedObjects[0] == null)
+        {
             return true;
+        }
 
         return !_placedObjects[0].DoesOccupy;
     }

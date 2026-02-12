@@ -43,7 +43,8 @@ public class GardenBox : Interactable
     private void OnGridChanged(object sender, GridXZ<GridObject>.OnGridObjectChangedEventArgs e)
     {
         CalculateGridValues();
-        GardenBoxChanged.Invoke();
+        //There is an issue with removing that gives an out of array index error that I currently do not know how to fix
+        GardenBoxChanged?.Invoke();
     }
 
     [ContextMenu("Calculate Grid Values")]
