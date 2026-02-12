@@ -9,16 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc9a0001722fb334f8a30ca363029193, type: 3}
-  m_Name: PuzzleTask
+  m_Script: {fileID: 11500000, guid: 836bbdb7cb724534e94ad34941f3676d, type: 3}
+  m_Name: TestAnxietyKey
   m_EditorClassIdentifier: 
-  _name: 
-  _description: 
-  checkOperation: 0
-  _attributeThresholds:
-  - attribute: 0
-    requiredValue: 5
-  - attribute: 1
-    requiredValue: 5
-  - attribute: 2
-    requiredValue: 5
+  _keyID: 1
+  _displayText: This is a test AnxietyKey

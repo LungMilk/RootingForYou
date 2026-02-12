@@ -42,6 +42,8 @@ public class GridObject
     {
         if (_placedObjects == null)
             return true;
+        if (_placedObjects[0] == null)
+            return true;
 
         return !_placedObjects[0].DoesOccupy;
     }

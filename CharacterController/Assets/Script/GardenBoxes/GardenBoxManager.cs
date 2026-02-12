@@ -28,6 +28,7 @@ public class GardenBoxManager : MonoBehaviour
             if (box != null)
             {
                 gardenBoxes.Add(box);
+                box.GardenBoxChanged.AddListener(OnGardenBoxChanged);
             }
         }
     }
@@ -53,9 +54,9 @@ public class GardenBoxManager : MonoBehaviour
         foreach (var box in gardenBoxes)
         {
             Dictionary<PlantAttribute, int> boxContribution = box.GetAttributeTotals();
-            boxContribution[PlantAttribute.Beauty] += _beautyTotal;
-            boxContribution[PlantAttribute.Passion] += _passionTotal;
-            boxContribution[PlantAttribute.Calmness] += _calmnessTotal;
+            _beautyTotal += boxContribution[PlantAttribute.Beauty];
+            _passionTotal += boxContribution[PlantAttribute.Passion];
+            _calmnessTotal += boxContribution[PlantAttribute.Calmness];
         }
         OnDetectedChange.Invoke();
     }
