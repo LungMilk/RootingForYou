@@ -1253,9 +1253,9 @@ MonoBehaviour:
   OnInteract:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 572323178}
+      - m_Target: {fileID: 1449288408}
         m_TargetAssemblyTypeName: AnxietyTask, Assembly-CSharp
-        m_MethodName: Complete
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2145,6 +2145,9 @@ MonoBehaviour:
   beauty: 0
   calmness: 0
   passion: 0
+  previewBeauty: 0
+  previewCalmness: 0
+  previewPassion: 0
 --- !u!114 &1278384138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2735,9 +2738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 479c55a3c1d3d8745812842954a17de1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plantObjects:
-  - {fileID: 0}
-  seedPrefab: {fileID: 0}
+  seedButtons: []
   seedsInInventory: 0
 --- !u!114 &1940145112
 MonoBehaviour:
@@ -2890,7 +2891,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 68d9464d0cd4fbf48a81abf378167c7f, type: 2}
+  - {fileID: 2100000, guid: 964903a58afac0542ba0787c1018dacb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
