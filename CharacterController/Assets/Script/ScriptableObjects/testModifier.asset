@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: testModifier
   m_EditorClassIdentifier: 
   _nameString: 
-  _prefab: {fileID: 0}
-  _width: 0
-  _height: 0
-  _doesOccupy: 1
-  _playerRemovable: 1
-  _modifier: 0
+  _prefab: {fileID: 4678453907846719273, guid: e1dfb750fb5d47040b05af3f0a16ad36, type: 3}
+  _width: 1
+  _height: 1
+  _doesOccupy: 0
+  _playerRemovable: 0
+  _modifier: 1

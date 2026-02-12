@@ -1788,10 +1788,11 @@ MonoBehaviour:
   m_Spacing: {x: 25, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!114 &1344966123 stripped
+--- !u!114 &1344966123
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 695485042874254950, guid: d2bb956090d946843bd44cd5a04e1570, type: 3}
-  m_PrefabInstance: {fileID: 1784033542}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -1799,6 +1800,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a486f3413022734d947232eff87ea2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targets: []
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  _cameraOption: {fileID: 0}
+  _interactableType: 2
+  _alwaysTrigger: 0
+  GardenBoxChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  _preset: {fileID: 0}
+  _gridBuilder: {fileID: 0}
+  _displayTMPro: {fileID: 0}
+  _displayText: 
 --- !u!1 &1449288408
 GameObject:
   m_ObjectHideFlags: 0
