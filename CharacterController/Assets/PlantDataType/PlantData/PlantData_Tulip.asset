@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: PlantData_Tulip
   m_EditorClassIdentifier: 
   _nameString: Tulip
-  _prefab: {fileID: 4678453907846719273, guid: c7af6d2973b522d4291422c1aed69234, type: 3}
+  _prefab: {fileID: 2034775281030498601, guid: 88baed4efba3ae548b248e1361fde414, type: 3}
   _width: 1
   _height: 1
-  displayImage: {fileID: 0}
+  displayImage: {fileID: 21300000, guid: 9885801dddb1286439401299699d172d, type: 3}
   beauty: 1
   passion: 1
   calmness: 0
