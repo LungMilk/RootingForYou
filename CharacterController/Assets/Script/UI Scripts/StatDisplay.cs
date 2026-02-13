@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class StatDisplay : MonoBehaviour
 {
-
+    public PlantAttribute plantAttribute;
     public int maxStat;
     public int currentStat;
     public int previewStat;
@@ -44,9 +44,9 @@ public class StatDisplay : MonoBehaviour
             statSections[i].GetComponent<Image>().color = barColor;
         }
 
-        for(int i = currentStat;i < currentStat + previewStat; i++)
+        for(int i = currentStat; i < currentStat + previewStat; i++)
         {
-            statSections[i].GetComponent<Image>().color = barColor + previewColor;
+            statSections[i].GetComponent<Image>().color = previewColor;
         }
     }
 }

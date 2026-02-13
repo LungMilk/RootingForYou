@@ -184,7 +184,7 @@ public class PlayerStateMachine : MonoBehaviour
             //print("Found interactable");
             //_canInteract = false;
             _currentInteractable = interactable;
-            _inputObject = other.transform.parent.gameObject;
+            _inputObject = other.transform.root.gameObject;
             print(_inputObject.name);
             _foundCamera = interactable.CameraOption;
         }

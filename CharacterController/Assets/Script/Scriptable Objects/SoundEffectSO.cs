@@ -1,5 +1,6 @@
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
+using static Unity.VisualScripting.Member;
 
 namespace ScriptableObjects
 {
@@ -40,6 +41,10 @@ namespace ScriptableObjects
             Destroy(source.gameObject, source.clip.length / source.pitch);
 
             return source;
+        }
+        public void Stop(AudioSource audioSourceParam)
+        {
+            Destroy(audioSourceParam.gameObject, audioSourceParam.clip.length / audioSourceParam.pitch);
         }
 
     }

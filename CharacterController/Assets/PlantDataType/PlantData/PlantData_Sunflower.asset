@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: PlantData_Sunflower
   m_EditorClassIdentifier: 
   _nameString: Sunflower
-  _prefab: {fileID: 7591643382802818710, guid: 01107aa4cbbd19044b4387b81615954a, type: 3}
+  _prefab: {fileID: 3241906062138072476, guid: 0ee37de72f73dca4989c497f3c315ca8, type: 3}
   _width: 1
   _height: 1
-  displayImage: {fileID: 0}
+  _doesOccupy: 1
+  _playerRemovable: 1
+  displayImage: {fileID: 21300000, guid: 35d34df528999a84c9e8503c6b51df33, type: 3}
   beauty: 0
   passion: -1
   calmness: 2

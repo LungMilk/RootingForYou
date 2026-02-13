@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 7476033845183657363}
   - component: {fileID: 4150420367821020780}
   - component: {fileID: 5371588763186649066}
-  - component: {fileID: 6798228654521825960}
+  - component: {fileID: -3267133714545802748}
   m_Layer: 0
   m_Name: DialogueExample
   m_TagString: Untagged
@@ -109,7 +109,9 @@ Transform:
   m_LocalScale: {x: 1, y: 3.1763, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2875394304338851947}
   - {fileID: 3562129839688692808}
+  - {fileID: 4596578064681002594}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7696289026370338906
@@ -143,7 +145,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 74117f645ca87544896e430b75e9a316, type: 2}
+  - {fileID: 2100000, guid: 8521b32b7fcd7ae41acc48012ada9ec0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -211,9 +213,9 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &6798228654521825960
+--- !u!114 &-3267133714545802748
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -222,8 +224,215 @@ MonoBehaviour:
   m_GameObject: {fileID: 6520870960408155328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea1a17d13b093ab4e825fa898132b3fc, type: 3}
+  m_Script: {fileID: 11500000, guid: f6d8b05716a8b7842b2109b80938b9ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactType: 0
-  cameraOption: {fileID: 2543217987334436178}
+  targets: []
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8677355638562044490}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  _cameraOption: {fileID: 2543217987334436178}
+  _interactableType: 0
+  _alwaysTrigger: 0
+--- !u!1 &7374725833641363020
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4596578064681002594}
+  m_Layer: 0
+  m_Name: Text Anchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4596578064681002594
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7374725833641363020}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.465, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 388559741771638066}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8677355638562044490
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2875394304338851947}
+  - component: {fileID: 4215016312177830255}
+  - component: {fileID: 7327969932878913065}
+  - component: {fileID: 7652921063883498065}
+  - component: {fileID: 6217561597155272546}
+  - component: {fileID: 5795625095987995111}
+  m_Layer: 0
+  m_Name: NPC Pop-up Interaction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2875394304338851947
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8677355638562044490}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 388559741771638066}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4215016312177830255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8677355638562044490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87c056c6353980946ad28a83f45bfc32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textAnchor: {fileID: 4596578064681002594}
+  text: "Hey Gardener! \nHelp our Neighbor!"
+--- !u!114 &7327969932878913065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8677355638562044490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ba297855442fe41b114b0a01272ba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnProxEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4215016312177830255}
+        m_TargetAssemblyTypeName: PopUpSpeaker, Assembly-CSharp
+        m_MethodName: CreateBubble
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnProxExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4215016312177830255}
+        m_TargetAssemblyTypeName: PopUpSpeaker, Assembly-CSharp
+        m_MethodName: DismissBubble
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!135 &7652921063883498065
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8677355638562044490}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6217561597155272546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8677355638562044490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6d8b05716a8b7842b2109b80938b9ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets: []
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5795625095987995111}
+        m_TargetAssemblyTypeName: AnxietyTask, Assembly-CSharp
+        m_MethodName: Complete
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _cameraOption: {fileID: 0}
+  _interactableType: 2
+  _alwaysTrigger: 0
+--- !u!114 &5795625095987995111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8677355638562044490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b525ac8df215f04992cfc29e64746ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _anxietyKey: {fileID: 11400000, guid: 8f54eded3da26464990d7417b24b98ae, type: 2}
+  _anxietyLockTarget: {fileID: 0}
+  _isCompleted: 0

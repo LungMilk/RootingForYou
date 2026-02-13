@@ -35,13 +35,16 @@ public class GardenBox : Interactable
         _grid = _gridBuilder._grid;
 
         //if (_grid == null) { print("WEEWOOWEEWOO"); }
-        _grid.OnGridObjectChanged += OnGridChanged;
         ChangeDisplayText();
         LoadGridPreset();
+
+        _grid.OnGridObjectChanged += OnGridChanged;
     }
     private void OnGridChanged(object sender, GridXZ<GridObject>.OnGridObjectChangedEventArgs e)
     {
         CalculateGridValues();
+        //There is an issue with removing that gives an out of array index error that I currently do not know how to fix
+        GardenBoxChanged?.Invoke();
     }
 
     [ContextMenu("Calculate Grid Values")]
@@ -84,7 +87,6 @@ public class GardenBox : Interactable
             _calmnessContribution += attributes[PlantAttribute.Calmness];
         }
         ChangeDisplayText();
-        GardenBoxChanged.Invoke();
     }
 
     public Dictionary<PlantAttribute, int> GetAttributeTotals()

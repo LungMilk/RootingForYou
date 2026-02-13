@@ -1,17 +1,26 @@
+using ScriptableObjects;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlaySound : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public List<SoundEffectSO> soundEffects;
+    private AudioSource playingSource;
+    private SoundEffectSO playingEffect;
+    public void PlaySoundAtIndexS(int index)
     {
-        
+        playingSource = soundEffects[index].Play();
+        playingEffect = soundEffects[index];
     }
-
-    // Update is called once per frame
-    void Update()
+    public void StopSoundEffect()
     {
-        
+        //this is dirty but works
+        if (playingEffect != null && playingSource != null)
+        {
+            playingEffect.Stop(playingSource);
+            Destroy(playingSource.gameObject);
+            playingEffect = null;
+            playingSource = null;
+        }
     }
-
 }
