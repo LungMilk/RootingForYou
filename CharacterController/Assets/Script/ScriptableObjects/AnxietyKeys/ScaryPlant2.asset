@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 836bbdb7cb724534e94ad34941f3676d, type: 3}
-  m_Name: ScaryPerson
+  m_Name: ScaryPlant2
   m_EditorClassIdentifier: 
   _keyID: 0
-  _displayText: "Nobody likes \ntalking to you"
+  _displayText: "Your garden is \ngoing to fail"
