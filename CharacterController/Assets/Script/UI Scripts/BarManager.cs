@@ -32,6 +32,8 @@ public class BarManager : MonoBehaviour
 
     public void UpdateBars()
     {
+        if (barManager == null) {return; }
+
         Dictionary<PlantAttribute,int> currentTotals = barManager.GetAttributeTotals();
         currentTotals.TryGetValue(PlantAttribute.Beauty, out beauty);
         currentTotals.TryGetValue(PlantAttribute.Passion, out passion);
@@ -60,6 +62,7 @@ public class BarManager : MonoBehaviour
 
     public void SetBarMax()
     {
+        if (puzzleTaskManager == null) {return; }
         //ideally this would follow the dictionary method with the different assets doing their thing
         //set max stat based on the puzzles goal
         PuzzleTaskSO currentTask = puzzleTaskManager.GetCurrentTask();
