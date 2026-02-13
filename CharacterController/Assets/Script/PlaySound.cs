@@ -1,17 +1,14 @@
+using ScriptableObjects;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlaySound : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public List<SoundEffectSO> soundEffects;
 
-    // Update is called once per frame
-    void Update()
+    public void PlaySoundAtIndexS(int index)
     {
-        
+        soundEffects[index].Play();
     }
 
 }
