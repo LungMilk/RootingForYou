@@ -66,9 +66,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73a34150dc826614c94aad2521680d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gardenBoxManagers: []
-  _tasks: []
-  _targets: []
+  _gardenBoxManagers:
+  - {fileID: 8860832561311180668}
+  _tasks:
+  - {fileID: 11400000, guid: 0ee4153ba651a5e469fd62ac923e652b, type: 2}
+  _completedTasks: []
+  OnTaskCompleted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6150243874400461910
 GameObject:
   m_ObjectHideFlags: 0
