@@ -16,6 +16,7 @@ public class PlacedObject : MonoBehaviour
         placedObject._scale = scale;
         placedObject._doesOccupy = doesOccupy;
         placedObject._playerRemoveable = playerRemoveable;
+        placedObject.Initialize(placedObjectTypeSO);
         return placedObject;
     }
     //if we have placed object simply make a bool to if occupies the gridobject can take said bool and just return its chill
@@ -35,5 +36,9 @@ public class PlacedObject : MonoBehaviour
     public void DestroySelf()
     {
         Destroy(gameObject);
+    }
+    public virtual void Initialize(PlacedObjectTypeSO typeSO)
+    {
+        _placedObjectTypeSO = typeSO;
     }
 }

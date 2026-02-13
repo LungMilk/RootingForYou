@@ -43,17 +43,23 @@ public class PuzzleTaskManager : MonoBehaviour
             }
         }
 
-        PuzzleTaskSO task = _tasks[0];
-        if (task == null) {
-            print("Task is not assigned");
-            return; }
+        if (_tasks == null || _tasks.Count == 0)
+        {
+            // No active tasks left
+            return;
+        }
 
-        if (!task.IsCompleted(cumulativeTotal)) { return; }
+        PuzzleTaskSO task = _tasks[0];
+
+        if (!task.IsCompleted(cumulativeTotal))
+        {
+            return;
+        }
 
         OnTaskCompleted.Invoke();
 
         _completedTasks.Add(task);
-        _tasks.Remove(task);
+        _tasks.RemoveAt(0);
         //foreach (var target in _targets)
         //{
         //    if (target.TryGetComponent<IActionCall>(out var action) && !action.Called)

@@ -12,19 +12,28 @@ public enum PlantAttribute
 public class PlantObject : PlacedObject
 {
     PlantObjectSO _plantObjectSO;
+    [SerializeField]
     int _beauty;
+    [SerializeField]
     int _passion;
+    [SerializeField]
     int _calmness;
 
-    private void Start()
+    public override void Initialize(PlacedObjectTypeSO typeSO)
     {
-        _plantObjectSO = _placedObjectTypeSO as PlantObjectSO;
+        base.Initialize(typeSO);
+
+        _plantObjectSO = typeSO as PlantObjectSO;
+
+        if (_plantObjectSO == null)
+        {
+            Debug.LogError($"{name} initialized with non-PlantObjectSO!");
+            return;
+        }
 
         _beauty = _plantObjectSO.beauty;
         _passion = _plantObjectSO.passion;
         _calmness = _plantObjectSO.calmness;
-
-        //print(GetGridPositionList()[0]);
     }
 
     public Dictionary<PlantAttribute,int> GetAttributes()

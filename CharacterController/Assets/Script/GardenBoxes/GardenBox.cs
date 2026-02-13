@@ -53,14 +53,14 @@ public class GardenBox : Interactable
 
         CalculateGridValues();
 
-        //try
-        //{
-        //    GardenBoxChanged?.Invoke();
-        //}
-        //catch (Exception ex)
-        //{
-        //    Debug.LogError($"GardenBoxChanged listener threw an error: {ex}");
-        //}
+        try
+        {
+            GardenBoxChanged?.Invoke();
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"GardenBoxChanged listener threw an error: {ex}");
+        }
     }
 
     [ContextMenu("Calculate Grid Values")]
@@ -101,9 +101,9 @@ public class GardenBox : Interactable
             _beautyContribution += attributes[PlantAttribute.Beauty];
             print($"beauty: {attributes[PlantAttribute.Beauty]}");
             _passionContribution += attributes[PlantAttribute.Passion];
-            print($"passion: {attributes[PlantAttribute.Beauty]}");
+            print($"passion: {attributes[PlantAttribute.Passion]}");
             _calmnessContribution += attributes[PlantAttribute.Calmness];
-            print($"calmness: {attributes[PlantAttribute.Beauty]}");
+            print($"calmness: {attributes[PlantAttribute.Calmness]}");
         }
 
         ChangeDisplayText();

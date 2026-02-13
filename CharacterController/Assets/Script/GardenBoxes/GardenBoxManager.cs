@@ -1,5 +1,6 @@
-using UnityEngine;
+using System;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Events;
 //Thought this would do something in the inspector
 [HelpURL("https://miro.com/app/board/uXjVGPLT8VU=/")]
@@ -28,6 +29,7 @@ public class GardenBoxManager : MonoBehaviour
             if (box != null)
             {
                 gardenBoxes.Add(box);
+                box.GardenBoxChanged.RemoveListener(OnGardenBoxChanged);
                 box.GardenBoxChanged.AddListener(OnGardenBoxChanged);
             }
         }
@@ -38,7 +40,10 @@ public class GardenBoxManager : MonoBehaviour
         foreach (var box in gardenBoxes)
         {
             if (box != null)
+            {
+                box.GardenBoxChanged.RemoveListener(OnGardenBoxChanged);
                 box.GardenBoxChanged.AddListener(OnGardenBoxChanged);
+            }
         }
 
         detectionBox.gameObject.SetActive(false);
@@ -53,12 +58,23 @@ public class GardenBoxManager : MonoBehaviour
 
         foreach (var box in gardenBoxes)
         {
+            if (box == null) continue;
+
             Dictionary<PlantAttribute, int> boxContribution = box.GetAttributeTotals();
             _beautyTotal += boxContribution[PlantAttribute.Beauty];
             _passionTotal += boxContribution[PlantAttribute.Passion];
             _calmnessTotal += boxContribution[PlantAttribute.Calmness];
         }
         OnDetectedChange.Invoke();
+
+        try
+        {
+            OnDetectedChange?.Invoke();
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"OnDetectedChange listener error: {ex}");
+        }
     }
 
     public Dictionary<PlantAttribute,int> GetAttributeTotals()
