@@ -17,6 +17,10 @@ public class GoalManager : MonoBehaviour
     {
         Instance = this;
     }
+    private void Start()
+    {
+        PopulateObjectiveList();
+    }
     /// <summary>
     /// Sorts the objectives based off of priority, then outputs a string to <see cref="_goalUIText"/> to be displayed.
     /// </summary>
@@ -49,10 +53,13 @@ public class GoalManager : MonoBehaviour
     public void CompleteObjective(GoalSO recievedGoal)
     {
         GoalSO currentGoal = _objectives.Find(item => item == recievedGoal);
+        if (currentGoal == null) {
+            print($"no objective of {recievedGoal.name} found in list");
         currentGoal.isCompleted = true;
         _completedObjectives.Add(currentGoal);
         _objectives.Remove(currentGoal);
         PopulateObjectiveList();
+            }
     }
     /// <summary>
     /// Add a new goal to <see cref="_objectives"/>
@@ -62,10 +69,19 @@ public class GoalManager : MonoBehaviour
     {
         if (_objectives.Contains(recievedGoal) && recievedGoal.repeating == false)
         {
-            Debug.Log($"{recievedGoal.name} objective already present in list");
+            print($"{recievedGoal.name} objective already present in list");
             return;
         }
         _objectives.Add(recievedGoal);
         PopulateObjectiveList();
+    }
+
+    public List<GoalSO> GetCurrentObjectives()
+    {
+        return _objectives;
+    }
+    public List<GoalSO> GetCompletedObjectives()
+    {
+        return _completedObjectives;
     }
 }
