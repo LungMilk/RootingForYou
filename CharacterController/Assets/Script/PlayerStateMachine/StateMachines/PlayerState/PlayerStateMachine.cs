@@ -39,8 +39,8 @@ public class PlayerStateMachine : MonoBehaviour
     public GameObject _inputObject;
     //public bool _isInteractPressed;
     private InputAction _interactAction;
-    IInteractable _currentInteractable;
-    IInteractable _interactedWith;
+    Interactable _currentInteractable;
+    Interactable _interactedWith;
     InteractState _foundInteractType;
 
     public CameraEvent OnCameraOptionFound;
@@ -51,7 +51,7 @@ public class PlayerStateMachine : MonoBehaviour
     public PlantCollectionSO _plantCollection;
     public PlantObjectSO _selectedPlantObject;
     //in case we want rotation
-    public PlacedObjectTypeSO.Dir _dir = PlacedObjectTypeSO.Dir.Down;
+    private PlacedObjectTypeSO.Dir _dir = PlacedObjectTypeSO.Dir.Down;
 
     public List<SoundEffectSO> _soundEffects;
 
@@ -166,7 +166,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         if (_interactedWith != null) { return;}
 
-        _foundInteractType = _currentInteractable.InteractableType;
+        _foundInteractType = _currentInteractable.InteractabeType;
         _previousState = _currentState;
 
         _interactedWith = _currentInteractable;
@@ -179,22 +179,19 @@ public class PlayerStateMachine : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out IInteractable interactable))
+        if (other.TryGetComponent(out Interactable interactable))
         {
             //print("Found interactable");
             //_canInteract = false;
             _currentInteractable = interactable;
-            _inputObject = other.transform.parent.gameObject;
+            _inputObject = other.transform.root.gameObject;
             print(_inputObject.name);
-        }
-        if (other.TryGetComponent(out ICameraOption cameraOption))
-        {
-            _foundCamera = cameraOption.CameraOption;
+            _foundCamera = interactable.CameraOption;
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent(out IInteractable interactable))
+        if (other.TryGetComponent(out Interactable interactable))
         {
             //print("Exit interactable");
             _interactedWith = null;

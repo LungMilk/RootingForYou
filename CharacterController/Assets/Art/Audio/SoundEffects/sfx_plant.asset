@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30d723f021e59804796d2ae00b6abb7c, type: 3}
+  m_Name: sfx_plant
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: fafe023198d65074b939c71b67f9d1da, type: 3}
+  - {fileID: 8300000, guid: 3a3e03ebef96691428cd50751904a2ab, type: 3}
+  - {fileID: 8300000, guid: 8cd17c4031b9e0646980ee61473493f4, type: 3}
+  - {fileID: 8300000, guid: a7202f0753c26494f802466df602de9e, type: 3}
+  - {fileID: 8300000, guid: ca1ef2cfe53b0834b8d85fa95d2f8e75, type: 3}
+  volume: {x: 0.5, y: 0.5}
+  pitch: {x: 1, y: 1}

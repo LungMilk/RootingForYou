@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3706525937341606595}
   - component: {fileID: 489253302645638501}
   - component: {fileID: 8029446288291376967}
-  - component: {fileID: 4579417391027941828}
   - component: {fileID: 4218699637855549480}
+  - component: {fileID: 7553153033468368636}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.5, y: 0.5, z: 0.5}
-  m_LocalScale: {x: 2, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 1, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4850088350007386873}
@@ -111,20 +111,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4579417391027941828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 837543589638747258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea1a17d13b093ab4e825fa898132b3fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interactType: 1
-  cameraOption: {fileID: 2068222533981991472}
 --- !u!54 &4218699637855549480
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -133,7 +119,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 837543589638747258}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 10000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -147,11 +133,37 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7553153033468368636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837543589638747258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a486f3413022734d947232eff87ea2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets: []
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  _cameraOption: {fileID: 2068222533981991472}
+  _interactableType: 1
+  _alwaysTrigger: 0
+  GardenBoxChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  _preset: {fileID: 0}
+  _gridBuilder: {fileID: 606748747292233210}
+  _displayTMPro: {fileID: 186843760088457379}
+  _displayText: 
 --- !u!1 &1857821374624710588
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4800703112414869624}
   m_Layer: 0
-  m_Name: 2x4GardenBox 1
+  m_Name: 3x4GardenBox 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -314,7 +326,7 @@ Transform:
   m_GameObject: {fileID: 3123358485262452637}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.489, y: 1, z: -0}
+  m_LocalPosition: {x: -1.507, y: 1, z: -0.229}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -333,7 +345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gridW: 4
-  _gridH: 2
+  _gridH: 3
   _gridCellSize: 0.5
 --- !u!1 &4236874210575301104
 GameObject:
@@ -475,7 +487,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Garden Box 2x2
+  m_text: Garden Box 3x4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -513,6 +525,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
