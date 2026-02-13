@@ -4638,6 +4638,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad64a504b8d5d1842a3cf842ac625b96, type: 3}
+--- !u!114 &1981762717 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8676185449043961784, guid: ad64a504b8d5d1842a3cf842ac625b96, type: 3}
+  m_PrefabInstance: {fileID: 1981762716}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a486f3413022734d947232eff87ea2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2040889057
 GameObject:
   m_ObjectHideFlags: 0
@@ -4788,7 +4799,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1421222667205896571, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.9522934
+      value: 12.05
       objectReference: {fileID: 0}
     - target: {fileID: 1421222667205896571, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4841,7 +4852,7 @@ PrefabInstance:
     - target: {fileID: 8860832561311180668, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
       propertyPath: 'gardenBoxes.Array.data[0]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1981762717}
     - target: {fileID: 8860832561311180668, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
       propertyPath: 'gardenBoxes.Array.data[1]'
       value: 
