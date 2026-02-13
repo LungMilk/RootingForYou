@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class StatDisplay : MonoBehaviour
 {
-
+    public PlantAttribute plantAttribute;
     public int maxStat;
     public int currentStat;
     public int previewStat;

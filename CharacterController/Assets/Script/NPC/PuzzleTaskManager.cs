@@ -58,4 +58,10 @@ public class PuzzleTaskManager : MonoBehaviour
             }
         }
     }
+    public PuzzleTaskSO GetCurrentTask()
+    {
+        if (_tasks != null)
+            return _tasks[0];
+        else return null;
+    }
 }
