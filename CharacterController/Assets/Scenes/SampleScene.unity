@@ -1123,6 +1123,7 @@ GameObject:
   - component: {fileID: 572323174}
   - component: {fileID: 572323179}
   - component: {fileID: 572323178}
+  - component: {fileID: 572323180}
   m_Layer: 0
   m_Name: TutorialCube
   m_TagString: Untagged
@@ -1255,13 +1256,13 @@ MonoBehaviour:
   OnInteract:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1511678210}
-        m_TargetAssemblyTypeName: GoalManager, Assembly-CSharp
-        m_MethodName: CompleteObjective
-        m_Mode: 2
+      - m_Target: {fileID: 572323180}
+        m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
+        m_MethodName: PlaySoundAtIndexS
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 0b9f6e2ceaae3474a819f12bdf9a2477, type: 2}
-          m_ObjectArgumentAssemblyTypeName: GoalSO, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1270,6 +1271,20 @@ MonoBehaviour:
   _cameraOption: {fileID: 0}
   _interactableType: 2
   _alwaysTrigger: 1
+--- !u!114 &572323180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572323173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb80919f11eaa634ca8da7f9bbfd2e28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffects:
+  - {fileID: 11400000, guid: f09b8be2f59d7684086dacbfc5574bb8, type: 2}
 --- !u!4 &616255410 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1094543902986763309, guid: c689eda3fa0eeb242b79d3caa55e72ed, type: 3}

@@ -3,20 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class MenuSystem : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+#if UNITY_EDITOR
+    public UnityEditor.SceneAsset sceneAsset;
+#endif
     public void StartGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(sceneAsset.name);
     }
 }
