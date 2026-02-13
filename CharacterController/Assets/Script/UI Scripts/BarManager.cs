@@ -3,10 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
+public class AttributeSliderPair
+{
+    public PlantAttribute attribute;
+    public Slider slider;
+}
 public class BarManager : MonoBehaviour
 {
-    public List<Slider> bars;
-    public List<Slider> previewBars;
+    [SerializeField] private List<AttributeSliderPair> barPairs;
+    [SerializeField] private List<AttributeSliderPair> previewBarPairs;
+
+    private Dictionary<PlantAttribute, Slider> bars;
+    private Dictionary<PlantAttribute, Slider> previewBars;
+    private Dictionary<PlantAttribute, int> previewValues = new();
+
     public GardenBoxManager barManager;
     public PuzzleTaskManager puzzleTaskManager;
     public int beauty;
@@ -22,7 +33,17 @@ public class BarManager : MonoBehaviour
     {
         SetBarMax();
     }
+    private void Awake()
+    {
+        bars = new Dictionary<PlantAttribute, Slider>();
+        previewBars = new Dictionary<PlantAttribute, Slider>();
 
+        foreach (var pair in barPairs)
+            bars[pair.attribute] = pair.slider;
+
+        foreach (var pair in previewBarPairs)
+            previewBars[pair.attribute] = pair.slider;
+    }
     // Update is called once per frame
     private void Update()
     {
@@ -32,51 +53,47 @@ public class BarManager : MonoBehaviour
 
     public void UpdateBars()
     {
-        if (barManager == null) {return; }
+        if (barManager == null) return;
 
-        Dictionary<PlantAttribute,int> currentTotals = barManager.GetAttributeTotals();
-        currentTotals.TryGetValue(PlantAttribute.Beauty, out beauty);
-        currentTotals.TryGetValue(PlantAttribute.Passion, out passion);
-        currentTotals.TryGetValue(PlantAttribute.Calmness, out calmness);
+        var totals = barManager.GetAttributeTotals();
 
-        if (beauty >= 0)
+        foreach (var attribute in System.Enum.GetValues(typeof(PlantAttribute)))
         {
-            bars[0].value = beauty;
-        }
-        if (calmness >= 0)
-        {
-            bars[1].value = calmness;
-        }
-        if (passion >= 0)
-        {
-            bars[2].value = passion;
+            PlantAttribute attr = (PlantAttribute)attribute;
+
+            if (totals.TryGetValue(attr, out int value))
+            {
+                bars[attr].value = value;
+            }
         }
     }
 
-    public void PreviewBars()
+     public void PreviewBars()
     {
-        previewBars[0].value = previewBeauty;
-        previewBars[1].value = previewCalmness;
-        previewBars[2].value = previewPassion;
+        foreach (var kvp in previewValues)
+        {
+            previewBars[kvp.Key].value = kvp.Value;
+        }
     }
 
     public void SetBarMax()
     {
-        if (puzzleTaskManager == null) {return; }
-        //ideally this would follow the dictionary method with the different assets doing their thing
-        //set max stat based on the puzzles goal
-        PuzzleTaskSO currentTask = puzzleTaskManager.GetCurrentTask();
-        //need to have better sortingand the like maybe dictionary but that is later
-        bars[0].maxValue = currentTask._attributeThresholds[0].requiredValue;
-        bars[1].maxValue = currentTask._attributeThresholds[1].requiredValue;
-        bars[2].maxValue = currentTask._attributeThresholds[2].requiredValue;
+        if (puzzleTaskManager == null) return;
 
-        previewBars[0].maxValue = currentTask._attributeThresholds[0].requiredValue;
-        previewBars[1].maxValue = currentTask._attributeThresholds[1].requiredValue;
-        previewBars[2].maxValue = currentTask._attributeThresholds[2].requiredValue;
+        var task = puzzleTaskManager.GetCurrentTask();
+
+        foreach (var threshold in task._attributeThresholds)
+        {
+            bars[threshold.attribute].maxValue = threshold.requiredValue;
+            previewBars[threshold.attribute].maxValue = threshold.requiredValue;
+        }
     }
     public void SetPuzzleManager(PuzzleTaskManager manager)
     {
         puzzleTaskManager = manager;
+    }
+    public void SetGardenBoxManager(GardenBoxManager manager)
+    {
+        barManager = manager;
     }
 }
