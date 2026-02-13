@@ -9,7 +9,7 @@ public class HighlightSeed : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public PlantObjectSO plantObject;
 
-    public BarManager barManager;
+    public GameObject barManager;
 
     public GameObject seedObject;
 
@@ -26,18 +26,18 @@ public class HighlightSeed : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         //Debug.Log("Mouse is over the seed.");
         
-        barManager.previewBeauty = plantObject.beauty;
-        barManager.previewCalmness = plantObject.calmness;
-        barManager.previewPassion = plantObject.passion;
+        barManager.GetComponent<BarManager>().previewBeauty = plantObject.beauty;
+        barManager.GetComponent<BarManager>().previewCalmness = plantObject.calmness;
+        barManager.GetComponent<BarManager>().previewPassion = plantObject.passion;
         seedObject.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         //Debug.Log("Mouse exited the seed.");
-        barManager.previewBeauty = 0;
-        barManager.previewCalmness = 0;
-        barManager.previewPassion = 0;
+        barManager.GetComponent<BarManager>().previewBeauty = 0;
+        barManager.GetComponent<BarManager>().previewCalmness = 0;
+        barManager.GetComponent<BarManager>().previewPassion = 0;
         seedObject.SetActive(false);
     }
 

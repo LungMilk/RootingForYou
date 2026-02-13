@@ -27,35 +27,37 @@ public class BarManager : MonoBehaviour
     private void Update()
     {
         UpdateBars();
-        //PreviewBars();
+        PreviewBars();
     }
 
     public void UpdateBars()
     {
-        if (barManager == null) { return; }
+        if (barManager == null) {return; }
 
-        Dictionary<PlantAttribute, int> currentTotals = barManager.GetAttributeTotals();
-
+        Dictionary<PlantAttribute,int> currentTotals = barManager.GetAttributeTotals();
         currentTotals.TryGetValue(PlantAttribute.Beauty, out beauty);
         currentTotals.TryGetValue(PlantAttribute.Passion, out passion);
         currentTotals.TryGetValue(PlantAttribute.Calmness, out calmness);
 
-        // MAIN BARS
-        bars[0].value = beauty;
-        bars[1].value = calmness;
-        bars[2].value = passion;
-
-        // PREVIEW BARS (current + selected plant preview)
-        previewBars[0].value = beauty + previewBeauty;
-        previewBars[1].value = calmness + previewCalmness;
-        previewBars[2].value = passion + previewPassion;
+        if (beauty >= 0)
+        {
+            bars[0].value = beauty;
+        }
+        if (calmness >= 0)
+        {
+            bars[1].value = calmness;
+        }
+        if (passion >= 0)
+        {
+            bars[2].value = passion;
+        }
     }
 
     public void PreviewBars()
     {
-        previewBars[0].value = previewBeauty + beauty;
-        previewBars[1].value = previewCalmness + calmness;
-        previewBars[2].value = previewPassion + passion;
+        previewBars[0].value = previewBeauty;
+        previewBars[1].value = previewCalmness;
+        previewBars[2].value = previewPassion;
     }
 
     public void SetBarMax()
