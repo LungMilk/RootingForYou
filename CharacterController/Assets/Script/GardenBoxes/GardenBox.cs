@@ -38,7 +38,7 @@ public class GardenBox : Interactable
 
         //if (_grid == null) { print("WEEWOOWEEWOO"); }
         ChangeDisplayText();
-        LoadGridPreset();
+        //LoadGridPreset();
 
         if (_grid != null)
         {
@@ -53,14 +53,14 @@ public class GardenBox : Interactable
 
         CalculateGridValues();
 
-        try
-        {
-            GardenBoxChanged?.Invoke();
-        }
-        catch (Exception ex)
-        {
-            Debug.LogError($"GardenBoxChanged listener threw an error: {ex}");
-        }
+        //try
+        //{
+        //    GardenBoxChanged?.Invoke();
+        //}
+        //catch (Exception ex)
+        //{
+        //    Debug.LogError($"GardenBoxChanged listener threw an error: {ex}");
+        //}
     }
 
     [ContextMenu("Calculate Grid Values")]
@@ -71,7 +71,7 @@ public class GardenBox : Interactable
         _calmnessContribution = 0;
 
         HashSet<PlantObject> currentPlants = new HashSet<PlantObject>();
-        float multipler = 1;
+        //float multipler = 1;
 
         var gridObjects = new List<GridObject>(_grid.GetTGridObjectList());
         foreach (GridObject gObject in gridObjects)
@@ -82,29 +82,30 @@ public class GardenBox : Interactable
             //    multipler = modifier._modifier;
             //}
             //multiplier = entry.modifier
-            foreach (var entry in gObject.GetPlacedObjects())
+            //foreach (var entry in gObject.GetPlacedObject())
+            //{
+
+            if (gObject.GetPlacedObject() is PlantObject plant)
             {
-                if (entry is PlantObject plantObject)
-                {
-                    var plantAttributes = plantObject.GetAttributes();
+                var plantAttributes = plant.GetAttributes();
 
-                    plantAttributes[PlantAttribute.Beauty] = Mathf.CeilToInt(plantAttributes[PlantAttribute.Beauty] * multipler);
-                    plantAttributes[PlantAttribute.Passion] =Mathf.CeilToInt(plantAttributes[PlantAttribute.Passion] * multipler);
-                    plantAttributes[PlantAttribute.Calmness] =Mathf.CeilToInt(plantAttributes[PlantAttribute.Calmness] * multipler);
-
-                    currentPlants.Add(plantObject);
-                }
+                currentPlants.Add(plant);
             }
+            
         }
         //we can expland the getting of placed objects wihtin the space to have the calculation of if the space has a modifier
         foreach (PlantObject plant in currentPlants)
         {
+            //print("We have plants");
             var attributes = plant.GetAttributes();
-
             _beautyContribution += attributes[PlantAttribute.Beauty];
+            print($"beauty: {attributes[PlantAttribute.Beauty]}");
             _passionContribution += attributes[PlantAttribute.Passion];
+            print($"passion: {attributes[PlantAttribute.Beauty]}");
             _calmnessContribution += attributes[PlantAttribute.Calmness];
+            print($"calmness: {attributes[PlantAttribute.Beauty]}");
         }
+
         ChangeDisplayText();
     }
 

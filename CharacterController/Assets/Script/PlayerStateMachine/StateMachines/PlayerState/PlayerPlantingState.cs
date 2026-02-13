@@ -73,10 +73,11 @@ public class PlayerPlantingState : PlayerBaseState
             _grid.GetXZ(Utilities.GetMouseWorldPositionXZ(), out int x, out int z);
             GridObject gridObject = _grid.GetGridObject(x,z);
 
-            List<PlacedObject> placedObjects = gridObject.GetRemovablePlacedObjects();
-            if (placedObjects == null || placedObjects.Count == 0) { return; }
+            //List<PlacedObject> placedObjects = gridObject.GetRemovablePlacedObject();
+            PlacedObject placedObject = gridObject.GetPlacedObject();
+            if (placedObject == null) { return; }
 
-            var obj = placedObjects[0];
+            var obj = placedObject;
 
             obj.DestroySelf();
             digSound.Play();

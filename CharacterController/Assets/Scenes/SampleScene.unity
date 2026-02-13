@@ -350,10 +350,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1278384136}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -250}
+  m_SizeDelta: {x: 100, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &159604559
 MonoBehaviour:
@@ -367,6 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5644ef128bf6654fb52631ec018fc5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plantAttribute: 0
   maxStat: 5
   currentStat: 1
   previewStat: 2
@@ -2014,10 +2015,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1278384136}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -200, y: -250}
+  m_SizeDelta: {x: 100, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1262229181
 MonoBehaviour:
@@ -2031,6 +2032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5644ef128bf6654fb52631ec018fc5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plantAttribute: 0
   maxStat: 8
   currentStat: 1
   previewStat: 1
@@ -2154,11 +2156,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78f2d113c9e97840a88e4b76fd7634b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bars:
-  - {fileID: 159604557}
-  - {fileID: 1733038754}
-  - {fileID: 1262229179}
+  barPairs: []
+  previewBarPairs: []
   barManager: {fileID: 1005265756}
+  puzzleTaskManager: {fileID: 0}
   beauty: 0
   calmness: 0
   passion: 0
@@ -2246,7 +2247,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1449288409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2736,10 +2737,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1278384136}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -75, y: -250}
+  m_SizeDelta: {x: 100, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1733038756
 MonoBehaviour:
@@ -2753,6 +2754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5644ef128bf6654fb52631ec018fc5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plantAttribute: 0
   maxStat: 10
   currentStat: 6
   previewStat: 2
