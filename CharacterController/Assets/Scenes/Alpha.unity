@@ -2450,8 +2450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb80919f11eaa634ca8da7f9bbfd2e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundEffects:
-  - {fileID: 11400000, guid: c3b60b4971ad5df4789c02aa780b163f, type: 2}
+  soundEffects: []
 --- !u!114 &990577174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3327,8 +3326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb80919f11eaa634ca8da7f9bbfd2e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundEffects:
-  - {fileID: 11400000, guid: c3b60b4971ad5df4789c02aa780b163f, type: 2}
+  soundEffects: []
 --- !u!114 &1212219176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3727,7 +3725,7 @@ PrefabInstance:
     - target: {fileID: 7327969932878913065, guid: 480a891438e998142a991cd60c8d66b6, type: 3}
       propertyPath: OnProxExit.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1231531278}
+      objectReference: {fileID: 0}
     - target: {fileID: 7327969932878913065, guid: 480a891438e998142a991cd60c8d66b6, type: 3}
       propertyPath: OnProxExit.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -3756,11 +3754,6 @@ PrefabInstance:
 --- !u!4 &1231531277 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 388559741771638066, guid: 480a891438e998142a991cd60c8d66b6, type: 3}
-  m_PrefabInstance: {fileID: 1231531276}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1231531278 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8677355638562044490, guid: 480a891438e998142a991cd60c8d66b6, type: 3}
   m_PrefabInstance: {fileID: 1231531276}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1251131026
@@ -4617,7 +4610,7 @@ PrefabInstance:
     - target: {fileID: 7327969932878913065, guid: 480a891438e998142a991cd60c8d66b6, type: 3}
       propertyPath: OnProxExit.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1675787956}
+      objectReference: {fileID: 0}
     - target: {fileID: 7327969932878913065, guid: 480a891438e998142a991cd60c8d66b6, type: 3}
       propertyPath: OnProxExit.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -4642,11 +4635,6 @@ PrefabInstance:
 --- !u!4 &1675787955 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 388559741771638066, guid: 480a891438e998142a991cd60c8d66b6, type: 3}
-  m_PrefabInstance: {fileID: 1675787954}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1675787956 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8677355638562044490, guid: 480a891438e998142a991cd60c8d66b6, type: 3}
   m_PrefabInstance: {fileID: 1675787954}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1710720839
@@ -5014,8 +5002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb80919f11eaa634ca8da7f9bbfd2e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundEffects:
-  - {fileID: 11400000, guid: c3b60b4971ad5df4789c02aa780b163f, type: 2}
+  soundEffects: []
 --- !u!114 &1831144951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5370,6 +5357,7 @@ GameObject:
   - component: {fileID: 1924210482}
   - component: {fileID: 1924210481}
   - component: {fileID: 1924210480}
+  - component: {fileID: 1924210484}
   - component: {fileID: 1924210479}
   - component: {fileID: 1924210478}
   m_Layer: 0
@@ -5444,8 +5432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb80919f11eaa634ca8da7f9bbfd2e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundEffects:
-  - {fileID: 11400000, guid: c39c4d567a761694aa77912b1d2f9a98, type: 2}
+  soundEffects: []
 --- !u!114 &1924210481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5483,6 +5470,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 11500000, guid: ecf649a333717fb4ea2dfa5e044b644b, type: 3}
+        m_TargetAssemblyTypeName: UnityEditor.MonoScript, UnityEditor.CoreModule
+        m_MethodName: set_name
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: SpawnBothVFX
           m_BoolArgument: 1
         m_CallState: 2
   OnProxExit:
@@ -5536,6 +5535,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1924210484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924210477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecf649a333717fb4ea2dfa5e044b644b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vfx1: {fileID: 5642766282230003982, guid: b5c8ca7ed10b61e499cce8ec3b6e2e4c, type: 3}
+  vfx2: {fileID: 4425129568585013132, guid: bbeeb0ddc21369746aaaae5c5c1c09cf, type: 3}
+  positionOffset: {x: 0, y: 0, z: 0}
+  playerTransform: {fileID: 630634058}
 --- !u!1 &1935906845 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4912d86e3012ec04e99667a7dccf926f, type: 3}
@@ -5808,8 +5823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb80919f11eaa634ca8da7f9bbfd2e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundEffects:
-  - {fileID: 11400000, guid: c3b60b4971ad5df4789c02aa780b163f, type: 2}
+  soundEffects: []
 --- !u!114 &1996197509
 MonoBehaviour:
   m_ObjectHideFlags: 0
