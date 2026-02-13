@@ -1,11 +1,12 @@
+using CustomNamespace.Utilities;
+using System;
+using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
+using Unity.VisualScripting.FullSerializer;
 using UnityEditor;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
-using CustomNamespace.Utilities;
-using System;
-using Unity.VisualScripting.FullSerializer;
 public class GridXZ<TGridObject>
 {
     public event EventHandler<OnGridObjectChangedEventArgs> OnGridObjectChanged;
@@ -56,9 +57,18 @@ public class GridXZ<TGridObject>
         //SetValue(2, 1, 56);
     }
 
-    public TGridObject[,] GetTGridObjectList()
+    public List<TGridObject> GetTGridObjectList()
     {
-        return _gridArray;
+        var list = new List<TGridObject>();
+        for (int x = 0; x < _width; x++)
+            for (int z = 0; z < _height; z++)
+                list.Add(_gridArray[x, z]);
+        return list;
+    }
+
+    public bool IsValidGridPosition(Vector2Int pos)
+    {
+        return pos.x >= 0 && pos.y >= 0 && pos.x < _width && pos.y < _height;
     }
 
     public float GetCellSize()

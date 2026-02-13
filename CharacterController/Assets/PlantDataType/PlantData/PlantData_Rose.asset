@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: PlantData_Rose
   m_EditorClassIdentifier: 
   _nameString: Rose
-  _prefab: {fileID: 2807956720281544250, guid: 9f30c95ff28ed924dbd623c7b39627e8, type: 3}
+  _prefab: {fileID: 6087284564362922448, guid: 230a22560aa792240933cb95f132beff, type: 3}
   _width: 1
   _height: 1
+  _doesOccupy: 1
+  _playerRemovable: 1
   displayImage: {fileID: 21300000, guid: e92c55bd616f5fd458682eba2aef95c1, type: 3}
   beauty: 2
   passion: -1

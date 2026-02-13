@@ -39,10 +39,14 @@ public class BarManager : MonoBehaviour
         previewBars = new Dictionary<PlantAttribute, Slider>();
 
         foreach (var pair in barPairs)
+        {
             bars[pair.attribute] = pair.slider;
+        }
 
         foreach (var pair in previewBarPairs)
+        {
             previewBars[pair.attribute] = pair.slider;
+        }
     }
     // Update is called once per frame
     private void Update()
@@ -69,12 +73,12 @@ public class BarManager : MonoBehaviour
     }
 
      public void PreviewBars()
-    {
+     {
         foreach (var kvp in previewValues)
         {
             previewBars[kvp.Key].value = kvp.Value;
         }
-    }
+     }
 
     public void SetBarMax()
     {

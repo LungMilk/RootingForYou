@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -28,6 +29,7 @@ public class GardenBox : Interactable
     [TextArea]
     public string _displayText;
 
+    [SerializeField]
     private int _beautyContribution, _passionContribution, _calmnessContribution;
     private void Start()
     {
@@ -38,13 +40,27 @@ public class GardenBox : Interactable
         ChangeDisplayText();
         LoadGridPreset();
 
-        _grid.OnGridObjectChanged += OnGridChanged;
+        if (_grid != null)
+        {
+            _grid.OnGridObjectChanged += OnGridChanged;
+        }
     }
     private void OnGridChanged(object sender, GridXZ<GridObject>.OnGridObjectChangedEventArgs e)
     {
+        if (_grid == null) return;
+
+        if (!_grid.IsValidGridPosition(new Vector2Int(e.x, e.z))) return;
+
         CalculateGridValues();
-        //There is an issue with removing that gives an out of array index error that I currently do not know how to fix
-        GardenBoxChanged?.Invoke();
+
+        try
+        {
+            GardenBoxChanged?.Invoke();
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"GardenBoxChanged listener threw an error: {ex}");
+        }
     }
 
     [ContextMenu("Calculate Grid Values")]
@@ -56,12 +72,15 @@ public class GardenBox : Interactable
 
         HashSet<PlantObject> currentPlants = new HashSet<PlantObject>();
         float multipler = 1;
-        foreach (GridObject gObject in _grid.GetTGridObjectList())
+
+        var gridObjects = new List<GridObject>(_grid.GetTGridObjectList());
+        foreach (GridObject gObject in gridObjects)
         {
-            if (gObject.GetPlacedObjects().OfType<ModifierObject>().FirstOrDefault() is ModifierObject modifier)
-            {
-                multipler = modifier._modifier;
-            }
+            if (gObject == null) continue;
+            //if (gObject.GetPlacedObjects().OfType<ModifierObject>().FirstOrDefault() is ModifierObject modifier)
+            //{
+            //    multipler = modifier._modifier;
+            //}
             //multiplier = entry.modifier
             foreach (var entry in gObject.GetPlacedObjects())
             {
@@ -106,7 +125,7 @@ public class GardenBox : Interactable
 
     public void LoadGridPreset()
     {
-        if (_preset == null) { return; }
+        if (_preset == null || _grid == null) return;
 
         int height = _preset._grid.Length;
         for (int y = 0; y < height; y++)
@@ -128,8 +147,17 @@ public class GardenBox : Interactable
 
                 foreach (Vector2Int gridPosition in gridPositionList)
                 {
-                    //yes the x and y might be confusing for world and grid spaces but don't worry about it
-                    _grid.GetGridObject(gridPosition.x, gridPosition.y).SetPlacedObject(placedObject);
+                    if (!_grid.IsValidGridPosition(gridPosition))
+                    {
+                        Debug.LogWarning($"Skipping out-of-bounds grid position {gridPosition} for object {obj.name}");
+                        continue;
+                    }
+
+                    GridObject targetGridObject = _grid.GetGridObject(gridPosition.x, gridPosition.y);
+                    if (targetGridObject != null)
+                    {
+                        targetGridObject.SetPlacedObject(placedObject);
+                    }
                 }
             }
         }

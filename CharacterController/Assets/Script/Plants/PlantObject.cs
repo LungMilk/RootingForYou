@@ -16,7 +16,7 @@ public class PlantObject : PlacedObject
     int _passion;
     int _calmness;
 
-    private void Start()
+    private void Awake()
     {
         _plantObjectSO = _placedObjectTypeSO as PlantObjectSO;
 

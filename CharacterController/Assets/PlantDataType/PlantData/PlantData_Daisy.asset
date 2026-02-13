@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlantData_Daisy
   m_EditorClassIdentifier: 
   _nameString: Daisy
-  _prefab: {fileID: 376022691395448659, guid: 7b4568e60e6872e4a94a85229977521d, type: 3}
+  _prefab: {fileID: 6087284564362922448, guid: 8b5dbd00d580cb5458fad6852445861a, type: 3}
   _width: 1
   _height: 1
   _doesOccupy: 1

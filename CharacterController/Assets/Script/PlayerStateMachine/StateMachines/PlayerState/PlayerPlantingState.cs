@@ -14,8 +14,9 @@ public class PlayerPlantingState : PlayerBaseState
     public PlayerPlantingState(PlayerStateMachine currentContext, playerStateFactory playerStateFactory) : base(currentContext, playerStateFactory) { }
 
     public override void EnterState() {
-        digSound = Ctx._soundEffects[1];
-        plantSound = Ctx._soundEffects[2];
+        //sound effects need to be reworked
+        digSound = Ctx._soundEffects[0];
+        plantSound = Ctx._soundEffects[1];
         Debug.Log("Entering planting state");
         _gridBuilder = Ctx.InputObject.GetComponentInChildren<GridBuilder>();
         _grid = _gridBuilder._grid;
@@ -73,18 +74,20 @@ public class PlayerPlantingState : PlayerBaseState
             GridObject gridObject = _grid.GetGridObject(x,z);
 
             List<PlacedObject> placedObjects = gridObject.GetRemovablePlacedObjects();
-            if (placedObjects == null) { return; }
+            if (placedObjects == null || placedObjects.Count == 0) { return; }
+
             var obj = placedObjects[0];
-                obj.DestroySelf();
-                digSound.Play();
 
-                List<Vector2Int> gridPositionList = obj.GetGridPositionList();
+            obj.DestroySelf();
+            digSound.Play();
 
-                foreach (Vector2Int gridPosition in gridPositionList)
-                {
-                //I think it is with my handling of clear placed and clearing removables as I am grabbing the space and calling for an all clear when I need to only clear the desired entry list from removables.
-                    _grid.GetGridObject(gridPosition.x, gridPosition.y).ClearPlacedObject();
-                }
+            List<Vector2Int> gridPositionList = obj.GetGridPositionList();
+
+            foreach (Vector2Int gridPosition in gridPositionList)
+            {
+            //I think it is with my handling of clear placed and clearing removables as I am grabbing the space and calling for an all clear when I need to only clear the desired entry list from removables.
+                _grid.GetGridObject(gridPosition.x, gridPosition.y).ClearPlacedObject();
+            }
         }
 
         //if (Input.GetKeyDown(KeyCode.R))
