@@ -197,8 +197,8 @@ GameObject:
   - component: {fileID: 6725909644305455169}
   - component: {fileID: 4619505860015203541}
   - component: {fileID: 2621220018665280549}
-  - component: {fileID: 318229941329306662}
   - component: {fileID: 5303189343156187447}
+  - component: {fileID: 8581876820672948328}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -349,32 +349,6 @@ MonoBehaviour:
   _gridBuilder: {fileID: 6361107574066812775}
   _displayTMPro: {fileID: 8675603147556868002}
   _displayText: Garden Box 2x2
---- !u!114 &318229941329306662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6771030903356289511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a486f3413022734d947232eff87ea2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targets: []
-  OnInteract:
-    m_PersistentCalls:
-      m_Calls: []
-  _cameraOption: {fileID: 0}
-  _interactableType: 2
-  _alwaysTrigger: 0
-  GardenBoxChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  _preset: {fileID: 0}
-  _gridBuilder: {fileID: 6361107574066812775}
-  _displayTMPro: {fileID: 8675603147556868002}
-  _displayText: Garden Box 2x2
 --- !u!114 &5303189343156187447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,13 +361,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73a34150dc826614c94aad2521680d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gardenBoxManagers: []
+  _gardenBoxManagers:
+  - {fileID: 8581876820672948328}
   _tasks:
   - {fileID: 11400000, guid: ab6c06c40577dd542a39092f7193fa76, type: 2}
   _completedTasks: []
   OnTaskCompleted:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8581876820672948328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6771030903356289511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0db890758d97fd6488edbf45867890ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDetectedChange:
+    m_PersistentCalls:
+      m_Calls: []
+  gardenBoxes: []
+  detectionBox: {fileID: 6725909644305455169}
+  _beautyTotal: 0
+  _passionTotal: 0
+  _calmnessTotal: 0
 --- !u!1 &6782981366501069654
 GameObject:
   m_ObjectHideFlags: 0
