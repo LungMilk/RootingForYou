@@ -1,6 +1,7 @@
 using CustomNamespace.Utilities;
 using ScriptableObjects;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 //using static PlacedObjectTypeSO;
@@ -26,6 +27,7 @@ public class PlayerPlantingState : PlayerBaseState
 
         if (Input.GetMouseButtonDown(0))
         {
+            if(_grid.IsWorldPositionInsideGrid(Utilities.GetMouseWorldPositionXZ())) { return; }
             Debug.Log(Ctx._selectedPlantObject.name);
             _grid.GetXZ(Utilities.GetMouseWorldPositionXZ(), out int x, out int z);
             //Debug.Log($"{x},{z}");

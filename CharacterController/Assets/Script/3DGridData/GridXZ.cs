@@ -94,8 +94,8 @@ public class GridXZ<TGridObject>
         //x = Mathf.FloorToInt((worldPosition-_originPosition).x / _cellSize);
         //z = Mathf.FloorToInt((worldPosition-_originPosition).z / _cellSize);
 
-        x = Mathf.Clamp(x, 0, _width - 1);
-        z = Mathf.Clamp(z,0, _height - 1);
+        //x = Mathf.Clamp(x, 0, _width - 1);
+        //z = Mathf.Clamp(z,0, _height - 1);
     }
 
     public void SetGridObject(int x, int z, TGridObject value)
@@ -124,6 +124,11 @@ public class GridXZ<TGridObject>
         {
             return default;
         }
+    }
+    public bool IsWorldPositionInsideGrid(Vector3 worldPosition)
+    {
+        GetXZ(worldPosition, out int x, out int z);
+        return x >= 0 && z >= 0 && x < _width && z < _height;
     }
 
     public TGridObject GetGridObject(Vector3 worldPosition)
