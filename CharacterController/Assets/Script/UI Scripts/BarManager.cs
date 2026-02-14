@@ -16,18 +16,20 @@ public class BarManager : MonoBehaviour
 
     private Dictionary<PlantAttribute, Slider> bars;
     private Dictionary<PlantAttribute, Slider> previewBars;
+    private Dictionary<PlantAttribute, int> currentTotals = new();
     private Dictionary<PlantAttribute, int> previewValues = new();
 
     public GardenBoxManager barManager;
     public PuzzleTaskManager puzzleTaskManager;
-    public int beauty;
-    public int calmness;
-    public int passion;
-    [Space(10)]
-    [Header("Preview Values")]
-    public int previewBeauty;
-    public int previewCalmness;
-    public int previewPassion;
+    //public int beauty;
+    //public int calmness;
+    //public int passion;
+    //[Space(10)]
+
+    //[Header("Preview Values")]
+    //public int previewBeauty;
+    //public int previewCalmness;
+    //public int previewPassion;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -59,26 +61,39 @@ public class BarManager : MonoBehaviour
     {
         if (barManager == null) return;
 
-        var totals = barManager.GetAttributeTotals();
+        currentTotals = barManager.GetAttributeTotals();
 
-        foreach (var attribute in System.Enum.GetValues(typeof(PlantAttribute)))
+        foreach (var entry in currentTotals)
         {
-            PlantAttribute attr = (PlantAttribute)attribute;
-
-            if (totals.TryGetValue(attr, out int value))
-            {
-                bars[attr].value = value;
-            }
+            bars[entry.Key].value = entry.Value;
         }
     }
 
      public void PreviewBars()
      {
-        foreach (var kvp in previewValues)
+        if (barManager == null) return;
+
+        foreach (var entry in currentTotals)
         {
-            previewBars[kvp.Key].value = kvp.Value;
+            currentTotals.TryGetValue(entry.Key, out int baseValue);
+            previewValues.TryGetValue(entry.Key, out int previewValue);
+
+            previewBars[entry.Key].value = baseValue + previewValue;
         }
      }
+
+    public Dictionary<PlantAttribute, int> GetPreviewValues()
+    {
+        return previewValues;
+    }
+    public void SetPreviewValues(Dictionary<PlantAttribute, int> input)
+    {
+        foreach(var attribute in input)
+        {
+            previewValues[attribute.Key] = attribute.Value;
+        }
+        PreviewBars();
+    }
 
     public void SetBarMax()
     {

@@ -99,11 +99,11 @@ public class GardenBox : Interactable
             //print("We have plants");
             var attributes = plant.GetAttributes();
             _beautyContribution += attributes[PlantAttribute.Beauty];
-            print($"beauty: {attributes[PlantAttribute.Beauty]}");
+            //print($"beauty: {attributes[PlantAttribute.Beauty]}");
             _passionContribution += attributes[PlantAttribute.Passion];
-            print($"passion: {attributes[PlantAttribute.Passion]}");
+            //print($"passion: {attributes[PlantAttribute.Passion]}");
             _calmnessContribution += attributes[PlantAttribute.Calmness];
-            print($"calmness: {attributes[PlantAttribute.Calmness]}");
+            //print($"calmness: {attributes[PlantAttribute.Calmness]}");
         }
 
         ChangeDisplayText();

@@ -27,7 +27,7 @@ public class PlayerPlantingState : PlayerBaseState
 
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log(Ctx._selectedPlantObject.name);
+            //Debug.Log(Ctx._selectedPlantObject.name);
             _grid.GetXZ(Utilities.GetMouseWorldPositionXZ(), out int x, out int z);
             //Debug.Log($"{x},{z}");
             List<Vector2Int> gridPositionList = Ctx._selectedPlantObject.GetGridPositionList(new Vector2Int(x, z), PlacedObjectTypeSO.Dir.Down);

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -25,19 +26,28 @@ public class HighlightSeed : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void OnPointerEnter(PointerEventData eventData)
     {
         //Debug.Log("Mouse is over the seed.");
-        
-        barManager.previewBeauty = plantObject.beauty;
-        barManager.previewCalmness = plantObject.calmness;
-        barManager.previewPassion = plantObject.passion;
+        Dictionary<PlantAttribute,int> previews = new Dictionary<PlantAttribute, int>
+        {
+            {PlantAttribute.Beauty, plantObject.beauty },
+            {PlantAttribute.Passion, plantObject.passion},
+            {PlantAttribute.Calmness, plantObject.calmness },
+        };
+
+        barManager.SetPreviewValues(previews);
         seedObject.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         //Debug.Log("Mouse exited the seed.");
-        barManager.previewBeauty = 0;
-        barManager.previewCalmness = 0;
-        barManager.previewPassion = 0;
+        Dictionary<PlantAttribute, int> previews = new Dictionary<PlantAttribute, int>
+        {
+            {PlantAttribute.Beauty, 0},
+            {PlantAttribute.Passion, 0},
+            {PlantAttribute.Calmness, 0 },
+        };
+
+        barManager.SetPreviewValues(previews);
         seedObject.SetActive(false);
     }
 
