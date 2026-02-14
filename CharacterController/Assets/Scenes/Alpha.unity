@@ -1935,6 +1935,37 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &521513626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 521513627}
+  m_Layer: 0
+  m_Name: spawnpoint vfx
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &521513627
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521513626}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.714, y: 0.872, z: -9.722}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &536182203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3717,7 +3748,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5407639162258408382, guid: b6f973dc49b2941409f2de8b73c79d19, type: 3}
   m_PrefabInstance: {fileID: 2042513387}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1511874863}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb80919f11eaa634ca8da7f9bbfd2e28, type: 3}
@@ -5960,6 +5991,27 @@ MonoBehaviour:
   _anxietyKey: {fileID: 11400000, guid: 90d15a84d34ab2d429a0fef519d9d589, type: 2}
   _anxietyLockTarget: {fileID: 1530256632}
   _isCompleted: 0
+--- !u!1 &1511874863 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3886439207760005500, guid: b6f973dc49b2941409f2de8b73c79d19, type: 3}
+  m_PrefabInstance: {fileID: 2042513387}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1511874869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511874863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecf649a333717fb4ea2dfa5e044b644b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vfx1: {fileID: 5642766282230003982, guid: b5c8ca7ed10b61e499cce8ec3b6e2e4c, type: 3}
+  vfx2: {fileID: 4425129568585013132, guid: bbeeb0ddc21369746aaaae5c5c1c09cf, type: 3}
+  positionOffset: {x: 0, y: 0, z: 0}
+  playerTransform: {fileID: 521513627}
 --- !u!114 &1530256632 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5640189513067992043, guid: 435ecd0da546b2146ba93ea38dc7b475, type: 3}
@@ -7925,21 +7977,44 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9170024085536214266, guid: b6f973dc49b2941409f2de8b73c79d19, type: 3}
+      propertyPath: OnProxEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9170024085536214266, guid: b6f973dc49b2941409f2de8b73c79d19, type: 3}
       propertyPath: OnProxExit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 936656134}
+    - target: {fileID: 9170024085536214266, guid: b6f973dc49b2941409f2de8b73c79d19, type: 3}
+      propertyPath: OnProxEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1511874869}
     - target: {fileID: 9170024085536214266, guid: b6f973dc49b2941409f2de8b73c79d19, type: 3}
       propertyPath: OnProxExit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: StopSoundEffect
       objectReference: {fileID: 0}
     - target: {fileID: 9170024085536214266, guid: b6f973dc49b2941409f2de8b73c79d19, type: 3}
+      propertyPath: OnProxEnter.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SpawnBothVFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 9170024085536214266, guid: b6f973dc49b2941409f2de8b73c79d19, type: 3}
       propertyPath: OnProxExit.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PlaySound, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9170024085536214266, guid: b6f973dc49b2941409f2de8b73c79d19, type: 3}
+      propertyPath: OnProxEnter.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: FvxSpawn, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9170024085536214266, guid: b6f973dc49b2941409f2de8b73c79d19, type: 3}
+      propertyPath: OnProxEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: SpawnBothVFX
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3886439207760005500, guid: b6f973dc49b2941409f2de8b73c79d19, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 1511874869}
   m_SourcePrefab: {fileID: 100100000, guid: b6f973dc49b2941409f2de8b73c79d19, type: 3}
 --- !u!1001 &2075626212
 PrefabInstance:
@@ -8621,3 +8696,4 @@ SceneRoots:
   - {fileID: 1880888651}
   - {fileID: 764647850}
   - {fileID: 1496771114}
+  - {fileID: 521513627}
