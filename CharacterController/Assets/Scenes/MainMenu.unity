@@ -214,7 +214,6 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
-  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -422,7 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 873d619f8e632404cb38ee8bd50ae571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneAsset: {fileID: 102900000, guid: 99c9720ab356a0642a771bea13969a05, type: 3}
+  sceneAsset: {fileID: 102900000, guid: 0884997bdcc20c54d8a047fd2002ed12, type: 3}
 --- !u!4 &550005497
 Transform:
   m_ObjectHideFlags: 0
@@ -1045,7 +1044,6 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
-  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0

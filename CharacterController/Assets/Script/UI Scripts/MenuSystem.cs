@@ -3,12 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class MenuSystem : MonoBehaviour
 {
+    //public SceneAsset sceneAsset;
 
-#if UNITY_EDITOR
-    public UnityEditor.SceneAsset sceneAsset;
-#endif
     public void StartGame()
     {
-        SceneManager.LoadScene(sceneAsset.name);
+        SceneManager.LoadScene("Alpha");
     }
 }
