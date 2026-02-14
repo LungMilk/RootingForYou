@@ -6,7 +6,7 @@ public class AnxietyLock : MonoBehaviour
 
     [Tooltip("Please give the necessary keyObject")]
     public AnxietyKey _requiredKey;
-    public bool _locked;
+    public bool _locked = true;
 
     [Tooltip("Speaker is optional, if given it will set the speaker text to that of the given key")]
     public PopUpSpeaker speaker;
