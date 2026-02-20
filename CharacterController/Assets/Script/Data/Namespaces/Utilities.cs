@@ -17,6 +17,21 @@ namespace CustomNamespace.Utilities
              Vector3 worldPosition = worldCamera.ScreenToWorldPoint(screenPosition);
              return worldPosition;
          }
+
+        public static bool TryGetMouseWorldPositionXZ(out Vector3 worldPos,float y = 0f)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Plane plane = new Plane(Vector3.up, new Vector3(0, y, 0));
+
+            if (plane.Raycast(ray,out float distance))
+            {
+                worldPos = ray.GetPoint(distance);
+                return true;
+            }
+
+            worldPos = default;
+            return false;
+        }
         public static Vector3 GetMouseWorldPositionXZ(float y = 0f)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

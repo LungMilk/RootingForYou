@@ -71,9 +71,24 @@ public class GridXZ<TGridObject>
         return pos.x >= 0 && pos.y >= 0 && pos.x < _width && pos.y < _height;
     }
 
+    public bool IsWorldPositionInsideGrid(Vector3 worldPos)
+    {
+        GetXZ(worldPos, out int x, out int z);
+
+        return IsValidGridPosition(new Vector2Int(x,z));
+    }
     public float GetCellSize()
     {
         return _cellSize;
+    }
+
+    public Quaternion GetOriginRotation()
+    {
+        return _originRotation;
+    }
+    public Vector3 GetOriginPosition()
+    {
+        return _originPosition;
     }
 
     public Vector3 GetWorldPosition(int x,int z)
@@ -96,16 +111,16 @@ public class GridXZ<TGridObject>
 
     public void GetXZ(Vector3 worldPosition, out int x, out int z)
     {
-
         Vector3 localPos = Quaternion.Inverse(_originRotation) * (worldPosition - _originPosition);
+
 
         x = Mathf.FloorToInt(localPos.x / _cellSize);
         z = Mathf.FloorToInt(localPos.z / _cellSize);
         //x = Mathf.FloorToInt((worldPosition-_originPosition).x / _cellSize);
         //z = Mathf.FloorToInt((worldPosition-_originPosition).z / _cellSize);
 
-        x = Mathf.Clamp(x, 0, _width - 1);
-        z = Mathf.Clamp(z,0, _height - 1);
+        //x = Mathf.Clamp(x, 0, _width - 1);
+        //z = Mathf.Clamp(z, 0, _height - 1);
     }
 
     public void SetGridObject(int x, int z, TGridObject value)

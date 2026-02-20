@@ -15,10 +15,12 @@ public class AnxietyTask : MonoBehaviour
     public void Complete()
     {
         if (_anxietyKey == null)
-        { print("No Key Given for " + name); return;}
+        { //print("No Key Given for " + name);
+          return;}
         if (_anxietyLockTarget == null)
         {
-            print("No Lock target Given for " + name); return;
+            //print("No Lock target Given for " + name);
+            return;
         }
         if (_isCompleted ) { return;}
         _isCompleted = _anxietyLockTarget.TryKey(_anxietyKey);
