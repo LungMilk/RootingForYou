@@ -14,13 +14,16 @@ public class HighlightSeed : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public GameObject seedObject;
 
+    public Sprite closedBag;
+    public Sprite openBag;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         seedObject = this.transform.GetChild(0).gameObject;
-        seedObject.GetComponent<Image>().sprite = plantObject.displayImage;
-        seedObject.SetActive(false);
+        seedObject.GetComponent<Image>().sprite = closedBag;
+        //seedObject.SetActive(false);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -34,7 +37,9 @@ public class HighlightSeed : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         };
 
         barManager.SetPreviewValues(previews);
-        seedObject.SetActive(true);
+        seedObject.GetComponent<Image>().sprite = openBag;
+        seedObject.GetComponent<RectTransform>().localPosition = new Vector3(0, 120, 0);
+        //seedObject.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -48,7 +53,9 @@ public class HighlightSeed : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         };
 
         barManager.SetPreviewValues(previews);
-        seedObject.SetActive(false);
+        seedObject.GetComponent<Image>().sprite = closedBag;
+        seedObject.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
+        //seedObject.SetActive(false);
     }
 
     public void SetPlayerSeed(PlantObjectSO selectedPlant)
