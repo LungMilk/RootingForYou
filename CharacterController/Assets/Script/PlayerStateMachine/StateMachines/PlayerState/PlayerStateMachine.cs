@@ -43,6 +43,7 @@ public class PlayerStateMachine : MonoBehaviour
     Interactable _interactedWith;
     InteractState _foundInteractType;
 
+    private CameraManager _cameraManager;
     public CameraEvent OnCameraOptionFound;
     public CinemachineCamera _foundCamera;
 
@@ -71,6 +72,7 @@ public class PlayerStateMachine : MonoBehaviour
     {
         _playerInput = new PlayerInputs();
         _chrController = GetComponent<CharacterController>();
+        _cameraManager = GetComponent<CameraManager>();
 
         _states = new playerStateFactory(this);
         _currentState = _states.Movement();
@@ -161,6 +163,7 @@ public class PlayerStateMachine : MonoBehaviour
             //discuss if I want interact to be progressing dialogue as it is simpler.
             //could also probably put it in the planting state as well.
             ReturnToMovement();
+            _cameraManager.RevertToPlayerCamera();
             return;
         }
 

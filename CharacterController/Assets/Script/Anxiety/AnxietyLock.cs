@@ -24,6 +24,7 @@ public class AnxietyLock : MonoBehaviour
         if (key == _requiredKey)
         {
             _locked = true;
+            speaker.DismissBubble();
             Unlocked?.Invoke();
         }
         return _locked;
