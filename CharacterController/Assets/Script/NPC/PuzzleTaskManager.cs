@@ -31,6 +31,7 @@ public class PuzzleTaskManager : MonoBehaviour
     //when we check progress we are doing a cumulative check to all box managers if they have reached the goal
     public void CheckTaskProgress()
     {
+        print("checking task progress");
         Dictionary<PlantAttribute, int> cumulativeTotal = new Dictionary<PlantAttribute, int>();
         foreach (GardenBoxManager boxManager in _gardenBoxManagers)
         {
@@ -53,9 +54,10 @@ public class PuzzleTaskManager : MonoBehaviour
 
         if (!task.IsCompleted(cumulativeTotal))
         {
+            print("Task not completed");
             return;
         }
-
+        print("completed task");
         OnTaskCompleted.Invoke();
 
         _completedTasks.Add(task);

@@ -8,7 +8,7 @@ public class PopUpSpeaker : MonoBehaviour
     private Transform textAnchor;
     [TextArea]
     public string text;
-    TextBubble textBubble;
+    public TextBubble textBubble;
     [ContextMenu("SpawnBubble")]
     public void CreateBubble()
     {

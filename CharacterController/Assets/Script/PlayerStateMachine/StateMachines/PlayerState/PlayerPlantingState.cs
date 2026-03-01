@@ -17,7 +17,7 @@ public class PlayerPlantingState : PlayerBaseState
         //sound effects need to be reworked
         digSound = Ctx._soundEffects[0];
         plantSound = Ctx._soundEffects[1];
-        Debug.Log("Entering planting state");
+        //Debug.Log("Entering planting state");
         _gridBuilder = Ctx.InputObject.GetComponentInChildren<GridBuilder>();
         _grid = _gridBuilder._grid;
 
@@ -37,7 +37,7 @@ public class PlayerPlantingState : PlayerBaseState
                 _grid.GetXZ(hitWorldPos, out int x, out int z);
                 if (_grid.IsValidGridPosition(new Vector2Int(x, z)))
                 {
-                    Debug.Log($"Clicked cell: {x}, {z}");
+                    //Debug.Log($"Clicked cell: {x}, {z}");
                     PlacePlantOnGrid(x,z);
                 }
             }
@@ -56,7 +56,7 @@ public class PlayerPlantingState : PlayerBaseState
                 _grid.GetXZ(hitWorldPos, out int x, out int z);
                 if (_grid.IsValidGridPosition(new Vector2Int(x, z)))
                 {
-                    Debug.Log($"Clicked cell: {x}, {z}");
+                    //Debug.Log($"Clicked cell: {x}, {z}");
                     RemovePlantOnGrid(x, z);
                 }
             }

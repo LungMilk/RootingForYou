@@ -877,7 +877,7 @@ PrefabInstance:
       objectReference: {fileID: 1851050720}
     - target: {fileID: 1094543902986763309, guid: c689eda3fa0eeb242b79d3caa55e72ed, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.36
+      value: 1.14
       objectReference: {fileID: 0}
     - target: {fileID: 1094543902986763309, guid: c689eda3fa0eeb242b79d3caa55e72ed, type: 3}
       propertyPath: m_LocalPosition.y
@@ -885,7 +885,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1094543902986763309, guid: c689eda3fa0eeb242b79d3caa55e72ed, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -16.84
+      value: 11.15
       objectReference: {fileID: 0}
     - target: {fileID: 1094543902986763309, guid: c689eda3fa0eeb242b79d3caa55e72ed, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4871,7 +4871,7 @@ MonoBehaviour:
     slider: {fileID: 1538176950}
   - attribute: 2
     slider: {fileID: 1115567332}
-  barManager: {fileID: 2075626213}
+  gardenBoxManager: {fileID: 0}
   puzzleTaskManager: {fileID: 2075626214}
 --- !u!114 &1177920265
 MonoBehaviour:
@@ -5932,6 +5932,14 @@ PrefabInstance:
       propertyPath: '_gardenBoxManagers.Array.data[0]'
       value: 
       objectReference: {fileID: 1176548555}
+    - target: {fileID: 6635606094717432642, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6635606094717432642, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8860832561311180668, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
       propertyPath: detectionBox
       value: 
@@ -7721,7 +7729,7 @@ Transform:
   m_GameObject: {fileID: 1851050719}
   serializedVersion: 2
   m_LocalRotation: {x: 0.099521615, y: 0.00000020572719, z: -0.000000020576456, w: 0.9950354}
-  m_LocalPosition: {x: 5.36, y: 3.4535291, z: -21.608585}
+  m_LocalPosition: {x: 1.14, y: 3.4535291, z: 6.381415}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8234,6 +8242,10 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -2.6177065
       objectReference: {fileID: 0}
+    - target: {fileID: 3995780615077287, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1421222667205896571, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.55853
@@ -8405,6 +8417,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6019373172432474024, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2075626216}
+    - targetCorrespondingSourceObject: {fileID: 6019373172432474024, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2075626217}
   m_SourcePrefab: {fileID: 100100000, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
 --- !u!114 &2075626213 stripped
 MonoBehaviour:
@@ -8443,6 +8458,84 @@ MonoBehaviour:
   _anxietyKey: {fileID: 11400000, guid: ab4502946857cf54091488b1958ec716, type: 2}
   _anxietyLockTarget: {fileID: 1982705934}
   _isCompleted: 0
+--- !u!114 &2075626217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143152738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ba297855442fe41b114b0a01272ba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnProxEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1177920264}
+        m_TargetAssemblyTypeName: BarManager, Assembly-CSharp
+        m_MethodName: SetGardenBoxManager
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2075626213}
+          m_ObjectArgumentAssemblyTypeName: GardenBoxManager, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1177920264}
+        m_TargetAssemblyTypeName: BarManager, Assembly-CSharp
+        m_MethodName: SetPuzzleManager
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2075626214}
+          m_ObjectArgumentAssemblyTypeName: PuzzleTaskManager, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1177920264}
+        m_TargetAssemblyTypeName: BarManager, Assembly-CSharp
+        m_MethodName: SetBarMax
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1177920264}
+        m_TargetAssemblyTypeName: BarManager, Assembly-CSharp
+        m_MethodName: ShowBars
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  OnProxExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1177920264}
+        m_TargetAssemblyTypeName: BarManager, Assembly-CSharp
+        m_MethodName: ShowBars
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2090630587
 GameObject:
   m_ObjectHideFlags: 0

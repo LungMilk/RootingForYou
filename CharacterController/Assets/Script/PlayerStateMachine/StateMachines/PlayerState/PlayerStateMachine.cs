@@ -114,7 +114,7 @@ public class PlayerStateMachine : MonoBehaviour
         _currentState.ExitState();
         _currentState = newState;
         _currentState.EnterState();
-        print(_currentState);
+        //print(_currentState);
     }
     public void ReturnToPreviousState()
     {
@@ -188,7 +188,7 @@ public class PlayerStateMachine : MonoBehaviour
             //_canInteract = false;
             _currentInteractable = interactable;
             _inputObject = other.transform.root.gameObject;
-            print(_inputObject.name);
+            //print(_inputObject.name);
             _foundCamera = interactable.CameraOption;
         }
     }

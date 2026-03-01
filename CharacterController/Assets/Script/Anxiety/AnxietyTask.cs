@@ -16,7 +16,7 @@ public class AnxietyTask : MonoBehaviour
     {
         if (_anxietyKey == null)
         { //print("No Key Given for " + name);
-          return;}
+            return;}
         if (_anxietyLockTarget == null)
         {
             //print("No Lock target Given for " + name);
