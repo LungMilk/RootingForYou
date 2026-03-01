@@ -101,7 +101,7 @@ public class BarManager : MonoBehaviour
         if (puzzleTaskManager == null) return;
 
         var task = puzzleTaskManager.GetCurrentTask();
-
+        if (task == null) { print($"No current task found for {puzzleTaskManager.name}"); return; }
         foreach (var threshold in task._attributeThresholds)
         {
             bars[threshold.attribute].maxValue = threshold.requiredValue;

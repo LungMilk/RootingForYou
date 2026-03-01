@@ -87,7 +87,10 @@ public class PlayerStateMachine : MonoBehaviour
         _interactAction.started+= OnInteract;
         _interactAction.canceled += OnInteract;
     }
-
+    public void Start()
+    {
+        CameraManager.Instance.RevertToPlayerCam.AddListener(ReturnToMovement);
+    }
     private void Update()
     {
         //print("current state:" + _currentState.ToString());
