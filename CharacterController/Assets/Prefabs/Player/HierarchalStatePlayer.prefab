@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &401388107126471425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5389194640699448298}
+  m_Layer: 0
+  m_Name: CameraPitchTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5389194640699448298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401388107126471425}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6164816897020756395}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &610511628969327948
 GameObject:
   m_ObjectHideFlags: 0
@@ -27,12 +58,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 610511628969327948}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.439, z: 0.242}
   m_LocalScale: {x: 1, y: 0.67815316, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5080938361487680212}
+  m_Father: {fileID: 1094543902986763309}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1519251156490986835
 MeshFilter:
@@ -139,8 +170,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3247991842849590523}
+  m_Children: []
   m_Father: {fileID: 1094543902986763309}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &56083562393205360
@@ -232,7 +262,6 @@ GameObject:
   - component: {fileID: 7195230464608626366}
   - component: {fileID: 272977500363880779}
   - component: {fileID: 3138701472099524226}
-  - component: {fileID: 3567981122474844727}
   - component: {fileID: 1655450068769772418}
   m_Layer: 0
   m_Name: HierarchalStatePlayer
@@ -255,6 +284,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5080938361487680212}
+  - {fileID: 3247991842849590523}
   - {fileID: 2762804881314494439}
   - {fileID: 6164816897020756395}
   m_Father: {fileID: 0}
@@ -323,16 +353,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d23675dd65f7044ad15ac4cd807bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
   _chrController: {fileID: 7195230464608626366}
-  _movementSpeed: 5
+  _cameraTransform: {fileID: 0}
+  _walkSpeed: 3
+  _runSpeed: 5.5
   _rotationFactorPerFrame: 2
+  _gravity: -20
+  _groundedGravity: -2
   _inputObject: {fileID: 0}
   OnCameraOptionFound:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 272977500363880779}
+      - m_Target: {fileID: 4113470636303386484}
         m_TargetAssemblyTypeName: CameraManager, Assembly-CSharp
-        m_MethodName: SwitchCamera
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -343,18 +378,10 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _foundCamera: {fileID: 0}
---- !u!114 &3567981122474844727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4113470636303386484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9802e371633331d47b33d376247a3e85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _canInteract: 1
+  _plantCollection: {fileID: 0}
+  _selectedPlantObject: {fileID: 0}
+  _soundEffects: []
 --- !u!65 &1655450068769772418
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -404,7 +431,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5389194640699448298}
   m_Father: {fileID: 1094543902986763309}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9092433610505430327
