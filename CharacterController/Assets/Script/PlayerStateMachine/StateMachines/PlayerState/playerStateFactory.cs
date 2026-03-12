@@ -56,12 +56,12 @@ public class playerStateFactory : MonoBehaviour
 
     public PlayerBaseState Dialogue()
     {
-        print("Dialogue");
+        //print("Dialogue");
         return new PlayerDialogueState(_context, this);
     }
     public PlayerBaseState Planting()
     {
-        print("Planting");
+        //print("Planting");
         return new PlayerPlantingState(_context, this);
     }
 

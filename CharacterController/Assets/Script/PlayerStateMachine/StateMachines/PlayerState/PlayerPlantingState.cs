@@ -1,16 +1,22 @@
 using CustomNamespace.Utilities;
+using ScriptableObjects;
 using System.Collections.Generic;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
-using static PlacedObjectTypeSO;
+//using static PlacedObjectTypeSO;
 
 public class PlayerPlantingState : PlayerBaseState
 {
     GridBuilder _gridBuilder;
     GridXZ<GridObject> _grid;
+    SoundEffectSO digSound;
+    SoundEffectSO plantSound;
     public PlayerPlantingState(PlayerStateMachine currentContext, playerStateFactory playerStateFactory) : base(currentContext, playerStateFactory) { }
 
     public override void EnterState() {
+        //sound effects need to be reworked
+        digSound = Ctx._soundEffects[0];
+        plantSound = Ctx._soundEffects[1];
         Debug.Log("Entering planting state");
         _gridBuilder = Ctx.InputObject.GetComponentInChildren<GridBuilder>();
         _grid = _gridBuilder._grid;
@@ -21,9 +27,10 @@ public class PlayerPlantingState : PlayerBaseState
 
         if (Input.GetMouseButtonDown(0))
         {
+            //Debug.Log(Ctx._selectedPlantObject.name);
             _grid.GetXZ(Utilities.GetMouseWorldPositionXZ(), out int x, out int z);
             //Debug.Log($"{x},{z}");
-            List<Vector2Int> gridPositionList = Ctx._selectedPlantObject.GetGridPositionList(new Vector2Int(x, z), Ctx._dir);
+            List<Vector2Int> gridPositionList = Ctx._selectedPlantObject.GetGridPositionList(new Vector2Int(x, z), PlacedObjectTypeSO.Dir.Down);
 
             bool canBuild = true;
             foreach (Vector2Int gridPosition in gridPositionList)
@@ -37,10 +44,12 @@ public class PlayerPlantingState : PlayerBaseState
             if (canBuild)
             {
                 //offsetting the origin of the object by whatever our rotation was
-                Vector2Int rotationOffset = Ctx._selectedPlantObject.GetRotationOffset(Ctx._dir);
+                Vector2Int rotationOffset = Ctx._selectedPlantObject.GetRotationOffset(PlacedObjectTypeSO.Dir.Down);
                 Vector3 placedObjectWorldPosition = _grid.GetWorldPosition(x, z) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * _grid.GetCellSize();
 
-                PlacedObject placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(x, z), Ctx._dir, Ctx._plantCollection.plants[0], _grid.GetCellSize());
+                PlacedObject placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(x, z), PlacedObjectTypeSO.Dir.Down, Ctx._selectedPlantObject, _grid.GetCellSize(),Ctx._selectedPlantObject._doesOccupy,Ctx._selectedPlantObject._playerRemovable);
+
+                plantSound.Play();
 
                 foreach (Vector2Int gridPosition in gridPositionList)
                 {
@@ -64,24 +73,28 @@ public class PlayerPlantingState : PlayerBaseState
             _grid.GetXZ(Utilities.GetMouseWorldPositionXZ(), out int x, out int z);
             GridObject gridObject = _grid.GetGridObject(x,z);
 
+            //List<PlacedObject> placedObjects = gridObject.GetRemovablePlacedObject();
             PlacedObject placedObject = gridObject.GetPlacedObject();
-            if (placedObject != null)
+            if (placedObject == null) { return; }
+
+            var obj = placedObject;
+
+            obj.DestroySelf();
+            digSound.Play();
+
+            List<Vector2Int> gridPositionList = obj.GetGridPositionList();
+
+            foreach (Vector2Int gridPosition in gridPositionList)
             {
-                placedObject.DestroySelf();
-
-                List<Vector2Int> gridPositionList = placedObject.GetGridPositionList();
-
-                foreach (Vector2Int gridPosition in gridPositionList)
-                {
-                    _grid.GetGridObject(gridPosition.x, gridPosition.y).ClearPlacedObject();
-                }
+            //I think it is with my handling of clear placed and clearing removables as I am grabbing the space and calling for an all clear when I need to only clear the desired entry list from removables.
+                _grid.GetGridObject(gridPosition.x, gridPosition.y).ClearPlacedObject();
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Ctx._dir = PlacedObjectTypeSO.GetNextDir(Ctx._dir);
-        }
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    Ctx._dir = PlacedObjectTypeSO.GetNextDir(PlacedObjectTypeSO.Dir.Down);
+        //}
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {

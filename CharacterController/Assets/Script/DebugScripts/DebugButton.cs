@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
-public class DebugButton : MonoBehaviour ,IInteractable, IActionCall
+public class DebugButton : MonoBehaviour , IActionCall
 {
     bool hasFired = false;
     [SerializeField] private List<GameObject> targets;

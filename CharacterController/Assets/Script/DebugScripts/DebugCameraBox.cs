@@ -1,7 +1,7 @@
 using Unity.Cinemachine;
 using UnityEngine;
 
-public class DebugCameraBox : MonoBehaviour,IInteractable, ICameraOption
+public class DebugCameraBox : MonoBehaviour, ICameraOption
 {
     public InteractState _interactType;
     public InteractState InteractableType

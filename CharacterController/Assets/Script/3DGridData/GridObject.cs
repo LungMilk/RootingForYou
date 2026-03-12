@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections.Generic;
 public class GridObject
 {
     private GridXZ<GridObject> _grid;
@@ -13,7 +13,18 @@ public class GridObject
         this._x = x;
         this._z = z;
     }
-
+    //public List<PlacedObject> GetRemovablePlacedObjects()
+    //{
+    //    List<PlacedObject> removables = new List<PlacedObject>();
+    //    foreach (var entry in _placedObjects)
+    //    {
+    //        if (entry.PlayerRemovable)
+    //        {
+    //            removables.Add(entry);
+    //        }
+    //    }
+    //    return removables;
+    //}
     public void SetPlacedObject(PlacedObject placedObject)
     {
         var oldObject = _placedObject;
@@ -32,7 +43,6 @@ public class GridObject
     }
     public void ClearPlacedObject()
     {
-        var oldObject = _placedObject;
         _placedObject = null;
         _grid.TriggerGridObjectChanged(_x, _z);
     }

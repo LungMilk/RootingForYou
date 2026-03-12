@@ -1,20 +1,16 @@
 using UnityEngine;
 
-public class AnxiteyGate : MonoBehaviour, IActionCall
+public class AnxiteyGate : MonoBehaviour
 {
     public int lockCount = 3;
-    public void CallAction()
+
+    public void RemoveLock()
     {
         lockCount--;
 
         if (lockCount <= 0)
         {
-            End();
+            this.gameObject.SetActive(false);
         }
-    }
-
-    public void End()
-    {
-        this.gameObject.SetActive(false);
     }
 }

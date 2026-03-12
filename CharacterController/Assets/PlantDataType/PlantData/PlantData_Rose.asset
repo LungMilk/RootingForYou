@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f18ad65c8ee62b74591e933e30a50b33, type: 3}
+  m_Name: PlantData_Rose
+  m_EditorClassIdentifier: 
+  _nameString: Rose
+  _prefab: {fileID: 6087284564362922448, guid: 230a22560aa792240933cb95f132beff, type: 3}
+  _width: 1
+  _height: 1
+  _doesOccupy: 1
+  _playerRemovable: 1
+  displayImage: {fileID: 21300000, guid: e92c55bd616f5fd458682eba2aef95c1, type: 3}
+  beauty: 2
+  passion: -1
+  calmness: 1

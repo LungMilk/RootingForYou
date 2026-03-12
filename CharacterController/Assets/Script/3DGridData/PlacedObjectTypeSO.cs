@@ -29,6 +29,9 @@ public class PlacedObjectTypeSO : ScriptableObject
     //public GameObject _visual;
     public int _width;
     public int _height;
+    public bool _doesOccupy = true;
+    public bool _playerRemovable = true;
+
     //rotation is not implemented
     public int GetRotationAngle(Dir dir)
     {
