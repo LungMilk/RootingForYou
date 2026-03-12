@@ -37,7 +37,7 @@ public class PuzzleTaskSO : ScriptableObject
             {
                 return false;
             }
-            if (CheckValue(value, threshold.requiredValue)) 
+            if (!CheckValue(value, threshold.requiredValue)) 
             {
                 return false;
             }

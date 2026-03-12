@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
 public class AnxietyLock : MonoBehaviour
@@ -10,6 +11,12 @@ public class AnxietyLock : MonoBehaviour
 
     [Tooltip("Speaker is optional, if given it will set the speaker text to that of the given key")]
     public PopUpSpeaker speaker;
+
+
+    [Header("Camera Settings")]
+    public CinemachineCamera cam;
+    [Tooltip("How long we will look at the anxiety lock")]
+    public float duration = 5f;
     public void Start()
     {
         if (speaker != null)
@@ -24,8 +31,21 @@ public class AnxietyLock : MonoBehaviour
         if (key == _requiredKey)
         {
             _locked = true;
+            if (speaker.textBubble != null)
+            {
+                speaker.DismissBubble();
+            }
             Unlocked?.Invoke();
         }
         return _locked;
+    }
+
+    public void LookAtMe()
+    {
+        if (cam == null)
+        {
+            return;
+        }
+        CameraManager.Instance.SwitchCamera(cam, duration);
     }
 }

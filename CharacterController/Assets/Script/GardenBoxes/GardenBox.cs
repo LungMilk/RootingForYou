@@ -144,7 +144,14 @@ public class GardenBox : Interactable
                 Vector2Int rotationOffset = obj.GetRotationOffset(PlacedObjectTypeSO.Dir.Down);
                 Vector3 placedObjectWorldPosition = _grid.GetWorldPosition(gridX, gridZ) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * _grid.GetCellSize();
 
-                PlacedObject placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(gridX, gridZ), PlacedObjectTypeSO.Dir.Down, obj, _grid.GetCellSize(), obj._doesOccupy, obj._playerRemovable);
+                var gridData = new GridPlacementData
+                {
+                    cellSize = _grid.GetCellSize(),
+                    originWorldPos = _grid.GetOriginPosition(),
+                    rotation = _grid.GetOriginRotation(),
+                };
+
+                PlacedObject placedObject = PlacedObject.Create(gridData, new Vector2Int(gridX, gridZ), PlacedObjectTypeSO.Dir.Down, obj, _grid.GetCellSize(), obj._doesOccupy, obj._playerRemovable);
 
                 foreach (Vector2Int gridPosition in gridPositionList)
                 {

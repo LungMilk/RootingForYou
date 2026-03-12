@@ -19,7 +19,8 @@ public class ProximityTrigger : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.TryGetComponent<PlayerStateMachine>(out _player)) { return; }
+        print("player exit");
+        if (!other.gameObject.TryGetComponent<PlayerStateMachine>(out _player)) { return; }
         OnProxExit.Invoke();
         _player = null;
     }

@@ -11,6 +11,7 @@ public class AttributeSliderPair
 }
 public class BarManager : MonoBehaviour
 {
+    //maybe make this a static instance later or something??
     [SerializeField] private List<AttributeSliderPair> barPairs;
     [SerializeField] private List<AttributeSliderPair> previewBarPairs;
 
@@ -19,7 +20,7 @@ public class BarManager : MonoBehaviour
     private Dictionary<PlantAttribute, int> currentTotals = new();
     private Dictionary<PlantAttribute, int> previewValues = new();
 
-    public GardenBoxManager barManager;
+    public GardenBoxManager gardenBoxManager;
     public PuzzleTaskManager puzzleTaskManager;
     //public int beauty;
     //public int calmness;
@@ -59,9 +60,9 @@ public class BarManager : MonoBehaviour
 
     public void UpdateBars()
     {
-        if (barManager == null) return;
+        if (gardenBoxManager == null) return;
 
-        currentTotals = barManager.GetAttributeTotals();
+        currentTotals = gardenBoxManager.GetAttributeTotals();
 
         foreach (var entry in currentTotals)
         {
@@ -71,7 +72,7 @@ public class BarManager : MonoBehaviour
 
      public void PreviewBars()
      {
-        if (barManager == null) return;
+        if (gardenBoxManager == null) return;
 
         foreach (var entry in currentTotals)
         {
@@ -100,7 +101,7 @@ public class BarManager : MonoBehaviour
         if (puzzleTaskManager == null) return;
 
         var task = puzzleTaskManager.GetCurrentTask();
-
+        if (task == null) { print($"No current task found for {puzzleTaskManager.name}"); return; }
         foreach (var threshold in task._attributeThresholds)
         {
             bars[threshold.attribute].maxValue = threshold.requiredValue;
@@ -109,10 +110,34 @@ public class BarManager : MonoBehaviour
     }
     public void SetPuzzleManager(PuzzleTaskManager manager)
     {
+        print($"New puzzleManager: {manager.name}");
         puzzleTaskManager = manager;
     }
     public void SetGardenBoxManager(GardenBoxManager manager)
     {
-        barManager = manager;
+        print($"New boxManager: {manager.name}");
+        gardenBoxManager = manager;
+    }
+
+    public  void ShowBars(bool show)
+    {
+        this.gameObject.SetActive(show);
+    }
+
+    /// <summary>
+    /// Sends the required data to update bar maxes and puzzles with the respective manager. Can choose to turn the bars on or off, default on call to show them.
+    /// </summary>
+    /// <param name="puzzleMan"> puzzle manager the bars need to get their max from</param>
+    /// <param name="boxManager"> boxes the bars wil be updating based on</param>
+    /// <param name="show"> Are the bars visible</param>
+    public void SetupBarManager(PuzzleTaskManager puzzleMan, GardenBoxManager boxManager,bool show = true)
+    {
+        print("setting up BarManager UI");
+        ShowBars(show);
+        SetPuzzleManager(puzzleMan);
+        SetGardenBoxManager(boxManager);
+        SetBarMax();
+        UpdateBars();
+        PreviewBars();
     }
 }
