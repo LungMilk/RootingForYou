@@ -192,16 +192,16 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (_currentInteractable == null) return;
 
-        _currentInteractable.Interact();
-        OnCameraOptionFound?.Invoke(_foundCamera);
-
         if (_currentState is PlayerInteractState)
         {
             ReturnToMovement();
+            _interactedWith = null;
             return;
         }
-
         if (_interactedWith != null) return;
+
+        _currentInteractable.Interact();
+        OnCameraOptionFound?.Invoke(_foundCamera);
 
         _foundInteractType = _currentInteractable.InteractabeType;
         _previousState = _currentState;

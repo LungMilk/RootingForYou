@@ -11,6 +11,7 @@ public class ProximityTrigger : MonoBehaviour
     private PlayerStateMachine _player;
     private void OnTriggerEnter(Collider other)
     {
+        //print("player enter");
         other.gameObject.TryGetComponent<PlayerStateMachine>(out _player);
         if(_player != null)
         {

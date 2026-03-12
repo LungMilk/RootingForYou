@@ -58,6 +58,7 @@ public class TextBubbleManager : MonoBehaviour
     /// <param name="bubble">The bubble gained from <see cref="Get(string, Transform)"/></param>
     public void Release(TextBubble bubble)
     {
+        if (bubble == null) { return; }
         print("Release");
         bubble.Hide();
         pool.Enqueue(bubble);
