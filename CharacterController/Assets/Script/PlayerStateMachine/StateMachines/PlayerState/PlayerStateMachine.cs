@@ -1,8 +1,5 @@
-using NUnit.Framework.Interfaces;
 using ScriptableObjects;
-using System;
 using System.Collections.Generic;
-using System.Threading;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,107 +10,172 @@ public enum InteractState
     Planting,
     NonState,
 }
+
 public class PlayerStateMachine : MonoBehaviour
 {
-    //maybe find a way to not make all of these public.
-
-    //retains all the variables as this has the greater context of everything.
-    //PlayerInputHandler inputHandler;
+    [Header("Core References")]
     public Animator _animator;
-    PlayerInputs _playerInput;
     public CharacterController _chrController;
-    Vector2 _currentMovementInput;
-    Vector3 _currentMovement;
-    bool _isMovementPressed;
-    //bool _isInteracting;
-    bool _interactionLocked;
 
-    public float _movementSpeed = 1f;
-    public float _rotationFactorPerFrame = 10f;
+    [Header("Camera References")]
+    public Transform _cameraTransform;
 
-    PlayerBaseState _currentState;
-    PlayerBaseState _previousState;
-    playerStateFactory _states;
+    [Header("Movement Settings")]
+    public float _walkSpeed = 3f;
+    public float _runSpeed = 5.5f;
+    public float _rotationFactorPerFrame = 12f;
 
-    //interact variables
+    [Header("Gravity Settings")]
+    public float _gravity = -20f;
+    public float _groundedGravity = -2f;
+
+    private PlayerInputs _playerInput;
+
+    private Vector2 _currentMovementInput;
+    private Vector2 _currentLookInput;
+    private Vector3 _currentMovement;
+    private bool _isMovementPressed;
+    private bool _isRunPressed;
+    private float _verticalVelocity;
+
+    private PlayerBaseState _currentState;
+    private PlayerBaseState _previousState;
+    private playerStateFactory _states;
+
+    [Header("Interaction")]
     public GameObject _inputObject;
-    //public bool _isInteractPressed;
     private InputAction _interactAction;
-    Interactable _currentInteractable;
-    Interactable _interactedWith;
-    InteractState _foundInteractType;
+    private Interactable _currentInteractable;
+    private Interactable _interactedWith;
+    private InteractState _foundInteractType;
 
     public CameraEvent OnCameraOptionFound;
     public CinemachineCamera _foundCamera;
 
-    bool _canInteract = true;
+    public bool _canInteract = true;
 
+    [Header("Planting")]
     public PlantCollectionSO _plantCollection;
     public PlantObjectSO _selectedPlantObject;
-    //in case we want rotation
     private PlacedObjectTypeSO.Dir _dir = PlacedObjectTypeSO.Dir.Down;
 
+    [Header("Audio")]
     public List<SoundEffectSO> _soundEffects;
 
     public bool InteractPressedThisFrame { get; private set; }
-    //getters and setters
-    public PlayerBaseState CurrentState { get { return _currentState; } set { _currentState = value; } }
-    public bool IsMovementPressed {get {return _isMovementPressed;} }
-    //public bool IsInteractPressed { get { return _isInteractPressed; } }
-    //public bool IsInteracting { get { return _isInteracting; } }
-    public bool CanInteract { get { return _canInteract; } set { _canInteract = value; } }
-    public Vector2 CurrentMovementInput { get { return _currentMovementInput; } }
-    public Vector3 CurrentMovement { get { return _currentMovement; } set { _currentMovement = value; } }
 
-    public InteractState FoundInteractType { get { return _foundInteractType; } }
-    public GameObject InputObject { get { return _inputObject; } }
+    public PlayerBaseState CurrentState { get => _currentState; set => _currentState = value; }
+    public bool IsMovementPressed => _isMovementPressed;
+    public bool IsRunPressed => _isRunPressed;
+    public Vector2 CurrentMovementInput => _currentMovementInput;
+    public Vector2 CurrentLookInput => _currentLookInput;
+    public Vector3 CurrentMovement { get => _currentMovement; set => _currentMovement = value; }
+    public float VerticalVelocity { get => _verticalVelocity; set => _verticalVelocity = value; }
+    public InteractState FoundInteractType => _foundInteractType;
+    public GameObject InputObject => _inputObject;
+    public Transform CameraTransform => _cameraTransform;
+
     private void Awake()
     {
         _playerInput = new PlayerInputs();
         _chrController = GetComponent<CharacterController>();
+
+        if (_cameraTransform == null && Camera.main != null)
+        {
+            _cameraTransform = Camera.main.transform;
+        }
 
         _states = new playerStateFactory(this);
         _currentState = _states.Movement();
         _currentState.EnterState();
 
         _playerInput.CharacterControls.Move.started += OnMovementInput;
-        _playerInput.CharacterControls.Move.canceled += OnMovementInput;
         _playerInput.CharacterControls.Move.performed += OnMovementInput;
+        _playerInput.CharacterControls.Move.canceled += OnMovementInput;
+
+        _playerInput.CharacterControls.Look.started += OnLookInput;
+        _playerInput.CharacterControls.Look.performed += OnLookInput;
+        _playerInput.CharacterControls.Look.canceled += OnLookInput;
+
+        _playerInput.CharacterControls.Run.started += OnRunInput;
+        _playerInput.CharacterControls.Run.performed += OnRunInput;
+        _playerInput.CharacterControls.Run.canceled += OnRunInput;
 
         _interactAction = _playerInput.CharacterControls.Interact;
-
-        _interactAction.started+= OnInteract;
-        _interactAction.canceled += OnInteract;
+        _interactAction.started += OnInteract;
     }
 
     private void Update()
     {
-        //print("current state:" + _currentState.ToString());
         _currentState.UpdateStates();
     }
+
     private void LateUpdate()
     {
         InteractPressedThisFrame = false;
     }
-    void OnMovementInput(InputAction.CallbackContext context)
+
+    private void OnEnable()
+    {
+        _playerInput.CharacterControls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _playerInput.CharacterControls.Disable();
+    }
+
+    private void OnDestroy()
+    {
+        _playerInput.CharacterControls.Move.started -= OnMovementInput;
+        _playerInput.CharacterControls.Move.performed -= OnMovementInput;
+        _playerInput.CharacterControls.Move.canceled -= OnMovementInput;
+
+        _playerInput.CharacterControls.Look.started -= OnLookInput;
+        _playerInput.CharacterControls.Look.performed -= OnLookInput;
+        _playerInput.CharacterControls.Look.canceled -= OnLookInput;
+
+        _playerInput.CharacterControls.Run.started -= OnRunInput;
+        _playerInput.CharacterControls.Run.performed -= OnRunInput;
+        _playerInput.CharacterControls.Run.canceled -= OnRunInput;
+
+        _interactAction.started -= OnInteract;
+    }
+
+    private void OnMovementInput(InputAction.CallbackContext context)
     {
         _currentMovementInput = context.ReadValue<Vector2>();
-        //_currentMovement.x = _currentMovementInput.x;
-        //_currentMovement.z = _currentMovementInput.y;
-        _isMovementPressed = _currentMovementInput.x != 0 || _currentMovementInput.y != 0;
-        //print(_currentMovementInput);
+        _isMovementPressed = _currentMovementInput.sqrMagnitude > 0.0001f;
     }
-    //:3
+
+    private void OnLookInput(InputAction.CallbackContext context)
+    {
+        _currentLookInput = context.ReadValue<Vector2>();
+    }
+
+    private void OnRunInput(InputAction.CallbackContext context)
+    {
+        _isRunPressed = context.ReadValueAsButton();
+    }
+
+    private void OnInteract(InputAction.CallbackContext context)
+    {
+        if (!context.started) return;
+
+        InteractPressedThisFrame = true;
+        HandleInteractions();
+    }
+
     public void RequestStateChange(PlayerBaseState newState)
     {
         if (_currentState == newState) return;
-        _previousState = _currentState;
 
+        _previousState = _currentState;
         _currentState.ExitState();
         _currentState = newState;
         _currentState.EnterState();
-        print(_currentState);
     }
+
     public void ReturnToPreviousState()
     {
         _currentState.ExitState();
@@ -125,29 +187,7 @@ public class PlayerStateMachine : MonoBehaviour
     {
         RequestStateChange(_states.Movement());
     }
-    private void OnEnable()
-    {
-        _playerInput.CharacterControls.Enable();
-    }
 
-    private void OnDisable()
-    {
-        _playerInput.CharacterControls.Disable();
-    }
-
-    //stuff copied from the interaction script to homogonize functionality
-    //3d interactions based off of the interfaces and the like, just run with it for now
-
-    //we may need an interactable priority system but right now it gets the nearest in the collision
-    //we save the interactable as doing a call for getting any on the button press sounds pretty taxing.
-    //probs not important
-    void OnInteract(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            HandleInteractions();
-        }
-    }
     private void HandleInteractions()
     {
         if (_currentInteractable == null) return;
@@ -157,49 +197,43 @@ public class PlayerStateMachine : MonoBehaviour
 
         if (_currentState is PlayerInteractState)
         {
-            //may have to change this later as the second press in interact always goes to movement
-            //discuss if I want interact to be progressing dialogue as it is simpler.
-            //could also probably put it in the planting state as well.
             ReturnToMovement();
             return;
         }
 
-        if (_interactedWith != null) { return;}
+        if (_interactedWith != null) return;
 
         _foundInteractType = _currentInteractable.InteractabeType;
         _previousState = _currentState;
-
         _interactedWith = _currentInteractable;
 
         if (_foundInteractType != InteractState.NonState)
         {
-            _previousState = _currentState;
             RequestStateChange(_states.Interact());
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out Interactable interactable))
         {
-            //print("Found interactable");
-            //_canInteract = false;
             _currentInteractable = interactable;
             _inputObject = other.transform.root.gameObject;
-            print(_inputObject.name);
             _foundCamera = interactable.CameraOption;
         }
     }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.TryGetComponent(out Interactable interactable))
         {
-            //print("Exit interactable");
             _interactedWith = null;
+
             if (_currentInteractable == interactable)
             {
-                //_canInteract = true;
                 _currentInteractable = null;
             }
+
             if (_foundCamera != null)
             {
                 _foundCamera = null;

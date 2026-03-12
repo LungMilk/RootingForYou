@@ -1,27 +1,29 @@
-using Unity.VisualScripting.FullSerializer;
-using UnityEngine;
-using System.Collections.Generic;
-
 public class PlayerIdleState : PlayerBaseState
 {
-    public PlayerIdleState(PlayerStateMachine currentContext, playerStateFactory playerStateFactory) : base(currentContext, playerStateFactory) { }
+    public PlayerIdleState(PlayerStateMachine currentContext, playerStateFactory playerStateFactory)
+        : base(currentContext, playerStateFactory) { }
 
     public override void EnterState() { }
-    public override void UpdateState() { CheckSwitchStates(); }
-    public override void ExitState() { }
-    public override void CheckSwitchStates() 
+
+    public override void UpdateState()
     {
-        //Debug.Log("Idle check running");
-        //SwitchState(Factory.Walk());
+        CheckSwitchStates();
+    }
+
+    public override void ExitState() { }
+
+    public override void CheckSwitchStates()
+    {
         if (Ctx.IsMovementPressed)
         {
             SwitchState(Factory.Walk());
         }
+
         if (Ctx.InteractPressedThisFrame)
         {
             SwitchState(Factory.Interact());
         }
-    
     }
+
     public override void InitializeSubState() { }
 }
