@@ -16,14 +16,15 @@ public class AnxietyFog : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        Instantiate(anxietyFogPrefab, gardenBoxPosition);
+        Instantiate(anxietyFogPrefab, gardenBoxPosition, gardenBoxPosition);
         Debug.Log("working");
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider collision)
     {
         Destroy(anxietyFogPrefab);
+        Debug.Log("outOfFog");
     }
 }
