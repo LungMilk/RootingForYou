@@ -194,6 +194,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         if (_currentState is PlayerInteractState)
         {
+            print("Player returning to movement");
             ReturnToMovement();
             _interactedWith = null;
             return;
@@ -209,6 +210,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         if (_foundInteractType != InteractState.NonState)
         {
+            print("Player entering interact");
             RequestStateChange(_states.Interact());
         }
     }

@@ -33,5 +33,9 @@ public class PlayerInteractState : PlayerBaseState
         {
             SetSubState(Factory.Planting());
         }
+        else if (Ctx.FoundInteractType == InteractState.NonState)
+        {
+            SetSuperState(Factory.Movement());
+        }
     }
 }

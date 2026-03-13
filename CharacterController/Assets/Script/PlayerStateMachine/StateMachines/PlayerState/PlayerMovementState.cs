@@ -13,7 +13,7 @@ public class PlayerMovementState : PlayerBaseState
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
-        Ctx.OnCameraOptionFound?.Invoke(null);
+        //Ctx.OnCameraOptionFound?.Invoke(null);
         InitializeSubState();
     }
 

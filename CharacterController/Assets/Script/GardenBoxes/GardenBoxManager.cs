@@ -54,7 +54,7 @@ public class GardenBoxManager : MonoBehaviour
     {
         //there is absolutely a better way of having them only send their change in contribution instead of a full recalculation but I go no issues with this
         //maybe developing a function for these calculations would be easier but who cares
-        print("detected change");
+        //print("detected change");
         _beautyTotal = 0;
         _passionTotal = 0;
         _calmnessTotal = 0;

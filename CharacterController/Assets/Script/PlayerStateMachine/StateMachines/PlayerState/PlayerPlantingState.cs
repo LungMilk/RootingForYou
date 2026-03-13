@@ -67,26 +67,26 @@ public class PlayerPlantingState : PlayerBaseState
         //    Ctx._dir = PlacedObjectTypeSO.GetNextDir(PlacedObjectTypeSO.Dir.Down);
         //}
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            Ctx._selectedPlantObject = Ctx._plantCollection.plants[0];
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Ctx._selectedPlantObject = Ctx._plantCollection.plants[1];
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            Ctx._selectedPlantObject = Ctx._plantCollection.plants[2];
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            Ctx._selectedPlantObject = Ctx._plantCollection.plants[3];
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            Ctx._selectedPlantObject = Ctx._plantCollection.plants[4];
-        }
+        //if (Input.GetKeyDown(KeyCode.Alpha1))
+        //{
+        //    Ctx._selectedPlantObject = Ctx._plantCollection.plants[0];
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha2))
+        //{
+        //    Ctx._selectedPlantObject = Ctx._plantCollection.plants[1];
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha3))
+        //{
+        //    Ctx._selectedPlantObject = Ctx._plantCollection.plants[2];
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha4))
+        //{
+        //    Ctx._selectedPlantObject = Ctx._plantCollection.plants[3];
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha5))
+        //{
+        //    Ctx._selectedPlantObject = Ctx._plantCollection.plants[4];
+        //}
 
         CheckSwitchStates(); }
 
