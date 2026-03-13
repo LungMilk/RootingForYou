@@ -129,15 +129,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3829239765300142349, guid: 297e0fd6473c9744fba390ea359fc97f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.04
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3829239765300142349, guid: 297e0fd6473c9744fba390ea359fc97f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.62
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3829239765300142349, guid: 297e0fd6473c9744fba390ea359fc97f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.68
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3829239765300142349, guid: 297e0fd6473c9744fba390ea359fc97f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -526,7 +526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baeede5447d8e704cb2cf2e786161656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anxietyFogPrefab: {fileID: 3829239765300182317, guid: 297e0fd6473c9744fba390ea359fc97f, type: 3}
+  anxietyFogPrefab: {fileID: 8439188529769947002, guid: 51dc73c79bd933848911a909f5dfd6c9, type: 3}
   gardenBoxPosition: {fileID: 1829336215}
 --- !u!135 &957317936
 SphereCollider:

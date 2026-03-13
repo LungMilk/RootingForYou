@@ -18,7 +18,7 @@ public class AnxietyFog : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        Instantiate(anxietyFogPrefab, gardenBoxPosition, gardenBoxPosition);
+        Instantiate(anxietyFogPrefab, gardenBoxPosition);
         Debug.Log("working");
     }
 
