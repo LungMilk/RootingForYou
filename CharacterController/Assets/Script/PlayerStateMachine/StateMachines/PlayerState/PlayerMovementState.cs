@@ -1,3 +1,4 @@
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class PlayerMovementState : PlayerBaseState
@@ -10,10 +11,11 @@ public class PlayerMovementState : PlayerBaseState
 
     public override void EnterState()
     {
+        //Debug.Log("Entering movement state");
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
-        //Ctx.OnCameraOptionFound?.Invoke(null);
+        Ctx.OnCameraOptionFound?.Invoke(null);
         InitializeSubState();
     }
 

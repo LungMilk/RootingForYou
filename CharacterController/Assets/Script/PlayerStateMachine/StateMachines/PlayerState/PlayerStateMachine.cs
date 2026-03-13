@@ -168,6 +168,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void RequestStateChange(PlayerBaseState newState)
     {
+        print($"State change: {_currentState} -> {newState}");
         if (_currentState == newState) return;
 
         _previousState = _currentState;
@@ -178,6 +179,10 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void ReturnToPreviousState()
     {
+        if (_previousState == null || _previousState == _currentState)
+            return;
+
+
         _currentState.ExitState();
         _currentState = _previousState;
         _currentState.EnterState();
@@ -190,28 +195,27 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void HandleInteractions()
     {
+        if (CameraManager.Instance.brain.IsBlending) return;
+
         if (_currentInteractable == null) return;
 
         if (_currentState is PlayerInteractState)
         {
-            print("Player returning to movement");
-            ReturnToMovement();
             _interactedWith = null;
+            ReturnToMovement();
             return;
         }
-        if (_interactedWith != null) return;
 
         _currentInteractable.Interact();
-        OnCameraOptionFound?.Invoke(_foundCamera);
 
         _foundInteractType = _currentInteractable.InteractabeType;
-        _previousState = _currentState;
-        _interactedWith = _currentInteractable;
 
         if (_foundInteractType != InteractState.NonState)
         {
             print("Player entering interact");
+            OnCameraOptionFound?.Invoke(_foundCamera);
             RequestStateChange(_states.Interact());
+            _interactedWith = _currentInteractable;
         }
     }
 
@@ -229,7 +233,10 @@ public class PlayerStateMachine : MonoBehaviour
     {
         if (other.TryGetComponent(out Interactable interactable))
         {
-            _interactedWith = null;
+            if (_interactedWith == interactable)
+            {
+                _interactedWith = null;
+            }
 
             if (_currentInteractable == interactable)
             {
