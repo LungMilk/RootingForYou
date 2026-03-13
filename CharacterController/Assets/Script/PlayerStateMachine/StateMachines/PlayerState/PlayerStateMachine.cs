@@ -43,6 +43,7 @@ public class PlayerStateMachine : MonoBehaviour
     private playerStateFactory _states;
 
     [Header("Interaction")]
+    public PlayerInputHandler _inputHandler;
     public GameObject _inputObject;
     private InputAction _interactAction;
     private Interactable _currentInteractable;
@@ -77,7 +78,9 @@ public class PlayerStateMachine : MonoBehaviour
 
     private void Awake()
     {
-        _playerInput = new PlayerInputs();
+        _inputHandler = GetComponent<PlayerInputHandler>();
+
+        _playerInput = GetComponent<PlayerInputHandler>().playerInputHandler;
         _chrController = GetComponent<CharacterController>();
 
         if (_cameraTransform == null && Camera.main != null)

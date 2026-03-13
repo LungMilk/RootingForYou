@@ -23,43 +23,30 @@ public class PlayerPlantingState : PlayerBaseState
 
         Ctx._selectedPlantObject = Ctx._plantCollection.plants[0];
     }
+    public void HandleAction(PlayerAction action)
+    {
+        switch (action)
+        {
+            case PlayerAction.Plant:
+                PlantOnGrid();
+                break;
+            case PlayerAction.Remove:
+                RemovePlantFromGrid();
+                break;
+            case PlayerAction.None:
+                break;
+        }
+    }
     public override void UpdateState() {
 
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            Plane gridPlane = new Plane(Vector3.up, _grid.GetWorldPosition(0, 0));
-
-            if (gridPlane.Raycast(ray,out float distance)) { 
-                Vector3 hitWorldPos = ray.GetPoint(distance);
-
-                _grid.GetXZ(hitWorldPos, out int x, out int z);
-                if (_grid.IsValidGridPosition(new Vector2Int(x, z)))
-                {
-                    //Debug.Log($"Clicked cell: {x}, {z}");
-                    PlacePlantOnGrid(x,z);
-                }
-            }
+            HandleAction(Ctx._inputHandler.leftMouseAction);
         }
         //i know its dirty just bare with me on this
         if (Input.GetMouseButtonDown(1))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            Plane gridPlane = new Plane(Vector3.up, _grid.GetWorldPosition(0, 0));
-
-            if (gridPlane.Raycast(ray, out float distance))
-            {
-                Vector3 hitWorldPos = ray.GetPoint(distance);
-
-                _grid.GetXZ(hitWorldPos, out int x, out int z);
-                if (_grid.IsValidGridPosition(new Vector2Int(x, z)))
-                {
-                    //Debug.Log($"Clicked cell: {x}, {z}");
-                    RemovePlantOnGrid(x, z);
-                }
-            }
+            HandleAction(Ctx._inputHandler.rightMouseAction);
         }
 
         //if (Input.GetKeyDown(KeyCode.R))
@@ -89,6 +76,44 @@ public class PlayerPlantingState : PlayerBaseState
         //}
 
         CheckSwitchStates(); }
+
+    private void RemovePlantFromGrid()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        Plane gridPlane = new Plane(Vector3.up, _grid.GetWorldPosition(0, 0));
+
+        if (gridPlane.Raycast(ray, out float distance))
+        {
+            Vector3 hitWorldPos = ray.GetPoint(distance);
+
+            _grid.GetXZ(hitWorldPos, out int x, out int z);
+            if (_grid.IsValidGridPosition(new Vector2Int(x, z)))
+            {
+                //Debug.Log($"Clicked cell: {x}, {z}");
+                RemovePlantOnGrid(x, z);
+            }
+        }
+    }
+
+    private void PlantOnGrid()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        Plane gridPlane = new Plane(Vector3.up, _grid.GetWorldPosition(0, 0));
+
+        if (gridPlane.Raycast(ray, out float distance))
+        {
+            Vector3 hitWorldPos = ray.GetPoint(distance);
+
+            _grid.GetXZ(hitWorldPos, out int x, out int z);
+            if (_grid.IsValidGridPosition(new Vector2Int(x, z)))
+            {
+                //Debug.Log($"Clicked cell: {x}, {z}");
+                PlacePlantOnGrid(x, z);
+            }
+        }
+    }
 
     private void RemovePlantOnGrid(int X, int Z)
     {
