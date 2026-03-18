@@ -4299,6 +4299,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1609090426645502589, guid: 3705d19f462d33140a0253e0f977c4b7, type: 3}
+      propertyPath: _inputHandler
+      value: 
+      objectReference: {fileID: 1565680031}
+    - target: {fileID: 1609090426645502589, guid: 3705d19f462d33140a0253e0f977c4b7, type: 3}
       propertyPath: _groundedGravity
       value: -2
       objectReference: {fileID: 0}
