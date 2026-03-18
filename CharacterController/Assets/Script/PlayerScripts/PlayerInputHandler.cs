@@ -120,7 +120,7 @@ public class PlayerInputHandler : MonoBehaviour
     //also simple rotation of the sprite because it is not that hard
     public void OnLeftDown(InputAction.CallbackContext context)
     {
-        print("Left mouse");
+        //print("Left mouse");
         SetCursorSprite(spriteLibraries.Find(x => x.action == leftMouseAction).sprite);
 
         mousePos.eulerAngles = new Vector3(0, 0, 45);
@@ -133,7 +133,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnRightDown(InputAction.CallbackContext context)
     {
-        print("Right mouse");
+        //print("Right mouse");
         SetCursorSprite(spriteLibraries.Find(x => x.action == rightMouseAction).sprite);
 
         mousePos.eulerAngles = new Vector3(0, 0, 45);
