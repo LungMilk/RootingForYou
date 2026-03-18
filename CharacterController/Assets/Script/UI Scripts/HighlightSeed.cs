@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class HighlightSeed : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -13,6 +14,9 @@ public class HighlightSeed : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public BarManager barManager;
 
     public GameObject seedObject;
+
+    public UnityEvent OnMouseOver;
+    public UnityEvent OnMouseOut; 
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,9 +36,11 @@ public class HighlightSeed : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             {PlantAttribute.Passion, plantObject.passion},
             {PlantAttribute.Calmness, plantObject.calmness },
         };
+        OnMouseOver.Invoke();
 
         barManager.SetPreviewValues(previews);
         seedObject.SetActive(true);
+        //print($"{name}");
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -46,6 +52,7 @@ public class HighlightSeed : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             {PlantAttribute.Passion, 0},
             {PlantAttribute.Calmness, 0 },
         };
+        OnMouseOut.Invoke();
 
         barManager.SetPreviewValues(previews);
         seedObject.SetActive(false);
