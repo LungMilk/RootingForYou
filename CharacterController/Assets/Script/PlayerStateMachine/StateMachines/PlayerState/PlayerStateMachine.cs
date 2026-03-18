@@ -76,11 +76,14 @@ public class PlayerStateMachine : MonoBehaviour
     public GameObject InputObject => _inputObject;
     public Transform CameraTransform => _cameraTransform;
 
-    private void Awake()
+    private void Start()
     {
         _inputHandler = GetComponent<PlayerInputHandler>();
-
-        _playerInput = GetComponent<PlayerInputHandler>().playerInputHandler;
+        _playerInput = _inputHandler.playerInputHandler;
+        if (_playerInput == null)
+        {
+            Debug.LogError("playerInputHandler is NULL on PlayerInputHandler!");
+        }
         _chrController = GetComponent<CharacterController>();
 
         if (_cameraTransform == null && Camera.main != null)
@@ -91,7 +94,7 @@ public class PlayerStateMachine : MonoBehaviour
         _states = new playerStateFactory(this);
         _currentState = _states.Movement();
         _currentState.EnterState();
-
+        _playerInput.CharacterControls.Enable();
         _playerInput.CharacterControls.Move.started += OnMovementInput;
         _playerInput.CharacterControls.Move.performed += OnMovementInput;
         _playerInput.CharacterControls.Move.canceled += OnMovementInput;
@@ -116,11 +119,6 @@ public class PlayerStateMachine : MonoBehaviour
     private void LateUpdate()
     {
         InteractPressedThisFrame = false;
-    }
-
-    private void OnEnable()
-    {
-        _playerInput.CharacterControls.Enable();
     }
 
     private void OnDisable()
