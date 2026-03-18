@@ -1,16 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
-/// <summary>
-/// Manager that creates a static Instance of an object pool of <see cref="TextBubble"/> objects that anything can get.
-/// </summary>
-public class TextBubbleManager : MonoBehaviour
-{
-    public static TextBubbleManager Instance;
 
-    [SerializeField] private TextBubble bubblePrefab;
+public class ToolTipManager : MonoBehaviour
+{
+    public static ToolTipManager Instance;
+
+    [SerializeField] private ToolTip bubblePrefab;
     [SerializeField] private int poolSize = 15;
 
-    private Queue<TextBubble> pool = new();
+    private Queue<ToolTip> pool = new();
 
     private void Awake()
     {
@@ -41,7 +39,7 @@ public class TextBubbleManager : MonoBehaviour
     /// <param name="text">What the bubble should contain</param>
     /// <param name="anchor">Where the bubble will be anchored</param>
     /// <returns></returns>
-    public TextBubble Get(string text, Transform anchor)
+    public ToolTip Get(string text, Transform anchor)
     {
         if (pool.Count == 0)
         {
@@ -49,17 +47,17 @@ public class TextBubbleManager : MonoBehaviour
         }
 
         var bubble = pool.Dequeue();
-        bubble.Show(text,anchor);
+        bubble.Show(text, anchor);
         return bubble;
     }
     /// <summary>
-    /// With the reference from <see cref="Release(TextBubble)"/> we return our textBubble back to the pool
+    /// With the reference from <see cref="Release(ToolTip)"/> we return our textBubble back to the pool
     /// </summary>
     /// <param name="bubble">The bubble gained from <see cref="Get(string, Transform)"/></param>
-    public void Release(TextBubble bubble)
+    public void Release(ToolTip bubble)
     {
         if (bubble == null) { return; }
-        print("Release");
+        //print("Release");
         bubble.Hide();
         pool.Enqueue(bubble);
     }

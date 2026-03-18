@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
-public class playerStateFactory
+public class playerStateFactory : MonoBehaviour
 {
     private PlayerStateMachine _context;
 

@@ -1,4 +1,5 @@
 
+using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 
 public abstract class PlayerBaseState
@@ -23,6 +24,16 @@ public abstract class PlayerBaseState
     public abstract void EnterState();
     public abstract void UpdateState();
     public abstract void ExitState();
+
+    protected void ExitSubState()
+    {
+        if (_currentSubState != null)
+        {
+            _currentSubState.ExitSubState();
+            _currentSubState.ExitState();
+            _currentSubState = null;
+        }
+    }
     public abstract void CheckSwitchStates();
     public abstract void InitializeSubState();
 
@@ -35,6 +46,7 @@ public abstract class PlayerBaseState
         }
     }
     protected void SwitchState(PlayerBaseState newState) {
+        ExitSubState();
         ExitState();
 
         newState.EnterState();
@@ -49,6 +61,12 @@ public abstract class PlayerBaseState
     }
     protected void SetSuperState(PlayerBaseState newSuperState) { _currentSuperState = newSuperState; }
     protected void SetSubState(PlayerBaseState newSubState) {
+
+        if(_currentSubState != null)
+        {
+            _currentSubState.ExitState();
+            _currentSubState.ExitSubState();
+        }
         //_currentSubState?.ExitState();
         _currentSubState = newSubState;
         newSubState.SetSuperState(this);

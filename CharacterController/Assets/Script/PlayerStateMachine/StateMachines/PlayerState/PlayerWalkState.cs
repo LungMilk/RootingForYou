@@ -44,11 +44,6 @@ public class PlayerWalkState : PlayerBaseState
         {
             SwitchState(Factory.Idle());
         }
-
-        if (Ctx.InteractPressedThisFrame)
-        {
-            SwitchState(Factory.Interact());
-        }
     }
 
     public override void InitializeSubState() { }

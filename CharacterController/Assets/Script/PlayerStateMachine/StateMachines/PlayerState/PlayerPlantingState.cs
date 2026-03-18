@@ -22,73 +22,113 @@ public class PlayerPlantingState : PlayerBaseState
         _grid = _gridBuilder._grid;
 
         Ctx._selectedPlantObject = Ctx._plantCollection.plants[0];
+
+
+        //Inputs for planting are now subscribed on the state switch and the Inputhandler will call the respective functions for the different actions.
+        PlayerInputHandler.instance.LeftClickReleased += OnLeftUp;
+        PlayerInputHandler.instance.RightClickReleased += OnRightUp;
+    }
+
+    public void OnLeftUp()
+    {
+        HandleAction(Ctx._inputHandler.leftMouseAction);
+    }
+    public void OnLeftDown()
+    {
+        //might not need these here
+    }
+
+    public void OnRightUp()
+    {
+        HandleAction(Ctx._inputHandler.rightMouseAction);
+    }
+
+    public void OnRightDown()
+    {
+        //might not need these here
+    }
+    //this is mostly just incase we want to constantly switch out the actions and then set them to different things.
+    public void HandleAction(PlayerAction action)
+    {
+        switch (action)
+        {
+            case PlayerAction.Plant:
+                PlantOnGrid();
+                break;
+            case PlayerAction.Remove:
+                RemovePlantFromGrid();
+                break;
+            case PlayerAction.None:
+                break;
+        }
     }
     public override void UpdateState() {
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            Plane gridPlane = new Plane(Vector3.up, _grid.GetWorldPosition(0, 0));
-
-            if (gridPlane.Raycast(ray,out float distance)) { 
-                Vector3 hitWorldPos = ray.GetPoint(distance);
-
-                _grid.GetXZ(hitWorldPos, out int x, out int z);
-                if (_grid.IsValidGridPosition(new Vector2Int(x, z)))
-                {
-                    //Debug.Log($"Clicked cell: {x}, {z}");
-                    PlacePlantOnGrid(x,z);
-                }
-            }
-        }
-        //i know its dirty just bare with me on this
-        if (Input.GetMouseButtonDown(1))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            Plane gridPlane = new Plane(Vector3.up, _grid.GetWorldPosition(0, 0));
-
-            if (gridPlane.Raycast(ray, out float distance))
-            {
-                Vector3 hitWorldPos = ray.GetPoint(distance);
-
-                _grid.GetXZ(hitWorldPos, out int x, out int z);
-                if (_grid.IsValidGridPosition(new Vector2Int(x, z)))
-                {
-                    //Debug.Log($"Clicked cell: {x}, {z}");
-                    RemovePlantOnGrid(x, z);
-                }
-            }
-        }
 
         //if (Input.GetKeyDown(KeyCode.R))
         //{
         //    Ctx._dir = PlacedObjectTypeSO.GetNextDir(PlacedObjectTypeSO.Dir.Down);
         //}
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            Ctx._selectedPlantObject = Ctx._plantCollection.plants[0];
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Ctx._selectedPlantObject = Ctx._plantCollection.plants[1];
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            Ctx._selectedPlantObject = Ctx._plantCollection.plants[2];
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            Ctx._selectedPlantObject = Ctx._plantCollection.plants[3];
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            Ctx._selectedPlantObject = Ctx._plantCollection.plants[4];
-        }
+        //if (Input.GetKeyDown(KeyCode.Alpha1))
+        //{
+        //    Ctx._selectedPlantObject = Ctx._plantCollection.plants[0];
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha2))
+        //{
+        //    Ctx._selectedPlantObject = Ctx._plantCollection.plants[1];
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha3))
+        //{
+        //    Ctx._selectedPlantObject = Ctx._plantCollection.plants[2];
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha4))
+        //{
+        //    Ctx._selectedPlantObject = Ctx._plantCollection.plants[3];
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha5))
+        //{
+        //    Ctx._selectedPlantObject = Ctx._plantCollection.plants[4];
+        //}
 
         CheckSwitchStates(); }
+
+    private void RemovePlantFromGrid()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        Plane gridPlane = new Plane(Vector3.up, _grid.GetWorldPosition(0, 0));
+
+        if (gridPlane.Raycast(ray, out float distance))
+        {
+            Vector3 hitWorldPos = ray.GetPoint(distance);
+
+            _grid.GetXZ(hitWorldPos, out int x, out int z);
+            if (_grid.IsValidGridPosition(new Vector2Int(x, z)))
+            {
+                //Debug.Log($"Clicked cell: {x}, {z}");
+                RemovePlantOnGrid(x, z);
+            }
+        }
+    }
+
+    private void PlantOnGrid()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        Plane gridPlane = new Plane(Vector3.up, _grid.GetWorldPosition(0, 0));
+
+        if (gridPlane.Raycast(ray, out float distance))
+        {
+            Vector3 hitWorldPos = ray.GetPoint(distance);
+
+            _grid.GetXZ(hitWorldPos, out int x, out int z);
+            if (_grid.IsValidGridPosition(new Vector2Int(x, z)))
+            {
+                //Debug.Log($"Clicked cell: {x}, {z}");
+                PlacePlantOnGrid(x, z);
+            }
+        }
+    }
 
     private void RemovePlantOnGrid(int X, int Z)
     {
@@ -161,7 +201,8 @@ public class PlayerPlantingState : PlayerBaseState
     }
 
     public override void ExitState() {
-       
+        PlayerInputHandler.instance.LeftClickReleased -= OnLeftUp;
+        PlayerInputHandler.instance.RightClickReleased -= OnRightUp;
     }
     public override void CheckSwitchStates()
     {
