@@ -136,6 +136,24 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""03757a08-f34b-418a-b18f-d26b516bc0da"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""a304646b-4534-4f7e-805a-ae4b6a9a6c03"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -270,6 +288,39 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""EnterFreeLook"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0ffb3ee8-c209-42a0-98cd-ce5d93f8a9ee"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""79205483-d09c-4e9f-a869-4a44dc1da61e"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b4ed4393-4327-4ea9-b5d3-1628788c279a"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -283,6 +334,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_CharacterControls_Interact = m_CharacterControls.FindAction("Interact", throwIfNotFound: true);
         m_CharacterControls_Look = m_CharacterControls.FindAction("Look", throwIfNotFound: true);
         m_CharacterControls_EnterFreeLook = m_CharacterControls.FindAction("EnterFreeLook", throwIfNotFound: true);
+        m_CharacterControls_LeftClick = m_CharacterControls.FindAction("LeftClick", throwIfNotFound: true);
+        m_CharacterControls_RightClick = m_CharacterControls.FindAction("RightClick", throwIfNotFound: true);
     }
 
     ~@PlayerInputs()
@@ -368,6 +421,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_CharacterControls_Interact;
     private readonly InputAction m_CharacterControls_Look;
     private readonly InputAction m_CharacterControls_EnterFreeLook;
+    private readonly InputAction m_CharacterControls_LeftClick;
+    private readonly InputAction m_CharacterControls_RightClick;
     /// <summary>
     /// Provides access to input actions defined in input action map "CharacterControls".
     /// </summary>
@@ -399,6 +454,14 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "CharacterControls/EnterFreeLook".
         /// </summary>
         public InputAction @EnterFreeLook => m_Wrapper.m_CharacterControls_EnterFreeLook;
+        /// <summary>
+        /// Provides access to the underlying input action "CharacterControls/LeftClick".
+        /// </summary>
+        public InputAction @LeftClick => m_Wrapper.m_CharacterControls_LeftClick;
+        /// <summary>
+        /// Provides access to the underlying input action "CharacterControls/RightClick".
+        /// </summary>
+        public InputAction @RightClick => m_Wrapper.m_CharacterControls_RightClick;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -440,6 +503,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @EnterFreeLook.started += instance.OnEnterFreeLook;
             @EnterFreeLook.performed += instance.OnEnterFreeLook;
             @EnterFreeLook.canceled += instance.OnEnterFreeLook;
+            @LeftClick.started += instance.OnLeftClick;
+            @LeftClick.performed += instance.OnLeftClick;
+            @LeftClick.canceled += instance.OnLeftClick;
+            @RightClick.started += instance.OnRightClick;
+            @RightClick.performed += instance.OnRightClick;
+            @RightClick.canceled += instance.OnRightClick;
         }
 
         /// <summary>
@@ -466,6 +535,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @EnterFreeLook.started -= instance.OnEnterFreeLook;
             @EnterFreeLook.performed -= instance.OnEnterFreeLook;
             @EnterFreeLook.canceled -= instance.OnEnterFreeLook;
+            @LeftClick.started -= instance.OnLeftClick;
+            @LeftClick.performed -= instance.OnLeftClick;
+            @LeftClick.canceled -= instance.OnLeftClick;
+            @RightClick.started -= instance.OnRightClick;
+            @RightClick.performed -= instance.OnRightClick;
+            @RightClick.canceled -= instance.OnRightClick;
         }
 
         /// <summary>
@@ -541,5 +616,19 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnEnterFreeLook(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "LeftClick" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnLeftClick(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "RightClick" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRightClick(InputAction.CallbackContext context);
     }
 }

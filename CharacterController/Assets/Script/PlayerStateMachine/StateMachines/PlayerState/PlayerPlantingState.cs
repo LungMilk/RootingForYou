@@ -22,7 +22,32 @@ public class PlayerPlantingState : PlayerBaseState
         _grid = _gridBuilder._grid;
 
         Ctx._selectedPlantObject = Ctx._plantCollection.plants[0];
+
+
+        //Inputs for planting are now subscribed on the state switch and the Inputhandler will call the respective functions for the different actions.
+        PlayerInputHandler.instance.LeftClickReleased += OnLeftUp;
+        PlayerInputHandler.instance.RightClickReleased += OnRightUp;
     }
+
+    public void OnLeftUp()
+    {
+        HandleAction(Ctx._inputHandler.leftMouseAction);
+    }
+    public void OnLeftDown()
+    {
+        //might not need these here
+    }
+
+    public void OnRightUp()
+    {
+        HandleAction(Ctx._inputHandler.rightMouseAction);
+    }
+
+    public void OnRightDown()
+    {
+        //might not need these here
+    }
+    //this is mostly just incase we want to constantly switch out the actions and then set them to different things.
     public void HandleAction(PlayerAction action)
     {
         switch (action)
@@ -38,16 +63,6 @@ public class PlayerPlantingState : PlayerBaseState
         }
     }
     public override void UpdateState() {
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            HandleAction(Ctx._inputHandler.leftMouseAction);
-        }
-        //i know its dirty just bare with me on this
-        if (Input.GetMouseButtonDown(1))
-        {
-            HandleAction(Ctx._inputHandler.rightMouseAction);
-        }
 
         //if (Input.GetKeyDown(KeyCode.R))
         //{
@@ -186,7 +201,8 @@ public class PlayerPlantingState : PlayerBaseState
     }
 
     public override void ExitState() {
-       
+        PlayerInputHandler.instance.LeftClickReleased -= OnLeftUp;
+        PlayerInputHandler.instance.RightClickReleased -= OnRightUp;
     }
     public override void CheckSwitchStates()
     {

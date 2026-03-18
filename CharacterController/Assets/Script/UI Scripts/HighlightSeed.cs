@@ -53,6 +53,19 @@ public class HighlightSeed : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void SetPlayerSeed(PlantObjectSO selectedPlant)
     {
+        //this resets our mouse keys to be mouse 0 -> plant.
+
+        var list = PlayerInputHandler.instance.spriteLibraries;
+        //
+        int index = list.FindIndex(x => x.action == PlayerAction.Plant);
+
+        if (index != -1)
+        {
+            var item = list[index];
+            item.sprite = selectedPlant.displayImage;
+            list[index] = item;
+        }
+        PlayerInputHandler.instance.SetMousePlant();
         playerStateMachine._selectedPlantObject = selectedPlant;
     }
 }
