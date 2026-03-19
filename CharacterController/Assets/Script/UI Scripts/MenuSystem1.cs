@@ -15,7 +15,7 @@ public class MenuSystem : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             currentPage++;
             NextScreen(currentPage);
@@ -29,7 +29,7 @@ public class MenuSystem : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Level");
+        SceneManager.LoadScene("MainScene");
     }
 
     public void NextScreen(int page)
@@ -42,3 +42,4 @@ public class MenuSystem : MonoBehaviour
         pages[page].SetActive(true);
     }
 }
+
