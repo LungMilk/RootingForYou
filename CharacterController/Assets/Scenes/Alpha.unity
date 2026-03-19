@@ -2441,6 +2441,7 @@ MonoBehaviour:
   - {fileID: 645604506}
   - {fileID: 536182205}
   - {fileID: 134851105}
+  seedsInInventory: 0
 --- !u!114 &645604509
 MonoBehaviour:
   m_ObjectHideFlags: 0
