@@ -48,4 +48,10 @@ public class AnxietyLock : MonoBehaviour
         }
         CameraManager.Instance.SwitchCamera(cam, duration);
     }
+
+    public void DestroyLock()
+    {
+        Unlocked?.Invoke();
+        speaker.DismissBubble();
+    }
 }
