@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1421222667205896571}
   - component: {fileID: 8860832561311180668}
   - component: {fileID: 6635606094717432642}
+  - component: {fileID: 4159724355539078866}
   m_Layer: 0
   m_Name: GardenBoxManager
   m_TagString: Untagged
@@ -50,6 +51,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   gardenBoxes: []
+  puzzleTaskManager: {fileID: 0}
   detectionBox: {fileID: 3995780615077287}
   _beautyTotal: 0
   _passionTotal: 0
@@ -74,6 +76,48 @@ MonoBehaviour:
   OnTaskCompleted:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4159724355539078866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6019373172432474024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ba297855442fe41b114b0a01272ba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProximityTrigger
+  OnProxEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8860832561311180668}
+        m_TargetAssemblyTypeName: GardenBoxManager, Assembly-CSharp
+        m_MethodName: OnPlayerEnter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnProxExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8860832561311180668}
+        m_TargetAssemblyTypeName: GardenBoxManager, Assembly-CSharp
+        m_MethodName: OnPlayerExit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6150243874400461910
 GameObject:
   m_ObjectHideFlags: 0
