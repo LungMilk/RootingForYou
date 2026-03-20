@@ -366,11 +366,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 297e0fd6473c9744fba390ea359fc97f, type: 3}
---- !u!198 &218918721 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4092152354562060996, guid: d2bb956090d946843bd44cd5a04e1570, type: 3}
-  m_PrefabInstance: {fileID: 1640386656}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &227895813 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c9b1c6121413f8e48b062933252f7c11, type: 3}
@@ -622,7 +617,7 @@ MonoBehaviour:
   anxietyFog:
   - {fileID: 1354727869}
   - {fileID: 466665678}
-  - {fileID: 218918721}
+  - {fileID: 0}
 --- !u!135 &957317936
 SphereCollider:
   m_ObjectHideFlags: 0

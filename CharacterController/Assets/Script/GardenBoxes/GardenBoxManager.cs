@@ -95,6 +95,11 @@ public class GardenBoxManager : MonoBehaviour
         {
             box.SetAnxietyFog(true);
         }
+
+        if (HeadTrackerUI.instance != null) 
+        {
+            HeadTrackerUI.instance.SetPlayerMood(PlayerMood.anxious);
+        }
     }
 
     public void OnPlayerExit()
@@ -102,6 +107,11 @@ public class GardenBoxManager : MonoBehaviour
         foreach(var box in gardenBoxes)
         {
             box.SetAnxietyFog(false);
+        }
+
+        if (HeadTrackerUI.instance != null)
+        {
+            HeadTrackerUI.instance.SetPlayerMood(PlayerMood.happy);
         }
     }
 }
