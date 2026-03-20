@@ -8,6 +8,7 @@ public class GardenBoxManager : MonoBehaviour
 {
     public UnityEvent OnDetectedChange;
     [SerializeField] private List<GardenBox> gardenBoxes;
+    public PuzzleTaskManager puzzleTaskManager;
     public Collider detectionBox;
 
     [Header("Attribute Totals")]
@@ -45,8 +46,8 @@ public class GardenBoxManager : MonoBehaviour
                 box.GardenBoxChanged.AddListener(OnGardenBoxChanged);
             }
         }
-
-        detectionBox.gameObject.SetActive(false);
+        puzzleTaskManager = this.GetComponent<PuzzleTaskManager>();
+        detectionBox.isTrigger = true;
     }
     public void OnGardenBoxChanged()
     {
@@ -85,5 +86,22 @@ public class GardenBoxManager : MonoBehaviour
             {PlantAttribute.Passion, _passionTotal },
             {PlantAttribute.Calmness, _calmnessTotal },
         };
+    }
+
+    public void OnPlayerEnter()
+    {
+        //this is where we are also going to set the bar manager and send it puzzle tasks and the like.
+        foreach (var box in gardenBoxes)
+        {
+            box.SetAnxietyFog(true);
+        }
+    }
+
+    public void OnPlayerExit()
+    {
+        foreach(var box in gardenBoxes)
+        {
+            box.SetAnxietyFog(false);
+        }
     }
 }
