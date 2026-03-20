@@ -19,6 +19,7 @@ public class AnxietyLock : MonoBehaviour
     public float duration = 5f;
     public void Start()
     {
+        _locked = true;
         if (speaker != null)
             speaker.text = _requiredKey._displayText;
     }
@@ -30,14 +31,18 @@ public class AnxietyLock : MonoBehaviour
     {
         if (key == _requiredKey)
         {
-            _locked = true;
             if (speaker.textBubble != null)
             {
                 speaker.DismissBubble();
             }
+            if (_locked)
+            {
+                HeadTrackerUI.instance.RemoveNPCHead();
+            }
+            _locked = false;
             Unlocked?.Invoke();
         }
-        return _locked;
+        return !_locked;
     }
 
     public void LookAtMe()

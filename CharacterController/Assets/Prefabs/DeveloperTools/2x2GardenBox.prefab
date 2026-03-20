@@ -171,6 +171,7 @@ MonoBehaviour:
   _beautyContribution: 0
   _passionContribution: 0
   _calmnessContribution: 0
+  anxietyFog: {fileID: 4092152354562060996}
 --- !u!1 &1857821374624710588
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,6 +645,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 297e0fd6473c9744fba390ea359fc97f, type: 3}
+--- !u!198 &4092152354562060996 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3829239765319541837, guid: 297e0fd6473c9744fba390ea359fc97f, type: 3}
+  m_PrefabInstance: {fileID: 1003756972183967369}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4092152354577266564 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3829239765300142349, guid: 297e0fd6473c9744fba390ea359fc97f, type: 3}

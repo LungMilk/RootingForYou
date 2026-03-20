@@ -24,13 +24,14 @@ public class HeadTrackerUI : MonoBehaviour
     {
         if (instance == null)
         {
-            instance = new HeadTrackerUI();
+            instance = this;
         }
-        playerMood = PlayerMood.happy;
+        SetPlayerMood(PlayerMood.happy);
         npcs = npcTracker.amount;
     }
     public void SetPlayerMood(PlayerMood mood)
     {
+        print("setting player mood to" + mood);
         playerMood = mood;
 
         if (playerMood == PlayerMood.happy)

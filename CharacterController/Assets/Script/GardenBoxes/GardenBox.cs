@@ -48,6 +48,12 @@ public class GardenBox : Interactable
         {
             _grid.OnGridObjectChanged += OnGridChanged;
         }
+
+        if(anxietyFog != null)
+        {
+            var emis = anxietyFog.emission;
+            emis.enabled = false;
+        }
     }
     private void OnGridChanged(object sender, GridXZ<GridObject>.OnGridObjectChangedEventArgs e)
     {

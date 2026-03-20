@@ -91,6 +91,7 @@ public class GardenBoxManager : MonoBehaviour
     public void OnPlayerEnter()
     {
         //this is where we are also going to set the bar manager and send it puzzle tasks and the like.
+        print("Player entered " + name);
         foreach (var box in gardenBoxes)
         {
             box.SetAnxietyFog(true);
