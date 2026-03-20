@@ -7818,7 +7818,7 @@ PrefabInstance:
     - target: {fileID: 1609090426645502589, guid: 3705d19f462d33140a0253e0f977c4b7, type: 3}
       propertyPath: _inputHandler
       value: 
-      objectReference: {fileID: 920785082}
+      objectReference: {fileID: 0}
     - target: {fileID: 1609090426645502589, guid: 3705d19f462d33140a0253e0f977c4b7, type: 3}
       propertyPath: _groundedGravity
       value: -2
@@ -7937,28 +7937,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7888867986638669678, guid: 3705d19f462d33140a0253e0f977c4b7, type: 3}
   m_PrefabInstance: {fileID: 920785080}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &920785082 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2694604126270380588, guid: 3705d19f462d33140a0253e0f977c4b7, type: 3}
-  m_PrefabInstance: {fileID: 920785080}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63fb6f57be2618549a0cfc3047a1ceb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &920785085 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1609090426645502589, guid: 3705d19f462d33140a0253e0f977c4b7, type: 3}
-  m_PrefabInstance: {fileID: 920785080}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3d23675dd65f7044ad15ac4cd807bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &922844748
 GameObject:
   m_ObjectHideFlags: 0
@@ -8392,7 +8370,7 @@ PrefabInstance:
     - target: {fileID: 4173515680893392021, guid: f30a469bd9827114192d1d1cf7fd41a0, type: 3}
       propertyPath: playerStateMachine
       value: 
-      objectReference: {fileID: 920785085}
+      objectReference: {fileID: 0}
     - target: {fileID: 4173515680893392021, guid: f30a469bd9827114192d1d1cf7fd41a0, type: 3}
       propertyPath: OnMouseOut.m_PersistentCalls.m_Calls.Array.size
       value: 0
@@ -9814,7 +9792,7 @@ PrefabInstance:
     - target: {fileID: 4173515680893392021, guid: f30a469bd9827114192d1d1cf7fd41a0, type: 3}
       propertyPath: playerStateMachine
       value: 
-      objectReference: {fileID: 920785085}
+      objectReference: {fileID: 0}
     - target: {fileID: 4173515680893392021, guid: f30a469bd9827114192d1d1cf7fd41a0, type: 3}
       propertyPath: OnMouseOut.m_PersistentCalls.m_Calls.Array.size
       value: 0
@@ -15137,7 +15115,7 @@ PrefabInstance:
     - target: {fileID: 4173515680893392021, guid: f30a469bd9827114192d1d1cf7fd41a0, type: 3}
       propertyPath: playerStateMachine
       value: 
-      objectReference: {fileID: 920785085}
+      objectReference: {fileID: 0}
     - target: {fileID: 4173515680893392021, guid: f30a469bd9827114192d1d1cf7fd41a0, type: 3}
       propertyPath: OnMouseOut.m_PersistentCalls.m_Calls.Array.size
       value: 0
