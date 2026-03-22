@@ -31,7 +31,7 @@ public class HeadTrackerUI : MonoBehaviour
     }
     public void SetPlayerMood(PlayerMood mood)
     {
-        print("setting player mood to" + mood);
+        //print("setting player mood to" + mood);
         playerMood = mood;
 
         if (playerMood == PlayerMood.happy)

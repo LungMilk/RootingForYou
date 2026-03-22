@@ -169,7 +169,7 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void RequestStateChange(PlayerBaseState newState)
     {
-        print($"State change: {_currentState} -> {newState}");
+        //print($"State change: {_currentState} -> {newState}");
         if (_currentState == newState) return;
 
         _previousState = _currentState;

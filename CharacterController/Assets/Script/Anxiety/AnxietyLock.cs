@@ -31,7 +31,7 @@ public class AnxietyLock : MonoBehaviour
     {
         if (key == _requiredKey)
         {
-            if (speaker.textBubble != null)
+            if (speaker != null && speaker.textBubble != null)
             {
                 speaker.DismissBubble();
             }
@@ -57,6 +57,9 @@ public class AnxietyLock : MonoBehaviour
     public void DestroyLock()
     {
         Unlocked?.Invoke();
-        speaker.DismissBubble();
+        if (speaker != null)
+        {
+            speaker.DismissBubble();
+        }
     }
 }

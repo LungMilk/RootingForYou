@@ -15,3 +15,6 @@ MonoBehaviour:
   placedObjects:
   - {fileID: 11400000, guid: ad25c24cd560e8744aed57e8ff579e04, type: 2}
   - {fileID: 11400000, guid: 4cfca010441fa184690cb27e667fa220, type: 2}
+  - {fileID: 11400000, guid: 5f4686590bba331458a1ae954391df19, type: 2}
+  - {fileID: 11400000, guid: f8ff786c83d825b4e8ef893774103fa8, type: 2}
+  - {fileID: 11400000, guid: e7a1d8032fbb6c24788155125886d516, type: 2}

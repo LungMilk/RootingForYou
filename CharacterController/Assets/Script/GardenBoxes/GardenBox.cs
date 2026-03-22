@@ -42,7 +42,7 @@ public class GardenBox : Interactable
 
         //if (_grid == null) { print("WEEWOOWEEWOO"); }
         ChangeDisplayText();
-        //LoadGridPreset();
+        LoadGridPreset();
 
         if (_grid != null)
         {
@@ -179,6 +179,9 @@ public class GardenBox : Interactable
                 }
             }
         }
+
+        CalculateGridValues();
+        GardenBoxChanged?.Invoke();
     }
 
     public void SetAnxietyFog(bool state)

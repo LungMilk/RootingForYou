@@ -4350,6 +4350,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 695485042874254950, guid: d2bb956090d946843bd44cd5a04e1570, type: 3}
+      propertyPath: _preset
+      value: 
+      objectReference: {fileID: 11400000, guid: 0b3d2b94a9ce808449ac73dad2b0b5f4, type: 2}
     - target: {fileID: 2715991035835743890, guid: d2bb956090d946843bd44cd5a04e1570, type: 3}
       propertyPath: m_Name
       value: 2x2GardenBox (4)
@@ -4597,6 +4601,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 516815593}
   m_CullTransparentMesh: 1
+--- !u!1 &537705087 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6019373172432474024, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
+  m_PrefabInstance: {fileID: 1990766064}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &538788475
 GameObject:
   m_ObjectHideFlags: 0
@@ -13853,6 +13862,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 695485042874254950, guid: d2bb956090d946843bd44cd5a04e1570, type: 3}
+      propertyPath: _preset
+      value: 
+      objectReference: {fileID: 11400000, guid: 0b3d2b94a9ce808449ac73dad2b0b5f4, type: 2}
     - target: {fileID: 2715991035835743890, guid: d2bb956090d946843bd44cd5a04e1570, type: 3}
       propertyPath: m_Name
       value: 2x2GardenBox (2)
@@ -15507,6 +15520,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: GardenBoxManager (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6635606094717432642, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
+      propertyPath: _tasks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6635606094717432642, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
+      propertyPath: '_tasks.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a0a27db6402e1384ea24161b3b7c329d, type: 2}
+    - target: {fileID: 6635606094717432642, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6635606094717432642, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6635606094717432642, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2041233060}
+    - target: {fileID: 6635606094717432642, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6635606094717432642, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Complete
+      objectReference: {fileID: 0}
+    - target: {fileID: 6635606094717432642, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AnxietyTask, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6635606094717432642, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
+      propertyPath: OnTaskCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8860832561311180668, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
       propertyPath: puzzleTaskManager
       value: 
@@ -15532,6 +15581,12 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6019373172432474024, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2041233060}
+    - targetCorrespondingSourceObject: {fileID: 6019373172432474024, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2041233059}
     - targetCorrespondingSourceObject: {fileID: 6150243874400461910, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1501638707}
@@ -15541,7 +15596,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6635606094717432642, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
   m_PrefabInstance: {fileID: 1990766064}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 537705087}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73a34150dc826614c94aad2521680d68, type: 3}
@@ -16033,12 +16088,59 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8860832561311180668, guid: 9f0271940e86b744c8f8aafd11fc8905, type: 3}
   m_PrefabInstance: {fileID: 1990766064}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 537705087}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0db890758d97fd6488edbf45867890ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2041233059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537705087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c2790cb1acf9ad48af842013cd25595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnxietyLock
+  Unlocked:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2041233057}
+        m_TargetAssemblyTypeName: GardenBoxManager, Assembly-CSharp
+        m_MethodName: DisableAnxietyFog
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _requiredKey: {fileID: 11400000, guid: a8a73051acd4b65418a35fefb36db410, type: 2}
+  _locked: 1
+  speaker: {fileID: 0}
+  cam: {fileID: 0}
+  duration: 5
+--- !u!114 &2041233060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537705087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b525ac8df215f04992cfc29e64746ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnxietyTask
+  _anxietyKey: {fileID: 11400000, guid: a8a73051acd4b65418a35fefb36db410, type: 2}
+  _anxietyLockTarget: {fileID: 2041233059}
+  _isCompleted: 0
 --- !u!1 &2067553406
 GameObject:
   m_ObjectHideFlags: 0

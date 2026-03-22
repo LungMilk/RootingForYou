@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 //Thought this would do something in the inspector
 [HelpURL("https://miro.com/app/board/uXjVGPLT8VU=/")]
 public class GardenBoxManager : MonoBehaviour
@@ -11,6 +12,8 @@ public class GardenBoxManager : MonoBehaviour
     public PuzzleTaskManager puzzleTaskManager;
     public Collider detectionBox;
 
+
+    public bool displayFog;
     [Header("Attribute Totals")]
     [SerializeField] private int _beautyTotal, _passionTotal, _calmnessTotal;
 
@@ -38,6 +41,7 @@ public class GardenBoxManager : MonoBehaviour
     #endregion
     private void Awake()
     {
+        displayFog = true;
         foreach (var box in gardenBoxes)
         {
             if (box != null)
@@ -91,7 +95,9 @@ public class GardenBoxManager : MonoBehaviour
     public void OnPlayerEnter()
     {
         //this is where we are also going to set the bar manager and send it puzzle tasks and the like.
-        print("Player entered " + name);
+        if(!displayFog) { return; }
+
+        //print("Player entered " + name);
         foreach (var box in gardenBoxes)
         {
             box.SetAnxietyFog(true);
@@ -113,6 +119,24 @@ public class GardenBoxManager : MonoBehaviour
         if (HeadTrackerUI.instance != null)
         {
             HeadTrackerUI.instance.SetPlayerMood(PlayerMood.happy);
+        }
+    }
+
+    public void DisableAnxietyFog()
+    {
+        displayFog = false;
+        foreach (var box in gardenBoxes)
+        {
+            box.SetAnxietyFog(false);
+        }
+    }
+
+    public void EnableAnxietyFog()
+    {
+        displayFog = true;
+        foreach (var box in gardenBoxes)
+        {
+            box.SetAnxietyFog(true);
         }
     }
 }
