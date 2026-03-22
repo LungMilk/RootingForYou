@@ -19,10 +19,10 @@ public class PlayerIdleState : PlayerBaseState
             SwitchState(Factory.Walk());
         }
 
-        if (Ctx.InteractPressedThisFrame)
-        {
-            SwitchState(Factory.Interact());
-        }
+        //if (Ctx.InteractPressedThisFrame)
+        //{
+        //    SwitchState(Factory.Interact());
+        //}
     }
 
     public override void InitializeSubState() { }
