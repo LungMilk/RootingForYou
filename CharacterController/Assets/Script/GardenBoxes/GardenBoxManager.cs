@@ -107,6 +107,8 @@ public class GardenBoxManager : MonoBehaviour
         {
             HeadTrackerUI.instance.SetPlayerMood(PlayerMood.anxious);
         }
+        //we need the manager to talk or send itself to the bar manager as well as its puzzle manager.
+        BarManager.instance.SetupBarManager(puzzleTaskManager,this,true);
     }
 
     public void OnPlayerExit()
@@ -120,6 +122,8 @@ public class GardenBoxManager : MonoBehaviour
         {
             HeadTrackerUI.instance.SetPlayerMood(PlayerMood.happy);
         }
+
+        BarManager.instance.ShowBars(false);
     }
 
     public void DisableAnxietyFog()
