@@ -150,7 +150,7 @@ public class GridPresetEditor : Editor
 
                 string buttonLabel = element != null ? element.name : "None";
 
-                if (GUILayout.Button(buttonLabel,GUILayout.MaxWidth(50)))
+                if (GUILayout.Button(buttonLabel,GUILayout.MaxWidth(100)))
                 {
                     int currentIndex = element != null ? objectsList.IndexOf(element) : -1;
                     int nextIndex = (currentIndex+1) % (objectsList.Count+1);

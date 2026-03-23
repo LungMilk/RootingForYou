@@ -4,6 +4,7 @@ using System.Linq;
 using TMPro;
 using Unity.Cinemachine;
 using Unity.Multiplayer.Center.Common;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using static UnityEngine.EventSystems.EventTrigger;
@@ -31,6 +32,9 @@ public class GardenBox : Interactable
 
     [SerializeField]
     private int _beautyContribution, _passionContribution, _calmnessContribution;
+
+    [Header("Visuals")]
+    public ParticleSystem anxietyFog;
     private void Start()
     {
         //_gridBuilder = _gridObject.GetComponent<GridBuilder>();
@@ -38,11 +42,17 @@ public class GardenBox : Interactable
 
         //if (_grid == null) { print("WEEWOOWEEWOO"); }
         ChangeDisplayText();
-        //LoadGridPreset();
+        LoadGridPreset();
 
         if (_grid != null)
         {
             _grid.OnGridObjectChanged += OnGridChanged;
+        }
+
+        if(anxietyFog != null)
+        {
+            var emis = anxietyFog.emission;
+            emis.enabled = false;
         }
     }
     private void OnGridChanged(object sender, GridXZ<GridObject>.OnGridObjectChangedEventArgs e)
@@ -169,5 +179,15 @@ public class GardenBox : Interactable
                 }
             }
         }
+
+        CalculateGridValues();
+        GardenBoxChanged?.Invoke();
+    }
+
+    public void SetAnxietyFog(bool state)
+    {
+        if(anxietyFog == null) { return; }
+        var emis = anxietyFog.emission;
+        emis.enabled = state;
     }
 }

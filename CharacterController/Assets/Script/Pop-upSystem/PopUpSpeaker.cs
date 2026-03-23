@@ -25,6 +25,14 @@ public class PopUpSpeaker : MonoBehaviour
         textBubble = TextBubbleManager.Instance.Get(text, textAnchor);
     }
 
+    public void CreateBubbleForSeconds(float time)
+    {
+        if (textBubble != null) { return; }
+        textBubble = TextBubbleManager.Instance.Get(text, textAnchor);
+        Invoke("DismissBubble", time);
+    }
+
+    [ContextMenu("Dismiss Bubble")]
     /// <summary>
     /// dismiss a bubble controlled by the speaker
     /// </summary>
@@ -33,7 +41,7 @@ public class PopUpSpeaker : MonoBehaviour
     /// </para>
     public void DismissBubble()
     {
-        if (textBubble != null) { print($"{name}: cannot find a text bubble"); return; }
+        if (textBubble == null) { print($"{name}: cannot find a text bubble"); return; }
         TextBubbleManager.Instance.Release(textBubble);
     }
 

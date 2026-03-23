@@ -11,12 +11,12 @@ public class ShovelButton : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
     public UnityEvent OnClick;
     public void OnPointerDown(PointerEventData eventData)
     {
-        print("Pressed me");
+        //print("Pressed me");
         OnClick?.Invoke();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        print("Over shovel");
+        //print("Over shovel");
     }
 }

@@ -16,15 +16,18 @@ public class HighlightSeed : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public GameObject seedObject;
 
     public UnityEvent OnMouseOver;
-    public UnityEvent OnMouseOut; 
+    public UnityEvent OnMouseOut;
+
+    public Sprite closedBag;
+    public Sprite openBag;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         seedObject = this.transform.GetChild(0).gameObject;
-        seedObject.GetComponent<Image>().sprite = plantObject.displayImage;
-        seedObject.SetActive(false);
+        seedObject.GetComponent<Image>().sprite = closedBag;
+        //seedObject.SetActive(false);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -39,7 +42,9 @@ public class HighlightSeed : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         OnMouseOver.Invoke();
 
         barManager.SetPreviewValues(previews);
-        seedObject.SetActive(true);
+        seedObject.GetComponent<Image>().sprite = openBag;
+        seedObject.GetComponent<RectTransform>().localPosition = new Vector3(0, 120, 0);
+        //seedObject.SetActive(true);
         //print($"{name}");
     }
 
@@ -55,7 +60,10 @@ public class HighlightSeed : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         OnMouseOut.Invoke();
 
         barManager.SetPreviewValues(previews);
-        seedObject.SetActive(false);
+        seedObject.GetComponent<Image>().sprite = closedBag;
+        seedObject.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
+
+        //seedObject.SetActive(false);
     }
 
     public void SetPlayerSeed(PlantObjectSO selectedPlant)

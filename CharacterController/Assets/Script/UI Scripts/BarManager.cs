@@ -11,6 +11,8 @@ public class AttributeSliderPair
 }
 public class BarManager : MonoBehaviour
 {
+    public static BarManager instance;
+
     //maybe make this a static instance later or something??
     [SerializeField] private List<AttributeSliderPair> barPairs;
     [SerializeField] private List<AttributeSliderPair> previewBarPairs;
@@ -38,6 +40,11 @@ public class BarManager : MonoBehaviour
     }
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+
         bars = new Dictionary<PlantAttribute, Slider>();
         previewBars = new Dictionary<PlantAttribute, Slider>();
 
