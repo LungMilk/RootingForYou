@@ -37,6 +37,10 @@ public class BarManager : MonoBehaviour
     void Start()
     {
         SetBarMax();
+        foreach (var bar in barPairs)
+        {
+            bar.slider.gameObject.SetActive(false);
+        }
     }
     private void Awake()
     {
@@ -111,6 +115,13 @@ public class BarManager : MonoBehaviour
         if (task == null) { print($"No current task found for {puzzleTaskManager.name}"); return; }
         foreach (var threshold in task._attributeThresholds)
         {
+            if(threshold.requiredValue <= 0 || threshold.requiredValue == null)
+            {
+                //do not show our bar.
+                bars[threshold.attribute].gameObject.SetActive(false);
+                continue;
+            }
+            bars[threshold.attribute].gameObject.SetActive(true);
             bars[threshold.attribute].maxValue = threshold.requiredValue;
             previewBars[threshold.attribute].maxValue = threshold.requiredValue;
         }

@@ -90,4 +90,9 @@ public class PopUpSpeaker : MonoBehaviour
         }
         if (textBubble != null) { DismissBubble(); }
     }
+
+    public void OnDisable()
+    {
+        DismissBubble();
+    }
 }

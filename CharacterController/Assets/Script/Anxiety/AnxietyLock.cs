@@ -20,8 +20,8 @@ public class AnxietyLock : MonoBehaviour
     public void Start()
     {
         _locked = true;
-        if (speaker != null)
-            speaker.text = _requiredKey._displayText;
+        //if (speaker != null)
+        //    speaker.text = _requiredKey._displayText;
     }
     /// <summary>
     /// Give an AnxietyKey to <see cref="AnxietyLock"/>. This will try and call <see cref="Unlocked"/>

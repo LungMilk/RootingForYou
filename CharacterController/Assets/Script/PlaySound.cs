@@ -50,4 +50,9 @@ public class PlaySound : MonoBehaviour
         }
         this.gameObject.SetActive(state);
     }
+
+    public void OnDisable()
+    {
+        StopSoundEffect();
+    }
 }
