@@ -2248,6 +2248,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2374035765235669442, guid: 812c288c35301e445bad093563e6eae8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 66ab13927aa4b5347a1f300ba9d97ef7, type: 3}
     - target: {fileID: 3610296924060246638, guid: 812c288c35301e445bad093563e6eae8, type: 3}
       propertyPath: m_Name
       value: AnxietyGate (1)
@@ -9040,6 +9044,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2374035765235669442, guid: 812c288c35301e445bad093563e6eae8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 66ab13927aa4b5347a1f300ba9d97ef7, type: 3}
     - target: {fileID: 3610296924060246638, guid: 812c288c35301e445bad093563e6eae8, type: 3}
       propertyPath: m_Name
       value: AnxietyGate
@@ -11263,6 +11271,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 208731025}
     m_Modifications:
+    - target: {fileID: 2813397886474204223, guid: b6f973dc49b2941409f2de8b73c79d19, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 43d745cf165732a4c87200408ff4a545, type: 3}
     - target: {fileID: 3886439207760005500, guid: b6f973dc49b2941409f2de8b73c79d19, type: 3}
       propertyPath: m_Name
       value: AnxietyZone (1)
@@ -11496,6 +11508,10 @@ PrefabInstance:
       propertyPath: text
       value: You will never be good enough
       objectReference: {fileID: 0}
+    - target: {fileID: 5567494294030209828, guid: 435ecd0da546b2146ba93ea38dc7b475, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 66ab13927aa4b5347a1f300ba9d97ef7, type: 3}
     - target: {fileID: 5640189513067992043, guid: 435ecd0da546b2146ba93ea38dc7b475, type: 3}
       propertyPath: _locked
       value: 1
@@ -13392,6 +13408,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 835182429}
     m_Modifications:
+    - target: {fileID: 2813397886474204223, guid: b6f973dc49b2941409f2de8b73c79d19, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 43d745cf165732a4c87200408ff4a545, type: 3}
     - target: {fileID: 3886439207760005500, guid: b6f973dc49b2941409f2de8b73c79d19, type: 3}
       propertyPath: m_Name
       value: AnxietyZone
