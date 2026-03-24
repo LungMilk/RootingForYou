@@ -11,6 +11,7 @@ public class PlaySound : MonoBehaviour
     {
         playingSource = soundEffects[index].Play();
         playingEffect = soundEffects[index];
+        //Invoke("DestroySoundEffect",100f);
     }
 
     /// <summary>
