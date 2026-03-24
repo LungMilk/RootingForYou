@@ -29,7 +29,7 @@ public class MenuSystem : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Level");
+        SceneManager.LoadScene("Level Layout");
     }
 
     public void NextScreen(int page)
