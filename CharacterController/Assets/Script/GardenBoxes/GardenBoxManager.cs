@@ -66,9 +66,9 @@ public class GardenBoxManager : MonoBehaviour
             if (box == null) continue;
 
             Dictionary<PlantAttribute, int> boxContribution = box.GetAttributeTotals();
-            _beautyTotal += boxContribution[PlantAttribute.Beauty];
-            _passionTotal += boxContribution[PlantAttribute.Passion];
-            _calmnessTotal += boxContribution[PlantAttribute.Calmness];
+            _beautyTotal = Mathf.Max(0, _beautyTotal + boxContribution[PlantAttribute.Beauty]);
+            _passionTotal = Mathf.Max(0, _passionTotal + boxContribution[PlantAttribute.Passion]);
+            _calmnessTotal = Mathf.Max(0, _calmnessTotal + boxContribution[PlantAttribute.Calmness]);
         }
         OnDetectedChange.Invoke();
 
