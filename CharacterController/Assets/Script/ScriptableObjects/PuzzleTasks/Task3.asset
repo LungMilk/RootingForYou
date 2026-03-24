@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc9a0001722fb334f8a30ca363029193, type: 3}
-  m_Name: RemoveFlowers
-  m_EditorClassIdentifier: Assembly-CSharp::PuzzleTaskSO
-  _name: Remove Roses
-  _description: The player needs to remove all Roses
-  checkOperation: 1
+  m_Name: Task3
+  m_EditorClassIdentifier: 
+  _name: 
+  _description: 
+  checkOperation: 0
   _attributeThresholds:
   - attribute: 0
-    requiredValue: 0
+    requiredValue: 5
   - attribute: 1
-    requiredValue: 0
+    requiredValue: 5
   - attribute: 2
-    requiredValue: 0
+    requiredValue: 5

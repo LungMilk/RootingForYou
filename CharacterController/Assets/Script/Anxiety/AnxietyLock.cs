@@ -35,14 +35,13 @@ public class AnxietyLock : MonoBehaviour
             {
                 speaker.DismissBubble();
             }
-            if (_locked)
-            {
-                HeadTrackerUI.instance.RemoveNPCHead();
-            }
+
             _locked = false;
             Unlocked?.Invoke();
+            return true;
         }
-        return !_locked;
+
+        return false;
     }
 
     public void LookAtMe()

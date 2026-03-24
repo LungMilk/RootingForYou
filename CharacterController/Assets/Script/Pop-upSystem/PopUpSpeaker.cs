@@ -41,8 +41,14 @@ public class PopUpSpeaker : MonoBehaviour
     /// </para>
     public void DismissBubble()
     {
-        if (textBubble == null) { print($"{name}: cannot find a text bubble"); return; }
+        if (textBubble == null)
+        {
+            print($"{name}: cannot find a text bubble");
+            return;
+        }
+
         TextBubbleManager.Instance.Release(textBubble);
+        textBubble = null;
     }
 
     /// <summary>
