@@ -10338,8 +10338,6 @@ MonoBehaviour:
   - {fileID: 27224411}
   - {fileID: 968738196}
   - {fileID: 1202531518}
-  - {fileID: 0}
-  - {fileID: 0}
   headIcon: {fileID: -1426430982, guid: a3bf23916af19a44b9b03ab534ca05cd, type: 3}
   completeSoundEffect: {fileID: 11400000, guid: c3b60b4971ad5df4789c02aa780b163f, type: 2}
 --- !u!1001 &997428988

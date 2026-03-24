@@ -20,7 +20,7 @@ public class PlaySound : MonoBehaviour
     public void StopSoundEffect()
     {
         //this is dirty but works
-        Debug.Log("stopping");
+        //Debug.Log("stopping");
         if (playingEffect != null && playingSource != null)
         {
             playingEffect.Stop(playingSource);

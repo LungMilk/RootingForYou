@@ -43,7 +43,7 @@ public class PopUpSpeaker : MonoBehaviour
     {
         if (textBubble == null)
         {
-            print($"{name}: cannot find a text bubble");
+            //print($"{name}: cannot find a text bubble");
             return;
         }
 

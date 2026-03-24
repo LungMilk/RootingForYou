@@ -37,6 +37,8 @@ public class AnxietyLock : MonoBehaviour
             }
 
             _locked = false;
+
+            HeadTrackerUI.instance.RemoveNPCHead();
             Unlocked?.Invoke();
             return true;
         }

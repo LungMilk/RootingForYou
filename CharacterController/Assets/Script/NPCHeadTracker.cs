@@ -29,6 +29,7 @@ public class NPCHeadTracker : MonoBehaviour
     }
     public void RemoveHead()
     {
+        print("Remove heads");
         if (amount <= 0)
         {
             print("No heads left");
