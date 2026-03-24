@@ -62,12 +62,10 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 66ab13927aa4b5347a1f300ba9d97ef7, type: 3}
+  - {fileID: 2100000, guid: 1caf7782ac0cc6744b60e40c89b276d2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,11 +83,9 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!135 &6898441320264108315
 SphereCollider:
@@ -225,8 +221,6 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -248,11 +242,9 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!135 &8718869502669028270
 SphereCollider:
@@ -289,7 +281,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textAnchor: {fileID: 744426261063535421}
   text: 
-  textBubble: {fileID: 0}
 --- !u!114 &5787471551564932249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,8 +365,6 @@ MonoBehaviour:
   _requiredKey: {fileID: 11400000, guid: 8f54eded3da26464990d7417b24b98ae, type: 2}
   _locked: 0
   speaker: {fileID: 7017992941956736717}
-  cam: {fileID: 0}
-  duration: 5
 --- !u!114 &993460835672442449
 MonoBehaviour:
   m_ObjectHideFlags: 0
