@@ -13,13 +13,13 @@ public class anxietyEnter : MonoBehaviour
     void Update()
     {
 
-        animator.SetBool("enterAnxiety", false);
-        animator.SetBool("enterAnxiety", false);
+        animator.SetBool("enterAnx", false);
+        animator.SetBool("inAnxiety", false);
 
     }
     public void AnxietyEnter()
     {
-        animator.SetBool("enterAnxiety", true);
+        animator.SetBool("enterAnx", true);
     }
 
     public void AnxietyWalk()
