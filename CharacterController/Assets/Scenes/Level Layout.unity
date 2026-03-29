@@ -4753,7 +4753,7 @@ MonoBehaviour:
         m_MethodName: SetPlayerSeed
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: ad25c24cd560e8744aed57e8ff579e04, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 5f4686590bba331458a1ae954391df19, type: 2}
           m_ObjectArgumentAssemblyTypeName: PlantObjectSO, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -7983,7 +7983,7 @@ MonoBehaviour:
         m_MethodName: SetPlayerSeed
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 5f4686590bba331458a1ae954391df19, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: ad25c24cd560e8744aed57e8ff579e04, type: 2}
           m_ObjectArgumentAssemblyTypeName: PlantObjectSO, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -19167,7 +19167,7 @@ PrefabInstance:
     - target: {fileID: 4173515680893392021, guid: f30a469bd9827114192d1d1cf7fd41a0, type: 3}
       propertyPath: plantObject
       value: 
-      objectReference: {fileID: 11400000, guid: ad25c24cd560e8744aed57e8ff579e04, type: 2}
+      objectReference: {fileID: 11400000, guid: 5f4686590bba331458a1ae954391df19, type: 2}
     - target: {fileID: 4173515680893392021, guid: f30a469bd9827114192d1d1cf7fd41a0, type: 3}
       propertyPath: playerStateMachine
       value: 
@@ -19413,7 +19413,7 @@ PrefabInstance:
     - target: {fileID: 4173515680893392021, guid: f30a469bd9827114192d1d1cf7fd41a0, type: 3}
       propertyPath: plantObject
       value: 
-      objectReference: {fileID: 11400000, guid: 5f4686590bba331458a1ae954391df19, type: 2}
+      objectReference: {fileID: 11400000, guid: ad25c24cd560e8744aed57e8ff579e04, type: 2}
     - target: {fileID: 4173515680893392021, guid: f30a469bd9827114192d1d1cf7fd41a0, type: 3}
       propertyPath: playerStateMachine
       value: 
