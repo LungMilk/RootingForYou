@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public enum InteractState
 {
@@ -62,6 +63,13 @@ public class PlayerStateMachine : MonoBehaviour
 
     [Header("Audio")]
     public List<SoundEffectSO> _soundEffects;
+
+    [Header("Events")]
+    public UnityEvent nearInteractable;
+    public UnityEvent interactedWithSomething;
+    public UnityEvent exitInteractable;
+    [Tooltip("When the player walks away from it")]
+    public UnityEvent walkAwayInteractable;
 
     public bool InteractPressedThisFrame { get; private set; }
 
@@ -204,6 +212,7 @@ public class PlayerStateMachine : MonoBehaviour
         {
             _interactedWith = null;
             ReturnToMovement();
+            exitInteractable?.Invoke();
             return;
         }
 
@@ -217,6 +226,7 @@ public class PlayerStateMachine : MonoBehaviour
             OnCameraOptionFound?.Invoke(_foundCamera);
             RequestStateChange(_states.Interact());
             _interactedWith = _currentInteractable;
+            interactedWithSomething?.Invoke();
         }
     }
 
@@ -227,6 +237,7 @@ public class PlayerStateMachine : MonoBehaviour
             _currentInteractable = interactable;
             _inputObject = other.transform.root.gameObject;
             _foundCamera = interactable.CameraOption;
+            nearInteractable.Invoke();
         }
     }
 
@@ -248,6 +259,7 @@ public class PlayerStateMachine : MonoBehaviour
             {
                 _foundCamera = null;
             }
+            walkAwayInteractable.Invoke();
         }
     }
 }
