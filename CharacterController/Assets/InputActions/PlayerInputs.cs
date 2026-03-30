@@ -154,6 +154,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""625775ec-543c-452a-9b81-df408fc274f2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -321,6 +330,17 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""RightClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e04ef9d5-6867-4589-a1c7-741bb332509f"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -336,6 +356,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_CharacterControls_EnterFreeLook = m_CharacterControls.FindAction("EnterFreeLook", throwIfNotFound: true);
         m_CharacterControls_LeftClick = m_CharacterControls.FindAction("LeftClick", throwIfNotFound: true);
         m_CharacterControls_RightClick = m_CharacterControls.FindAction("RightClick", throwIfNotFound: true);
+        m_CharacterControls_Pause = m_CharacterControls.FindAction("Pause", throwIfNotFound: true);
     }
 
     ~@PlayerInputs()
@@ -423,6 +444,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_CharacterControls_EnterFreeLook;
     private readonly InputAction m_CharacterControls_LeftClick;
     private readonly InputAction m_CharacterControls_RightClick;
+    private readonly InputAction m_CharacterControls_Pause;
     /// <summary>
     /// Provides access to input actions defined in input action map "CharacterControls".
     /// </summary>
@@ -462,6 +484,10 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "CharacterControls/RightClick".
         /// </summary>
         public InputAction @RightClick => m_Wrapper.m_CharacterControls_RightClick;
+        /// <summary>
+        /// Provides access to the underlying input action "CharacterControls/Pause".
+        /// </summary>
+        public InputAction @Pause => m_Wrapper.m_CharacterControls_Pause;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -509,6 +535,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @RightClick.started += instance.OnRightClick;
             @RightClick.performed += instance.OnRightClick;
             @RightClick.canceled += instance.OnRightClick;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         /// <summary>
@@ -541,6 +570,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @RightClick.started -= instance.OnRightClick;
             @RightClick.performed -= instance.OnRightClick;
             @RightClick.canceled -= instance.OnRightClick;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         /// <summary>
@@ -630,5 +662,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnRightClick(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Pause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPause(InputAction.CallbackContext context);
     }
 }

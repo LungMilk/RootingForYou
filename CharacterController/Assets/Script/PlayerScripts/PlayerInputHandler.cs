@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.Events;
 public enum PlayerAction
 {
     None,
@@ -35,8 +36,24 @@ public class PlayerInputHandler : MonoBehaviour
 
     public System.Action RightClickPressed;
     public System.Action RightClickReleased;
+
+    public RectTransform refSheet;
+    public bool isPaused = false;
+
+    [Tooltip("Ref sheet is already hooked up this is incase we want something else to happen.")]
+    public UnityEvent escape;
     private void Awake()
     {
+        if (refSheet != null)
+        {
+            refSheet.gameObject.SetActive(false);
+        }
+        else
+        {
+            Debug.LogWarning("NO REFERENCE SHEET FOUND FOR ON PAUSE");
+        }
+
+
         if (instance == null)
         {
             instance = this;
@@ -56,8 +73,31 @@ public class PlayerInputHandler : MonoBehaviour
         mouse.RightClick.started += OnRightDown;
         mouse.RightClick.canceled += _ => RightClickReleased?.Invoke();
         mouse.RightClick.canceled += OnRightUp;
+
+        mouse.Pause.started += _ => OnEscapePressed();
         SetCursorSprite(spriteLibraries.Find(x => x.action == PlayerAction.None).sprite);
     }
+
+    public void OnEscapePressed()
+    {
+        if (isPaused)
+        {
+            Time.timeScale = 1f;
+            isPaused = false;
+        }
+        else
+        {
+            Time.timeScale = 0f;
+            isPaused = true;
+            escape?.Invoke();
+        }
+
+        if(refSheet != null)
+        {
+            refSheet.gameObject.SetActive(isPaused);
+        }
+    }
+
     /// <summary>
     /// 
     /// </summary>
