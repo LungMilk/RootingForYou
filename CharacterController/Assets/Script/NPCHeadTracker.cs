@@ -21,10 +21,10 @@ public class NPCHeadTracker : MonoBehaviour
         {
             sprite.gameObject.SetActive(true);
 
-            if (headIcon != null)
-            {
-                sprite.sprite = headIcon;
-            }
+            //if (headIcon != null)
+            //{
+            //    sprite.sprite = headIcon;
+            //}
         }
     }
     public void RemoveHead()
