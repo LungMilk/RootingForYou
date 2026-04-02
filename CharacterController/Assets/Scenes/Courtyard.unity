@@ -10885,6 +10885,10 @@ PrefabInstance:
       value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 1609090426645502589, guid: 3705d19f462d33140a0253e0f977c4b7, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 2129618088}
+    - target: {fileID: 1609090426645502589, guid: 3705d19f462d33140a0253e0f977c4b7, type: 3}
       propertyPath: _runSpeed
       value: 7
       objectReference: {fileID: 0}
@@ -13390,6 +13394,38 @@ PrefabInstance:
     - target: {fileID: 6521756589509405923, guid: 435ecd0da546b2146ba93ea38dc7b475, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7758177159736786075, guid: 435ecd0da546b2146ba93ea38dc7b475, type: 3}
+      propertyPath: OnProxEnter.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7758177159736786075, guid: 435ecd0da546b2146ba93ea38dc7b475, type: 3}
+      propertyPath: OnProxEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7758177159736786075, guid: 435ecd0da546b2146ba93ea38dc7b475, type: 3}
+      propertyPath: OnProxEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2129618088}
+    - target: {fileID: 7758177159736786075, guid: 435ecd0da546b2146ba93ea38dc7b475, type: 3}
+      propertyPath: OnProxEnter.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7758177159736786075, guid: 435ecd0da546b2146ba93ea38dc7b475, type: 3}
+      propertyPath: OnProxEnter.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 7758177159736786075, guid: 435ecd0da546b2146ba93ea38dc7b475, type: 3}
+      propertyPath: OnProxEnter.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.Animator, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7758177159736786075, guid: 435ecd0da546b2146ba93ea38dc7b475, type: 3}
+      propertyPath: OnProxEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7758177159736786075, guid: 435ecd0da546b2146ba93ea38dc7b475, type: 3}
+      propertyPath: OnProxEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8280274363656133937, guid: 435ecd0da546b2146ba93ea38dc7b475, type: 3}
       propertyPath: m_Name
