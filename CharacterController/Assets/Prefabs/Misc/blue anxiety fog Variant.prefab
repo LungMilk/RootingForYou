@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3829239765319541837, guid: 297e0fd6473c9744fba390ea359fc97f, type: 3}
       propertyPath: EmissionModule.enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3829239765319541837, guid: 297e0fd6473c9744fba390ea359fc97f, type: 3}
       propertyPath: ShapeModule.m_Rotation.y
