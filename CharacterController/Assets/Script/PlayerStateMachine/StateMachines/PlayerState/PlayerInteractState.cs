@@ -32,6 +32,7 @@ public class PlayerInteractState : PlayerBaseState
         {
             case InteractState.Dialogue:
                 SetSubState(Factory.Dialogue());
+                Ctx._animator.SetBool("isWalking", false);
                 break;
             case InteractState.Planting:
                 SetSubState(Factory.Planting());
