@@ -131,7 +131,7 @@ public class GardenBox : Interactable
 
     public void ChangeDisplayText()
     {
-        _displayTMPro.text = _displayText + $"\n{_beautyContribution}, <color=red>{_passionContribution}</color>, {_calmnessContribution}";
+        _displayTMPro.text = _displayText + $"\n{_beautyContribution}, {_passionContribution}, {_calmnessContribution}";
     }
 
     public void LoadGridPreset()
