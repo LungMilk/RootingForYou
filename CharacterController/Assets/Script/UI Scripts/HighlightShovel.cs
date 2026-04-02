@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using Unity.VisualScripting;
 
-public class HighlightShovel : MonoBehaviour
+public class HighlightShovel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
 
     public GameObject shovelObject;
@@ -24,7 +24,7 @@ public class HighlightShovel : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        Debug.Log("Mouse is over the seed.");
+        //Debug.Log("Mouse is over the seed.");
         shovelObject.GetComponent<RectTransform>().localPosition = new Vector3(0, 120, 0);
     }
 
@@ -35,7 +35,7 @@ public class HighlightShovel : MonoBehaviour
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Mouse is over the seed.");
+        //Debug.Log("Mouse is over the seed.");
         shovelObject.GetComponent<RectTransform>().localPosition = new Vector3(0, 120, 0);
     }
 
