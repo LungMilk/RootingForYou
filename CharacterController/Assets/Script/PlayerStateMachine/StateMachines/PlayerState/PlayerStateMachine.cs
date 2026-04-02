@@ -262,4 +262,10 @@ public class PlayerStateMachine : MonoBehaviour
             walkAwayInteractable.Invoke();
         }
     }
+
+    public void InAnxietyZone(bool state)
+    {
+        _animator.SetBool("inAnxiety", state);
+        print("anxious animator called");
+    }
 }

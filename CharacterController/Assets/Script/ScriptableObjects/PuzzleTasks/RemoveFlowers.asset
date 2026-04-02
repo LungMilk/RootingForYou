@@ -17,8 +17,8 @@ MonoBehaviour:
   checkOperation: 1
   _attributeThresholds:
   - attribute: 0
-    requiredValue: 4
-  - attribute: 1
     requiredValue: 0
+  - attribute: 1
+    requiredValue: 10
   - attribute: 2
     requiredValue: 0

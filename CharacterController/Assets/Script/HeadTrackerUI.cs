@@ -20,6 +20,8 @@ public class HeadTrackerUI : MonoBehaviour
     [Header("Sprites")]
     public Sprite goodPCFace;
     public Sprite badPCFace;
+
+    public PlayerStateMachine playerStateMachine;
     private void Start()
     {
         if (instance == null)
@@ -36,10 +38,11 @@ public class HeadTrackerUI : MonoBehaviour
 
         if (playerMood == PlayerMood.happy)
         {
-            playerFace.sprite = goodPCFace;
-        }else if(playerMood == PlayerMood.anxious)
+            //playerFace.sprite = goodPCFace;
+        }
+        else if(playerMood == PlayerMood.anxious)
         {
-            playerFace.sprite = badPCFace;
+            // playerFace.sprite = badPCFace;
         }
     }
 
@@ -51,13 +54,24 @@ public class HeadTrackerUI : MonoBehaviour
     [ContextMenu("Switch player mood")]
     public void SwitchPlayerMood()
     {
-        if (playerMood == PlayerMood.happy) { SetPlayerMood(PlayerMood.anxious); }
-        else if (playerMood == PlayerMood.anxious) { SetPlayerMood(PlayerMood.happy); }
+        if (playerMood == PlayerMood.happy) { 
+            SetPlayerMood(PlayerMood.anxious);
+            playerStateMachine.InAnxietyZone(true);
+        }
+        else if (playerMood == PlayerMood.anxious) { 
+            SetPlayerMood(PlayerMood.happy);
+            playerStateMachine.InAnxietyZone(false);
+        }
     }
     [ContextMenu("Remove NPC Head")]
     public void RemoveNPCHead()
     {
         npcTracker.RemoveHead();
         npcs = npcTracker.amount;
+    }
+
+    public void InAnxietyZone(bool state)
+    {
+        playerStateMachine.InAnxietyZone(state);
     }
 }
