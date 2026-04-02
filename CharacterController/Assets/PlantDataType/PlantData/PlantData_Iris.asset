@@ -21,4 +21,4 @@ MonoBehaviour:
   displayImage: {fileID: 21300000, guid: daa231cd788d8644e80dbee4daa66fde, type: 3}
   beauty: 2
   passion: 0
-  calmness: -1
+  calmness: 0
