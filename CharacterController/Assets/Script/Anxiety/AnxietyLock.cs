@@ -17,6 +17,9 @@ public class AnxietyLock : MonoBehaviour
     public CinemachineCamera cam;
     [Tooltip("How long we will look at the anxiety lock")]
     public float duration = 5f;
+
+    //[Tooltip("Pop up speaker text will be overriden by the Anxiety key text off by default")]
+    //public bool overrideText;
     public void Start()
     {
         _locked = true;
