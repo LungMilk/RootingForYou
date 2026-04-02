@@ -12,6 +12,7 @@ public struct AttributeThreshold
 {
     public PlantAttribute attribute;
     public int requiredValue;
+    public bool showBar;
 }
 [System.Serializable]
 [CreateAssetMenu(fileName = "New PuzzleTaskSO", menuName = "ScriptableObjects/PuzzleTaskSO")]
