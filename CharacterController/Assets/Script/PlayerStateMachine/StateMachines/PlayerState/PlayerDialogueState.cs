@@ -27,7 +27,7 @@ public class PlayerDialogueState : PlayerBaseState
         //{
         //    SetSuperState(Factory.Movement());
         //}else 
-        if(timer > 5f)
+        if(timer > 2f)
         {
             Ctx.RequestStateChange(Factory.Movement());
         }

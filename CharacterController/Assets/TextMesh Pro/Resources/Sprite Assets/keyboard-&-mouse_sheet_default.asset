@@ -348,7 +348,7 @@ MonoBehaviour:
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 53
-    m_Scale: 1
+    m_Scale: 4.5
     m_Name: keyboard-&-mouse_sheet_default_53
   - m_ElementType: 2
     m_Unicode: 65534
@@ -813,7 +813,7 @@ MonoBehaviour:
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 146
-    m_Scale: 1
+    m_Scale: 1.97
     m_Name: keyboard-&-mouse_sheet_default_146
   - m_ElementType: 2
     m_Unicode: 65534
@@ -2213,8 +2213,8 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 64
       m_Height: 64
-      m_HorizontalBearingX: -0
-      m_HorizontalBearingY: 64
+      m_HorizontalBearingX: 1.13
+      m_HorizontalBearingY: 36.32
       m_HorizontalAdvance: 64
     m_GlyphRect:
       m_X: 320
@@ -3701,9 +3701,9 @@ MonoBehaviour:
     m_Metrics:
       m_Width: 64
       m_Height: 64
-      m_HorizontalBearingX: -0
-      m_HorizontalBearingY: 64
-      m_HorizontalAdvance: 64
+      m_HorizontalBearingX: -0.75
+      m_HorizontalBearingY: 42.8
+      m_HorizontalAdvance: 61.4
     m_GlyphRect:
       m_X: 128
       m_Y: 384

@@ -12,6 +12,7 @@ public struct AttributeThreshold
 {
     public PlantAttribute attribute;
     public int requiredValue;
+    public bool showBar;
 }
 [System.Serializable]
 [CreateAssetMenu(fileName = "New PuzzleTaskSO", menuName = "ScriptableObjects/PuzzleTaskSO")]
@@ -37,7 +38,7 @@ public class PuzzleTaskSO : ScriptableObject
             {
                 return false;
             }
-            if (CheckValue(value, threshold.requiredValue)) 
+            if (!CheckValue(value, threshold.requiredValue)) 
             {
                 return false;
             }

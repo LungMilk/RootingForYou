@@ -11,13 +11,16 @@ public class PlayerInteractState : PlayerBaseState
     {
         //_currentMovement.y = groundedGravity;
         //_appliedMovement.y = _groundedGravity;
+
         InitializeSubState();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
     }
     public override void UpdateState() { CheckSwitchStates(); }
-    public override void ExitState() { 
-    //start interact lock out
+    public override void ExitState() {
+        //start interact lock out
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 
     }
     public override void CheckSwitchStates() { }
@@ -25,13 +28,17 @@ public class PlayerInteractState : PlayerBaseState
     {
         //Debug.Log("Superstate test"+ Ctx.IsMovementPressed);
         // vDebug.Log("states initialized");
-        if(Ctx.FoundInteractType == InteractState.Dialogue)
+        switch (Ctx.FoundInteractType)
         {
-            SetSubState(Factory.Dialogue());
-        }
-        else if (Ctx.FoundInteractType == InteractState.Planting)
-        {
-            SetSubState(Factory.Planting());
+            case InteractState.Dialogue:
+                SetSubState(Factory.Dialogue());
+                Ctx._animator.SetBool("isWalking", false);
+                break;
+            case InteractState.Planting:
+                SetSubState(Factory.Planting());
+                break;
+            case InteractState.NonState:
+                break;
         }
     }
 }

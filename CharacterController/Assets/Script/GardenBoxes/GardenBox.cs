@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using Unity.Cinemachine;
 using Unity.Multiplayer.Center.Common;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using static UnityEngine.EventSystems.EventTrigger;
@@ -28,7 +30,11 @@ public class GardenBox : Interactable
     [TextArea]
     public string _displayText;
 
+    [SerializeField]
     private int _beautyContribution, _passionContribution, _calmnessContribution;
+
+    [Header("Visuals")]
+    public ParticleSystem anxietyFog;
     private void Start()
     {
         //_gridBuilder = _gridObject.GetComponent<GridBuilder>();
@@ -38,13 +44,33 @@ public class GardenBox : Interactable
         ChangeDisplayText();
         LoadGridPreset();
 
-        _grid.OnGridObjectChanged += OnGridChanged;
+        if (_grid != null)
+        {
+            _grid.OnGridObjectChanged += OnGridChanged;
+        }
+
+        if(anxietyFog != null)
+        {
+            var emis = anxietyFog.emission;
+            emis.enabled = false;
+        }
     }
     private void OnGridChanged(object sender, GridXZ<GridObject>.OnGridObjectChangedEventArgs e)
     {
+        if (_grid == null) return;
+
+        if (!_grid.IsValidGridPosition(new Vector2Int(e.x, e.z))) return;
+
         CalculateGridValues();
-        //There is an issue with removing that gives an out of array index error that I currently do not know how to fix
-        GardenBoxChanged?.Invoke();
+
+        try
+        {
+            GardenBoxChanged?.Invoke();
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"GardenBoxChanged listener threw an error: {ex}");
+        }
     }
 
     [ContextMenu("Calculate Grid Values")]
@@ -55,37 +81,41 @@ public class GardenBox : Interactable
         _calmnessContribution = 0;
 
         HashSet<PlantObject> currentPlants = new HashSet<PlantObject>();
-        float multipler = 1;
-        foreach (GridObject gObject in _grid.GetTGridObjectList())
+        //float multipler = 1;
+
+        var gridObjects = new List<GridObject>(_grid.GetTGridObjectList());
+        foreach (GridObject gObject in gridObjects)
         {
-            if (gObject.GetPlacedObjects().OfType<ModifierObject>().FirstOrDefault() is ModifierObject modifier)
-            {
-                multipler = modifier._modifier;
-            }
+            if (gObject == null) continue;
+            //if (gObject.GetPlacedObjects().OfType<ModifierObject>().FirstOrDefault() is ModifierObject modifier)
+            //{
+            //    multipler = modifier._modifier;
+            //}
             //multiplier = entry.modifier
-            foreach (var entry in gObject.GetPlacedObjects())
+            //foreach (var entry in gObject.GetPlacedObject())
+            //{
+
+            if (gObject.GetPlacedObject() is PlantObject plant)
             {
-                if (entry is PlantObject plantObject)
-                {
-                    var plantAttributes = plantObject.GetAttributes();
+                var plantAttributes = plant.GetAttributes();
 
-                    plantAttributes[PlantAttribute.Beauty] = Mathf.CeilToInt(plantAttributes[PlantAttribute.Beauty] * multipler);
-                    plantAttributes[PlantAttribute.Passion] =Mathf.CeilToInt(plantAttributes[PlantAttribute.Passion] * multipler);
-                    plantAttributes[PlantAttribute.Calmness] =Mathf.CeilToInt(plantAttributes[PlantAttribute.Calmness] * multipler);
-
-                    currentPlants.Add(plantObject);
-                }
+                currentPlants.Add(plant);
             }
+            
         }
         //we can expland the getting of placed objects wihtin the space to have the calculation of if the space has a modifier
         foreach (PlantObject plant in currentPlants)
         {
+            //print("We have plants");
             var attributes = plant.GetAttributes();
-
             _beautyContribution += attributes[PlantAttribute.Beauty];
+            //print($"beauty: {attributes[PlantAttribute.Beauty]}");
             _passionContribution += attributes[PlantAttribute.Passion];
+            //print($"passion: {attributes[PlantAttribute.Passion]}");
             _calmnessContribution += attributes[PlantAttribute.Calmness];
+            //print($"calmness: {attributes[PlantAttribute.Calmness]}");
         }
+
         ChangeDisplayText();
     }
 
@@ -101,12 +131,12 @@ public class GardenBox : Interactable
 
     public void ChangeDisplayText()
     {
-        _displayTMPro.text = _displayText + $"\n{_beautyContribution}, <color=red>{_passionContribution}</color>, {_calmnessContribution}";
+        _displayTMPro.text = _displayText + $"\n{_beautyContribution}, {_passionContribution}, {_calmnessContribution}";
     }
 
     public void LoadGridPreset()
     {
-        if (_preset == null) { return; }
+        if (_preset == null || _grid == null) return;
 
         int height = _preset._grid.Length;
         for (int y = 0; y < height; y++)
@@ -124,14 +154,40 @@ public class GardenBox : Interactable
                 Vector2Int rotationOffset = obj.GetRotationOffset(PlacedObjectTypeSO.Dir.Down);
                 Vector3 placedObjectWorldPosition = _grid.GetWorldPosition(gridX, gridZ) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * _grid.GetCellSize();
 
-                PlacedObject placedObject = PlacedObject.Create(placedObjectWorldPosition, new Vector2Int(gridX, gridZ), PlacedObjectTypeSO.Dir.Down, obj, _grid.GetCellSize(), obj._doesOccupy, obj._playerRemovable);
+                var gridData = new GridPlacementData
+                {
+                    cellSize = _grid.GetCellSize(),
+                    originWorldPos = _grid.GetOriginPosition(),
+                    rotation = _grid.GetOriginRotation(),
+                };
+
+                PlacedObject placedObject = PlacedObject.Create(gridData, new Vector2Int(gridX, gridZ), PlacedObjectTypeSO.Dir.Down, obj, _grid.GetCellSize(), obj._doesOccupy, obj._playerRemovable);
 
                 foreach (Vector2Int gridPosition in gridPositionList)
                 {
-                    //yes the x and y might be confusing for world and grid spaces but don't worry about it
-                    _grid.GetGridObject(gridPosition.x, gridPosition.y).SetPlacedObject(placedObject);
+                    if (!_grid.IsValidGridPosition(gridPosition))
+                    {
+                        Debug.LogWarning($"Skipping out-of-bounds grid position {gridPosition} for object {obj.name}");
+                        continue;
+                    }
+
+                    GridObject targetGridObject = _grid.GetGridObject(gridPosition.x, gridPosition.y);
+                    if (targetGridObject != null)
+                    {
+                        targetGridObject.SetPlacedObject(placedObject);
+                    }
                 }
             }
         }
+
+        CalculateGridValues();
+        GardenBoxChanged?.Invoke();
+    }
+
+    public void SetAnxietyFog(bool state)
+    {
+        if(anxietyFog == null) { return; }
+        var emis = anxietyFog.emission;
+        emis.enabled = state;
     }
 }

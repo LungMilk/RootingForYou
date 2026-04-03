@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: PlantData_Iris
   m_EditorClassIdentifier: 
   _nameString: Iris
-  _prefab: {fileID: 2034775281030498601, guid: 60b83ceec02180c4ea81422906fc3519, type: 3}
+  _prefab: {fileID: 6087284564362922448, guid: 0dc2c869368849948a992453eab88a1d, type: 3}
   _width: 1
   _height: 1
+  _doesOccupy: 1
+  _playerRemovable: 1
   displayImage: {fileID: 21300000, guid: daa231cd788d8644e80dbee4daa66fde, type: 3}
   beauty: 2
   passion: 0
-  calmness: -1
+  calmness: 0

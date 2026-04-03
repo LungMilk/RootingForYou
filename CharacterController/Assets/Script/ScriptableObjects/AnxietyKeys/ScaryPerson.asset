@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ScaryPerson
   m_EditorClassIdentifier: 
   _keyID: 0
-  _displayText: "Nobody likes \ntalking to you"
+  _displayText: 

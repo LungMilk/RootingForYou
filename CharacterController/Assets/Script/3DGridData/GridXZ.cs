@@ -1,11 +1,12 @@
+using CustomNamespace.Utilities;
+using System;
+using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
+using Unity.VisualScripting.FullSerializer;
 using UnityEditor;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
-using CustomNamespace.Utilities;
-using System;
-using Unity.VisualScripting.FullSerializer;
 public class GridXZ<TGridObject>
 {
     public event EventHandler<OnGridObjectChangedEventArgs> OnGridObjectChanged;
@@ -56,14 +57,38 @@ public class GridXZ<TGridObject>
         //SetValue(2, 1, 56);
     }
 
-    public TGridObject[,] GetTGridObjectList()
+    public List<TGridObject> GetTGridObjectList()
     {
-        return _gridArray;
+        var list = new List<TGridObject>();
+        for (int x = 0; x < _width; x++)
+            for (int z = 0; z < _height; z++)
+                list.Add(_gridArray[x, z]);
+        return list;
     }
 
+    public bool IsValidGridPosition(Vector2Int pos)
+    {
+        return pos.x >= 0 && pos.y >= 0 && pos.x < _width && pos.y < _height;
+    }
+
+    public bool IsWorldPositionInsideGrid(Vector3 worldPos)
+    {
+        GetXZ(worldPos, out int x, out int z);
+
+        return IsValidGridPosition(new Vector2Int(x,z));
+    }
     public float GetCellSize()
     {
         return _cellSize;
+    }
+
+    public Quaternion GetOriginRotation()
+    {
+        return _originRotation;
+    }
+    public Vector3 GetOriginPosition()
+    {
+        return _originPosition;
     }
 
     public Vector3 GetWorldPosition(int x,int z)
@@ -86,16 +111,16 @@ public class GridXZ<TGridObject>
 
     public void GetXZ(Vector3 worldPosition, out int x, out int z)
     {
-
         Vector3 localPos = Quaternion.Inverse(_originRotation) * (worldPosition - _originPosition);
+
 
         x = Mathf.FloorToInt(localPos.x / _cellSize);
         z = Mathf.FloorToInt(localPos.z / _cellSize);
         //x = Mathf.FloorToInt((worldPosition-_originPosition).x / _cellSize);
         //z = Mathf.FloorToInt((worldPosition-_originPosition).z / _cellSize);
 
-        x = Mathf.Clamp(x, 0, _width - 1);
-        z = Mathf.Clamp(z,0, _height - 1);
+        //x = Mathf.Clamp(x, 0, _width - 1);
+        //z = Mathf.Clamp(z, 0, _height - 1);
     }
 
     public void SetGridObject(int x, int z, TGridObject value)
