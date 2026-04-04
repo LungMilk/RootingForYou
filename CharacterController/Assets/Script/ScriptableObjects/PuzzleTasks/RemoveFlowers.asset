@@ -20,7 +20,7 @@ MonoBehaviour:
     requiredValue: 0
     showBar: 0
   - attribute: 1
-    requiredValue: 2
+    requiredValue: 1
     showBar: 0
   - attribute: 2
     requiredValue: 0
