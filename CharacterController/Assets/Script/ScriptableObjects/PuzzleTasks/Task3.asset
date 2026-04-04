@@ -17,11 +17,11 @@ MonoBehaviour:
   checkOperation: 0
   _attributeThresholds:
   - attribute: 0
-    requiredValue: 5
+    requiredValue: 10
     showBar: 1
   - attribute: 1
-    requiredValue: 5
+    requiredValue: 10
     showBar: 1
   - attribute: 2
-    requiredValue: 5
+    requiredValue: 10
     showBar: 1

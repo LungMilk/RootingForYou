@@ -17,6 +17,7 @@ public class GardenBoxManager : MonoBehaviour
     [Header("Attribute Totals")]
     [SerializeField] private int _beautyTotal, _passionTotal, _calmnessTotal;
 
+    public Material nPCMaterial;
     #region Editor Stuff
     [ContextMenu("Detect GardenBoxes")]
     public void GetGardenBoxesInZone()
@@ -36,6 +37,24 @@ public class GardenBoxManager : MonoBehaviour
                 box.GardenBoxChanged.RemoveListener(OnGardenBoxChanged);
                 box.GardenBoxChanged.AddListener(OnGardenBoxChanged);
             }
+        }
+    }
+
+    [ContextMenu("Set materials")]
+    public void SetMaterials()
+    {
+        if(nPCMaterial == null)
+        {
+            return;
+        }
+        foreach(var box in gardenBoxes)
+        {
+            if (box.materialManager == null)
+            {
+                continue;
+            }
+            box.materialManager.boxMaterial = nPCMaterial;
+            box.materialManager.SetMaterials();
         }
     }
     #endregion

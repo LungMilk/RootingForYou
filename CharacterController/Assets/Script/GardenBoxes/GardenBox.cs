@@ -35,6 +35,7 @@ public class GardenBox : Interactable
 
     [Header("Visuals")]
     public ParticleSystem anxietyFog;
+    public GardenBoxMaterials materialManager;
     private void Start()
     {
         //_gridBuilder = _gridObject.GetComponent<GridBuilder>();
