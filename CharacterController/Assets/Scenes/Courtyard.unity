@@ -22725,7 +22725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   npcTracker: {fileID: 1661459411}
-  npcs: 3
+  npcs: 4
   playerMood: 0
   playerFace: {fileID: 1188733523}
   goodPCFace: {fileID: 556604867, guid: a3bf23916af19a44b9b03ab534ca05cd, type: 3}
@@ -22747,6 +22747,7 @@ MonoBehaviour:
   - {fileID: 1224890174}
   - {fileID: 1851623675}
   - {fileID: 1428271750}
+  - {fileID: 1444789959}
   headIcon: {fileID: -1426430982, guid: a3bf23916af19a44b9b03ab534ca05cd, type: 3}
   completeSoundEffect: {fileID: 11400000, guid: c3b60b4971ad5df4789c02aa780b163f, type: 2}
 --- !u!1001 &1673162498
