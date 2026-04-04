@@ -21,7 +21,7 @@ public class PlayerPlantingState : PlayerBaseState
         _gridBuilder = Ctx.InputObject.GetComponentInChildren<GridBuilder>();
         _grid = _gridBuilder._grid;
 
-        Ctx._selectedPlantObject = Ctx._plantCollection.plants[0];
+        ///Ctx._selectedPlantObject = Ctx._plantCollection.plants[0];
 
 
         //Inputs for planting are now subscribed on the state switch and the Inputhandler will call the respective functions for the different actions.

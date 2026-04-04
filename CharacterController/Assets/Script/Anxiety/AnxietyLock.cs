@@ -60,10 +60,12 @@ public class AnxietyLock : MonoBehaviour
 
     public void DestroyLock()
     {
-        Unlocked?.Invoke();
+        //Unlocked?.Invoke();
         if (speaker != null)
         {
             speaker.DismissBubble();
         }
+
+        this.gameObject.SetActive(false);
     }
 }

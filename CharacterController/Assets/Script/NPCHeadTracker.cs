@@ -29,10 +29,10 @@ public class NPCHeadTracker : MonoBehaviour
     }
     public void RemoveHead()
     {
-        print("Remove heads");
+        //print("Remove heads");
         if (amount <= 0)
         {
-            print("No heads left");
+            //print("No heads left");
             return;
         }
         foreach (var sprite in npcHeads)

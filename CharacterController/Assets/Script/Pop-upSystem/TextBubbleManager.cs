@@ -59,7 +59,7 @@ public class TextBubbleManager : MonoBehaviour
     public void Release(TextBubble bubble)
     {
         if (bubble == null) { return; }
-        print("Release");
+        //print("Release");
         bubble.Hide();
         pool.Enqueue(bubble);
     }

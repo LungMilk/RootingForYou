@@ -128,12 +128,12 @@ public class BarManager : MonoBehaviour
     }
     public void SetPuzzleManager(PuzzleTaskManager manager)
     {
-        print($"New puzzleManager: {manager.name}");
+        //print($"New puzzleManager: {manager.name}");
         puzzleTaskManager = manager;
     }
     public void SetGardenBoxManager(GardenBoxManager manager)
     {
-        print($"New boxManager: {manager.name}");
+        //print($"New boxManager: {manager.name}");
         gardenBoxManager = manager;
     }
 
@@ -150,7 +150,7 @@ public class BarManager : MonoBehaviour
     /// <param name="show"> Are the bars visible</param>
     public void SetupBarManager(PuzzleTaskManager puzzleMan, GardenBoxManager boxManager,bool show = true)
     {
-        print("setting up BarManager UI");
+        //print("setting up BarManager UI");
         ShowBars(show);
         SetPuzzleManager(puzzleMan);
         SetGardenBoxManager(boxManager);

@@ -81,7 +81,7 @@ public class CameraManager : MonoBehaviour
         revertRoutine = StartCoroutine(RevertAfterDelay(duration));
 
     }
-    private Coroutine revertRoutine;
+    public Coroutine revertRoutine;
     private IEnumerator RevertAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);

@@ -25,4 +25,13 @@ public class SeedManager : MonoBehaviour
             seedButtons[i].SetActive(true);
         }
     }
+
+    public void GiveAllSeeds()
+    {
+        seedsInInventory = seedButtons.Count;
+        for (int i = 0; i < seedsInInventory; i++)
+        {
+            seedButtons[i].SetActive(true);
+        }
+    }
 }

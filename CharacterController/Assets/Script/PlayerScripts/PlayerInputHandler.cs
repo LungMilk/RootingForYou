@@ -148,7 +148,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (sprite == null)
         {
-            print("Cursor recieved null spirte");
+            //print("Cursor recieved null spirte");
             return;
         }
         currentCursor.sprite = sprite;

@@ -10,6 +10,7 @@ public class AnxiteyGate : MonoBehaviour
 
         if (lockCount <= 0)
         {
+            
             this.gameObject.SetActive(false);
         }
     }

@@ -222,7 +222,7 @@ public class PlayerStateMachine : MonoBehaviour
 
         if (_foundInteractType != InteractState.NonState)
         {
-            print("Player entering interact");
+            //print("Player entering interact");
             OnCameraOptionFound?.Invoke(_foundCamera);
             RequestStateChange(_states.Interact());
             _interactedWith = _currentInteractable;
@@ -266,6 +266,6 @@ public class PlayerStateMachine : MonoBehaviour
     public void InAnxietyZone(bool state)
     {
         _animator.SetBool("inAnxiety", state);
-        print("anxious animator called");
+        //print("anxious animator called");
     }
 }

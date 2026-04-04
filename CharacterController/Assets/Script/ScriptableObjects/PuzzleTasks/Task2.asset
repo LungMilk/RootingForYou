@@ -18,7 +18,10 @@ MonoBehaviour:
   _attributeThresholds:
   - attribute: 1
     requiredValue: 5
+    showBar: 1
   - attribute: 0
     requiredValue: 0
+    showBar: 1
   - attribute: 2
     requiredValue: 0
+    showBar: 1
