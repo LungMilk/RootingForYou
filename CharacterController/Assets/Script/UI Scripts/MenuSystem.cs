@@ -29,7 +29,7 @@ public class MenuSystem : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Level Layout");
+        SceneManager.LoadScene("Courtyard");
     }
 
     public void NextScreen(int page)

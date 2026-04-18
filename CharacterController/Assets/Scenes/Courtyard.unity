@@ -821,7 +821,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SliderBarScaler
   mainSlider: {fileID: 1502377639}
   previewSlider: {fileID: 1164168404}
-  widthScaler: 50
+  widthScaler: 30
 --- !u!1001 &19358935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3886,74 +3886,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 196755590}
   m_CullTransparentMesh: 1
---- !u!1 &204916894 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2874366069729559629, guid: 79e035ede8dc07b4492a845e1f665505, type: 3}
-  m_PrefabInstance: {fileID: 2059639386}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &204916897
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 204916894}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 5.15
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &204916898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 204916894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96ba297855442fe41b114b0a01272ba6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ProximityTrigger
-  OnProxEnter:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1365844470}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  OnProxExit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1365844470}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &211830517
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4203,7 +4135,7 @@ PrefabInstance:
       objectReference: {fileID: 128633807}
     - target: {fileID: 2168790753016536499, guid: f1dfd37b30f3d0d49a035d74e16f1de0, type: 3}
       propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2168790753016536499, guid: f1dfd37b30f3d0d49a035d74e16f1de0, type: 3}
       propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -8790,7 +8722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SliderBarScaler
   mainSlider: {fileID: 130217863}
   previewSlider: {fileID: 271643359}
-  widthScaler: 50
+  widthScaler: 30
 --- !u!1001 &580945219
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16617,7 +16549,9 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -4.467325
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5732477262984476366, guid: 435ecd0da546b2146ba93ea38dc7b475, type: 3}
+    - {fileID: 2745449575894449991, guid: 435ecd0da546b2146ba93ea38dc7b475, type: 3}
     m_RemovedGameObjects:
     - {fileID: 8891313235373592700, guid: 435ecd0da546b2146ba93ea38dc7b475, type: 3}
     - {fileID: 6517012609640924830, guid: 435ecd0da546b2146ba93ea38dc7b475, type: 3}
@@ -19924,11 +19858,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365331492}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1365844470 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1814273452973879187, guid: 79e035ede8dc07b4492a845e1f665505, type: 3}
-  m_PrefabInstance: {fileID: 2059639386}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1385359208
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26789,85 +26718,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4587425315149961008, guid: a4eedd708289f0c4a900233e920b53fa, type: 3}
   m_PrefabInstance: {fileID: 2042514244}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &2059639386
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1814273452973879187, guid: 79e035ede8dc07b4492a845e1f665505, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1827551169279147964, guid: 79e035ede8dc07b4492a845e1f665505, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2473253544251258575, guid: 79e035ede8dc07b4492a845e1f665505, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -115.37415
-      objectReference: {fileID: 0}
-    - target: {fileID: 2473253544251258575, guid: 79e035ede8dc07b4492a845e1f665505, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 2473253544251258575, guid: 79e035ede8dc07b4492a845e1f665505, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 58.94
-      objectReference: {fileID: 0}
-    - target: {fileID: 2473253544251258575, guid: 79e035ede8dc07b4492a845e1f665505, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2473253544251258575, guid: 79e035ede8dc07b4492a845e1f665505, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2473253544251258575, guid: 79e035ede8dc07b4492a845e1f665505, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2473253544251258575, guid: 79e035ede8dc07b4492a845e1f665505, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2473253544251258575, guid: 79e035ede8dc07b4492a845e1f665505, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2473253544251258575, guid: 79e035ede8dc07b4492a845e1f665505, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2473253544251258575, guid: 79e035ede8dc07b4492a845e1f665505, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2874366069729559629, guid: 79e035ede8dc07b4492a845e1f665505, type: 3}
-      propertyPath: m_Name
-      value: TextBubble
-      objectReference: {fileID: 0}
-    - target: {fileID: 4313392030444574741, guid: 79e035ede8dc07b4492a845e1f665505, type: 3}
-      propertyPath: m_text
-      value: Thank you for playing our game!
-      objectReference: {fileID: 0}
-    - target: {fileID: 4313392030444574741, guid: 79e035ede8dc07b4492a845e1f665505, type: 3}
-      propertyPath: m_fontSize
-      value: 0.2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2874366069729559629, guid: 79e035ede8dc07b4492a845e1f665505, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 204916898}
-    - targetCorrespondingSourceObject: {fileID: 2874366069729559629, guid: 79e035ede8dc07b4492a845e1f665505, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 204916897}
-  m_SourcePrefab: {fileID: 100100000, guid: 79e035ede8dc07b4492a845e1f665505, type: 3}
 --- !u!114 &2065892590 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8561175217562351320, guid: f1dfd37b30f3d0d49a035d74e16f1de0, type: 3}
@@ -28321,7 +28171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SliderBarScaler
   mainSlider: {fileID: 859359491}
   previewSlider: {fileID: 2423720}
-  widthScaler: 50
+  widthScaler: 30
 --- !u!1001 &8402862045208099626
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28412,7 +28262,6 @@ SceneRoots:
   - {fileID: 334755714}
   - {fileID: 261390866}
   - {fileID: 4754272}
-  - {fileID: 2059639386}
   - {fileID: 1146804672}
   - {fileID: 739199518}
   - {fileID: 120573320}
